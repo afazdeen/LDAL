@@ -319,8 +319,8 @@ namespace dotenv
     private:
 
         char token;
-        uint row_count;
-        uint col_count;
+        u_int row_count;
+        u_int col_count;
 
         bool bond = false;
         std::string* binded = nullptr;

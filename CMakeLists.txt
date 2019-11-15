@@ -86,13 +86,13 @@ add_executable(FlexibleComputerLanguage1
         FlexibleComputerLanguage/main.cpp
         FlexibleComputerLanguage/ResultGenerator.h
         FlexibleComputerLanguage/ResultGenerator.cpp
-        FlexibleComputerLanguage/NamedPipeOperations.h
-        FlexibleComputerLanguage/NamedPipeOperations.cpp
         FlexibleComputerLanguage/OTPParser.h
         FlexibleComputerLanguage/OTPParser.cpp
+        FlexibleComputerLanguage/NamedPipeOperations.h
+        FlexibleComputerLanguage/NamedPipeOperations.cpp
         FlexibleComputerLanguage/easylogging++.h
         FlexibleComputerLanguage/easylogging++.cc
-        FlexibleComputerLanguage/Logger.h)
+        FlexibleComputerLanguage/Logger.h FlexibleComputerLanguage/LogJsonParser.cpp FlexibleComputerLanguage/LogJsonParser.h FlexibleComputerLanguage/QueryExecuter.cpp FlexibleComputerLanguage/QueryExecuter.h)
 
 
 

@@ -689,6 +689,9 @@
 #define     COMMAND_TYPE_GET_INTEGER                                    63
 #define     COMMAND_TYPE_GET_BOOLEAN                                    64
 #define     COMMAND_TYPE_GET_CUSTOM_OBJ                                 65
+#define     COMMAND_TYPE_MASK_VALUE                                     66
+#define     COMMAND_TYPE_MASK_LOGDATA                                   67
+
 
 // String commands
 #define		COMMAND_TYPE_IS_STRING_EQUAL_TO								1000

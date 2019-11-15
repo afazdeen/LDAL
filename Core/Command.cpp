@@ -17,7 +17,8 @@
 #include <set>
 #include <algorithm>
 #include <functional>
-
+#include <LogJsonParser.h>
+#include <QueryExecuter.h>
 
 Command::Command()
 :ul_CommandType(COMMAND_TYPE_INVALID), p_Arg(0), p_EntityArg(0), s_AdditionalFuncName(EMPTY_STRING)
@@ -444,12 +445,18 @@ PENTITY Command::ExecuteBoolCommand(MULONG ulCommand, PENTITY pEntity, PENTITY p
 
 PENTITY Command::ExecuteStringCommand(MULONG ulCommand, PENTITY pEntity, PENTITY pArg)
 {
-	PString pString = (PString)pEntity;
+    PNODE pNode = (PNODE)pEntity;
+    if(0 == pNode)
+    {
+        return 0;
+    }
+    PString pString = (PString)pEntity;
 	if(0 == pString)
 	{
 		return 0;
 	}
-    
+
+    PNODE pNodeRes = 0;
 	PInt pIntRes = 0;
 	PNull pNullRes = 0;
 	PBool pBoolRes = 0;
@@ -760,6 +767,10 @@ PENTITY Command::ExecuteStringCommand(MULONG ulCommand, PENTITY pEntity, PENTITY
         }
             break;
 	}
+    if(0 != pNodeRes)
+    {
+        return pNodeRes;
+    }
     
 	if(0 != pIntRes)
 	{
@@ -995,6 +1006,76 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         pNode->SetValue((PMCHAR)pStrArg->GetValue().c_str());
                     }
                 }
+                break;
+            }
+
+            case COMMAND_TYPE_MASK_LOGDATA:
+            {
+                std::cout<<"--------------------------------------------Mask Log-----------------------------------------------\n";
+                MSTRING maskingAttribute;
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    maskingAttribute=pStrArg->GetValue();
+                    if(maskingAttribute=="testsuitename")
+                    {
+                        std::string line;
+                        std::string jsonline;
+                        std::ifstream jsonfile ("D:/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/resultJSON.json");
+                        if (jsonfile.is_open())
+                        {
+                            getline (jsonfile,line);
+                            jsonline = line;
+                            jsonfile.close();
+                        }
+                        Node* jsonroot = LogJsonParser::LogJSONToNodeTree(jsonline);
+
+                        std::string scriptline;
+                        std::ifstream scriptfile ("D:/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/Scripts/script.txt");
+                        std::string script="";
+
+                        while(getline(scriptfile,scriptline))
+                        {
+                            script+=scriptline;
+                            script+="\n";
+                        }
+
+                        std::string res = QueryExecuter::run(jsonroot,script);
+                        std::cout << "START the Mask Log\n";
+                        std::cout <<res;
+                        std::cout << "\n";
+
+                    }
+                    std::cout<<maskingAttribute<<"\n";
+
+                }
+                break;
+            }
+
+            case COMMAND_TYPE_MASK_VALUE:
+            {
+                std::cout<<"--------------------------------------------Mask Node-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                MSTRING testSuiteName;
+                MSTRING testSuiteString;
+                MSTRING replacement ="dummyTestName";
+                    if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                    {
+                        String* pStrArg = (String*)pArg;
+                        testSuiteName=pStrArg->GetValue();
+                        testSuiteString=pNode->GetValue();
+                        int length1=testSuiteName.length();
+                        std::size_t pos=testSuiteString.find(testSuiteName);
+                        testSuiteString.replace(pos,length1,replacement);
+
+                        std::cout<<testSuiteName<<"\n";
+                        std::cout<<testSuiteString<<"\n";
+
+                        if(0 != pStrArg)
+                        {
+                            pNode->SetValue((PMCHAR)testSuiteString.c_str());
+                        }
+                    }
                 break;
             }
             case COMMAND_TYPE_SET_LVALUE:

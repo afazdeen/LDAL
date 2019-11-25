@@ -17,11 +17,11 @@
 },
 "LINE2":{
 "TEST_SUITE_START":{
-"Value":"Test Suite 'ApiNotificationManagerTests' started at 2013-07-07 22:01:41 +0000"
+"Value":"Test Suite 'dummyTestName' started at 2013-07-07 22:01:41 +0000"
 },
 "VARIABLE SEQUENCE2":{
 "TEST_SUITE_START":{
-"Value":"Test Suite 'ApiNotificationManagerTests' started at 2013-07-07 22:01:41 +0000"
+"Value":"Test Suite 'dummyTestName' started at 2013-07-07 22:01:41 +0000"
 },
 "VARIABLE2":{
 "CONSTANT STRING":{
@@ -29,7 +29,7 @@
 },
 "VARIABLE3":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE4":{
 "CONSTANT STRING":{
@@ -101,11 +101,11 @@
 },
 "LINE3":{
 "TEST_START":{
-"Value":"Test Case '-[ApiNotificationManagerTests testThatClassExists]' started."
+"Value":"Test Case '-[dummyTestName testThatClassExists]' started."
 },
 "VARIABLE SEQUENCE3":{
 "TEST_START":{
-"Value":"Test Case '-[ApiNotificationManagerTests testThatClassExists]' started."
+"Value":"Test Case '-[dummyTestName testThatClassExists]' started."
 },
 "VARIABLE3":{
 "CONSTANT STRING":{
@@ -113,7 +113,7 @@
 },
 "VARIABLE4":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE5":{
 "CONSTANT STRING":{
@@ -129,11 +129,11 @@
 },
 "LINE4":{
 "TEST_PASSED":{
-"Value":"Test Case '-[ApiNotificationManagerTests testThatClassExists]' passed (0.000 seconds)."
+"Value":"Test Case '-[dummyTestName testThatClassExists]' passed (0.000 seconds)."
 },
 "VARIABLE SEQUENCE4":{
 "TEST_PASSED":{
-"Value":"Test Case '-[ApiNotificationManagerTests testThatClassExists]' passed (0.000 seconds)."
+"Value":"Test Case '-[dummyTestName testThatClassExists]' passed (0.000 seconds)."
 },
 "VARIABLE4":{
 "CONSTANT STRING":{
@@ -141,7 +141,7 @@
 },
 "VARIABLE5":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE6":{
 "CONSTANT STRING":{
@@ -173,11 +173,11 @@
 },
 "LINE4":{
 "TEST_START":{
-"Value":"Test Case '-[ApiNotificationManagerTests testapiIdentifiers__propertyExists]' started."
+"Value":"Test Case '-[dummyTestName testapiIdentifiers__propertyExists]' started."
 },
 "VARIABLE SEQUENCE4":{
 "TEST_START":{
-"Value":"Test Case '-[ApiNotificationManagerTests testapiIdentifiers__propertyExists]' started."
+"Value":"Test Case '-[dummyTestName testapiIdentifiers__propertyExists]' started."
 },
 "VARIABLE4":{
 "CONSTANT STRING":{
@@ -185,7 +185,7 @@
 },
 "VARIABLE5":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE6":{
 "CONSTANT STRING":{
@@ -201,11 +201,11 @@
 },
 "LINE5":{
 "TEST_PASSED":{
-"Value":"Test Case '-[ApiNotificationManagerTests testapiIdentifiers__propertyExists]' passed (0.000 seconds)."
+"Value":"Test Case '-[dummyTestName testapiIdentifiers__propertyExists]' passed (0.000 seconds)."
 },
 "VARIABLE SEQUENCE5":{
 "TEST_PASSED":{
-"Value":"Test Case '-[ApiNotificationManagerTests testapiIdentifiers__propertyExists]' passed (0.000 seconds)."
+"Value":"Test Case '-[dummyTestName testapiIdentifiers__propertyExists]' passed (0.000 seconds)."
 },
 "VARIABLE5":{
 "CONSTANT STRING":{
@@ -213,7 +213,7 @@
 },
 "VARIABLE6":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE7":{
 "CONSTANT STRING":{
@@ -245,11 +245,11 @@
 },
 "LINE5":{
 "TEST_START":{
-"Value":"Test Case '-[ApiNotificationManagerTests testapiIdentifiers_whenObjectCreatedThroughDI_propertyInjectedProperly]' started."
+"Value":"Test Case '-[dummyTestName testapiIdentifiers_whenObjectCreatedThroughDI_propertyInjectedProperly]' started."
 },
 "VARIABLE SEQUENCE5":{
 "TEST_START":{
-"Value":"Test Case '-[ApiNotificationManagerTests testapiIdentifiers_whenObjectCreatedThroughDI_propertyInjectedProperly]' started."
+"Value":"Test Case '-[dummyTestName testapiIdentifiers_whenObjectCreatedThroughDI_propertyInjectedProperly]' started."
 },
 "VARIABLE5":{
 "CONSTANT STRING":{
@@ -257,7 +257,7 @@
 },
 "VARIABLE6":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE7":{
 "CONSTANT STRING":{
@@ -273,11 +273,11 @@
 },
 "LINE6":{
 "TEST_PASSED":{
-"Value":"Test Case '-[ApiNotificationManagerTests testapiIdentifiers_whenObjectCreatedThroughDI_propertyInjectedProperly]' passed (0.000 seconds)."
+"Value":"Test Case '-[dummyTestName testapiIdentifiers_whenObjectCreatedThroughDI_propertyInjectedProperly]' passed (0.000 seconds)."
 },
 "VARIABLE SEQUENCE6":{
 "TEST_PASSED":{
-"Value":"Test Case '-[ApiNotificationManagerTests testapiIdentifiers_whenObjectCreatedThroughDI_propertyInjectedProperly]' passed (0.000 seconds)."
+"Value":"Test Case '-[dummyTestName testapiIdentifiers_whenObjectCreatedThroughDI_propertyInjectedProperly]' passed (0.000 seconds)."
 },
 "VARIABLE6":{
 "CONSTANT STRING":{
@@ -285,7 +285,7 @@
 },
 "VARIABLE7":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE8":{
 "CONSTANT STRING":{
@@ -317,11 +317,11 @@
 },
 "LINE6":{
 "TEST_START":{
-"Value":"Test Case '-[ApiNotificationManagerTests testhandleApiNoifications__methodExists]' started."
+"Value":"Test Case '-[dummyTestName testhandleApiNoifications__methodExists]' started."
 },
 "VARIABLE SEQUENCE6":{
 "TEST_START":{
-"Value":"Test Case '-[ApiNotificationManagerTests testhandleApiNoifications__methodExists]' started."
+"Value":"Test Case '-[dummyTestName testhandleApiNoifications__methodExists]' started."
 },
 "VARIABLE6":{
 "CONSTANT STRING":{
@@ -329,7 +329,7 @@
 },
 "VARIABLE7":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE8":{
 "CONSTANT STRING":{
@@ -345,11 +345,11 @@
 },
 "LINE7":{
 "TEST_PASSED":{
-"Value":"Test Case '-[ApiNotificationManagerTests testhandleApiNoifications__methodExists]' passed (0.000 seconds)."
+"Value":"Test Case '-[dummyTestName testhandleApiNoifications__methodExists]' passed (0.000 seconds)."
 },
 "VARIABLE SEQUENCE7":{
 "TEST_PASSED":{
-"Value":"Test Case '-[ApiNotificationManagerTests testhandleApiNoifications__methodExists]' passed (0.000 seconds)."
+"Value":"Test Case '-[dummyTestName testhandleApiNoifications__methodExists]' passed (0.000 seconds)."
 },
 "VARIABLE7":{
 "CONSTANT STRING":{
@@ -357,7 +357,7 @@
 },
 "VARIABLE8":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE9":{
 "CONSTANT STRING":{
@@ -389,11 +389,11 @@
 },
 "LINE7":{
 "TEST_START":{
-"Value":"Test Case '-[ApiNotificationManagerTests testhandleApiNoifications_calledWithNullRequest_doesNotThrow]' started."
+"Value":"Test Case '-[dummyTestName testhandleApiNoifications_calledWithNullRequest_doesNotThrow]' started."
 },
 "VARIABLE SEQUENCE7":{
 "TEST_START":{
-"Value":"Test Case '-[ApiNotificationManagerTests testhandleApiNoifications_calledWithNullRequest_doesNotThrow]' started."
+"Value":"Test Case '-[dummyTestName testhandleApiNoifications_calledWithNullRequest_doesNotThrow]' started."
 },
 "VARIABLE7":{
 "CONSTANT STRING":{
@@ -401,7 +401,7 @@
 },
 "VARIABLE8":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE9":{
 "CONSTANT STRING":{
@@ -417,11 +417,11 @@
 },
 "LINE8":{
 "TEST_PASSED":{
-"Value":"Test Case '-[ApiNotificationManagerTests testhandleApiNoifications_calledWithNullRequest_doesNotThrow]' passed (0.000 seconds)."
+"Value":"Test Case '-[dummyTestName testhandleApiNoifications_calledWithNullRequest_doesNotThrow]' passed (0.000 seconds)."
 },
 "VARIABLE SEQUENCE8":{
 "TEST_PASSED":{
-"Value":"Test Case '-[ApiNotificationManagerTests testhandleApiNoifications_calledWithNullRequest_doesNotThrow]' passed (0.000 seconds)."
+"Value":"Test Case '-[dummyTestName testhandleApiNoifications_calledWithNullRequest_doesNotThrow]' passed (0.000 seconds)."
 },
 "VARIABLE8":{
 "CONSTANT STRING":{
@@ -429,7 +429,7 @@
 },
 "VARIABLE9":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE10":{
 "CONSTANT STRING":{
@@ -461,11 +461,11 @@
 },
 "LINE8":{
 "TEST_START":{
-"Value":"Test Case '-[ApiNotificationManagerTests testhandleApiNoifications_calledWithNullResult_doesNotThrow]' started."
+"Value":"Test Case '-[dummyTestName testhandleApiNoifications_calledWithNullResult_doesNotThrow]' started."
 },
 "VARIABLE SEQUENCE8":{
 "TEST_START":{
-"Value":"Test Case '-[ApiNotificationManagerTests testhandleApiNoifications_calledWithNullResult_doesNotThrow]' started."
+"Value":"Test Case '-[dummyTestName testhandleApiNoifications_calledWithNullResult_doesNotThrow]' started."
 },
 "VARIABLE8":{
 "CONSTANT STRING":{
@@ -473,7 +473,7 @@
 },
 "VARIABLE9":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE10":{
 "CONSTANT STRING":{
@@ -489,11 +489,11 @@
 },
 "LINE9":{
 "TEST_PASSED":{
-"Value":"Test Case '-[ApiNotificationManagerTests testhandleApiNoifications_calledWithNullResult_doesNotThrow]' passed (0.000 seconds)."
+"Value":"Test Case '-[dummyTestName testhandleApiNoifications_calledWithNullResult_doesNotThrow]' passed (0.000 seconds)."
 },
 "VARIABLE SEQUENCE9":{
 "TEST_PASSED":{
-"Value":"Test Case '-[ApiNotificationManagerTests testhandleApiNoifications_calledWithNullResult_doesNotThrow]' passed (0.000 seconds)."
+"Value":"Test Case '-[dummyTestName testhandleApiNoifications_calledWithNullResult_doesNotThrow]' passed (0.000 seconds)."
 },
 "VARIABLE9":{
 "CONSTANT STRING":{
@@ -501,7 +501,7 @@
 },
 "VARIABLE10":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE11":{
 "CONSTANT STRING":{
@@ -533,11 +533,11 @@
 },
 "LINE9":{
 "TEST_START":{
-"Value":"Test Case '-[ApiNotificationManagerTests testnotificationTranslations_propertyExists]' started."
+"Value":"Test Case '-[dummyTestName testnotificationTranslations_propertyExists]' started."
 },
 "VARIABLE SEQUENCE9":{
 "TEST_START":{
-"Value":"Test Case '-[ApiNotificationManagerTests testnotificationTranslations_propertyExists]' started."
+"Value":"Test Case '-[dummyTestName testnotificationTranslations_propertyExists]' started."
 },
 "VARIABLE9":{
 "CONSTANT STRING":{
@@ -545,7 +545,7 @@
 },
 "VARIABLE10":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE11":{
 "CONSTANT STRING":{
@@ -561,11 +561,11 @@
 },
 "LINE10":{
 "TEST_PASSED":{
-"Value":"Test Case '-[ApiNotificationManagerTests testnotificationTranslations_propertyExists]' passed (0.000 seconds)."
+"Value":"Test Case '-[dummyTestName testnotificationTranslations_propertyExists]' passed (0.000 seconds)."
 },
 "VARIABLE SEQUENCE10":{
 "TEST_PASSED":{
-"Value":"Test Case '-[ApiNotificationManagerTests testnotificationTranslations_propertyExists]' passed (0.000 seconds)."
+"Value":"Test Case '-[dummyTestName testnotificationTranslations_propertyExists]' passed (0.000 seconds)."
 },
 "VARIABLE10":{
 "CONSTANT STRING":{
@@ -573,7 +573,7 @@
 },
 "VARIABLE11":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE12":{
 "CONSTANT STRING":{
@@ -605,11 +605,11 @@
 },
 "LINE10":{
 "TEST_START":{
-"Value":"Test Case '-[ApiNotificationManagerTests testnotificationTranslations_whenObjectCreatedThroughDI_propertyInjectedProperly]' started."
+"Value":"Test Case '-[dummyTestName testnotificationTranslations_whenObjectCreatedThroughDI_propertyInjectedProperly]' started."
 },
 "VARIABLE SEQUENCE10":{
 "TEST_START":{
-"Value":"Test Case '-[ApiNotificationManagerTests testnotificationTranslations_whenObjectCreatedThroughDI_propertyInjectedProperly]' started."
+"Value":"Test Case '-[dummyTestName testnotificationTranslations_whenObjectCreatedThroughDI_propertyInjectedProperly]' started."
 },
 "VARIABLE10":{
 "CONSTANT STRING":{
@@ -617,7 +617,7 @@
 },
 "VARIABLE11":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE12":{
 "CONSTANT STRING":{
@@ -633,11 +633,11 @@
 },
 "LINE11":{
 "TEST_PASSED":{
-"Value":"Test Case '-[ApiNotificationManagerTests testnotificationTranslations_whenObjectCreatedThroughDI_propertyInjectedProperly]' passed (0.000 seconds)."
+"Value":"Test Case '-[dummyTestName testnotificationTranslations_whenObjectCreatedThroughDI_propertyInjectedProperly]' passed (0.000 seconds)."
 },
 "VARIABLE SEQUENCE11":{
 "TEST_PASSED":{
-"Value":"Test Case '-[ApiNotificationManagerTests testnotificationTranslations_whenObjectCreatedThroughDI_propertyInjectedProperly]' passed (0.000 seconds)."
+"Value":"Test Case '-[dummyTestName testnotificationTranslations_whenObjectCreatedThroughDI_propertyInjectedProperly]' passed (0.000 seconds)."
 },
 "VARIABLE11":{
 "CONSTANT STRING":{
@@ -645,7 +645,7 @@
 },
 "VARIABLE12":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE13":{
 "CONSTANT STRING":{
@@ -669,11 +669,11 @@
 },
 "LINE11":{
 "TEST_SUITE_END":{
-"Value":"Test Suite 'ApiNotificationManagerTests' finished at 2013-07-07 22:01:41 +0000."
+"Value":"Test Suite 'dummyTestName' finished at 2013-07-07 22:01:41 +0000."
 },
 "VARIABLE SEQUENCE11":{
 "TEST_SUITE_END":{
-"Value":"Test Suite 'ApiNotificationManagerTests' finished at 2013-07-07 22:01:41 +0000"
+"Value":"Test Suite 'dummyTestName' finished at 2013-07-07 22:01:41 +0000"
 },
 "VARIABLE11":{
 "CONSTANT STRING":{
@@ -681,7 +681,7 @@
 },
 "VARIABLE12":{
 "TEST_SUITE":{
-"Value":"ApiNotificationManagerTests"
+"Value":"dummyTestName"
 },
 "VARIABLE13":{
 "CONSTANT STRING":{

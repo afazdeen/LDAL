@@ -67,7 +67,7 @@ Node* LogJsonParser::LOGJSONToNodeTreeRecursively(rapidjson::Value &j,Node* pare
 void LogJsonParser::LogNodeTreetoJson(Node* node)
 {
     std::ofstream newjsonfile;
-    newjsonfile.open("D:/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/maskedJSON.json");
+    newjsonfile.open("D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/maskedJSON.json");
     Node* curr =node->GetFirstChild();
     newjsonfile<<_MSTR([{)<<_MSTR(\n);
     bool hasChild =false;

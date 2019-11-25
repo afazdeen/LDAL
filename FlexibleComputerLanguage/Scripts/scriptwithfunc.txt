@@ -1,4 +1,4 @@
-Function:=MaskFunction
+Function:=MaskFullFunction
 	$ARG.SeekToBegin
 	$ARG.GetCurrentElement:=ROOTNODE
 	$ARG.Seek(#1)
@@ -29,7 +29,7 @@ $RESULTSTRING.AddPostFix(|BeforeFunc|)
 
 $Y.SetValue(TEST_SUITE)
 {$X,$Y}:=FUNCARG
-MaskFunction($FUNCARG)
+MaskFullFunction($FUNCARG)
 
 $RESULTSTRING.AddPostFix($X.FirstChild.RightSibling.FirstChild.RightSibling.FirstChild.RightSibling.FirstChild.RightSibling.RightSibling.FirstChild.FirstChild.FirstChild.GetValue)
 $RESULTSTRING.AddPostFix(|AfterFunc|)

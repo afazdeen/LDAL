@@ -690,7 +690,21 @@
 #define     COMMAND_TYPE_GET_BOOLEAN                                    64
 #define     COMMAND_TYPE_GET_CUSTOM_OBJ                                 65
 #define     COMMAND_TYPE_MASK_VALUE                                     66
-#define     COMMAND_TYPE_MASK_LOGDATA                                   67
+#define     COMMAND_TYPE_MASK_FIRST_NAME                                67
+#define     COMMAND_TYPE_MASK_LAST_NAME                                 68
+#define     COMMAND_TYPE_MASK_FULL_NAME                                 69
+#define     COMMAND_TYPE_MASK_DATE                                       70
+#define     COMMAND_TYPE_MASK_MONTH                                     71
+#define     COMMAND_TYPE_MASK_YEAR                                      72
+#define     COMMAND_TYPE_MASK_HOUR                                     73
+#define     COMMAND_TYPE_MASK_MINUTE                                   74
+#define     COMMAND_TYPE_MASK_SECONDS                                   75
+#define     COMMAND_TYPE_MASK_TELEPHONE_NUMBER                          76
+#define     COMMAND_TYPE_MASK_ADDRESS                                   77
+#define     COMMAND_TYPE_MASK_POSTAL_CODE                               78
+#define     COMMAND_TYPE_MASK_INTEGER                                   79
+#define     COMMAND_TYPE_MASK_PRICE                                     80
+#define     COMMAND_TYPE_MASK_NIC                                       81
 
 
 // String commands
@@ -751,6 +765,7 @@
 
 // List commands
 #define		COMMAND_TYPE_GET_ITEM_COUNT									5000
+
 #define		COMMAND_TYPE_SEEK											5001
 #define		COMMAND_TYPE_SEEK_TO_BEGIN									5002
 #define		COMMAND_TYPE_SEEK_TO_END									5003
@@ -765,7 +780,9 @@
 #define     COMMAND_TYPE_EXTRACT_NODE_LIST_TOP                          5012
 #define     COMMAND_TYPE_GET_OLDEST_DATE                                5013
 #define     COMMAND_TYPE_GET_LATEST_DATE                                5014
-#define     COMMAND_TYPE_GET_UNIQUE_NODE_LIST_WITH_NODE_REF                5015
+#define     COMMAND_TYPE_GET_UNIQUE_NODE_LIST_WITH_NODE_REF             5015
+#define     COMMAND_TYPE_ADD_NODE_TO_LIST                               5016
+
 
 // Special Commands
 #define		COMMAND_TYPE_ADDITIONAL_FUNCTION							10000

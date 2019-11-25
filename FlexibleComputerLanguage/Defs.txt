@@ -1,4 +1,6 @@
-DEF	RULE_FILE_NAME					D:/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/Scripts/scripttest.txt
+DEF	RULE_FILE_NAME					D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/Masking/maskscript.txt
+DEF	LOAD_FROM_CODE_LIBRARY			TRUE
+DEF	CODE_LIBRARY_FILE				D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/Masking/maskfunction.txt
 DEF	LINE_CONTINUATION_STRING			__
 DEF	FUNCTION_SEPERATOR				.
 DEF	EQUAL_SIGN					:=
@@ -83,6 +85,7 @@ DEF	GET_ITEM_COUNT					GetItemCount
 DEF	LIST_FILTER					Filter
 DEF	LIST_GROUPBY					GroupBy
 DEF	LIST_GROUP_SEQUENCE_BY				GroupSequenceBy
+DEF ADD_NODE_TO_LIST			AddNodeToList
 DEF	SEEK						Seek
 DEF	SEEK_TO_BEGIN					SeekToBegin
 DEF	SEEK_TO_END					SeekToEnd
@@ -92,7 +95,21 @@ DEF	IS_NOT_NULL					IsNotNull
 DEF	BOOL_AND					And
 DEF	BOOL_OR						Or
 DEF MASK_VALUE					MaskValue
-DEF MASK_LOGDATA				MaskLogdata
+DEF MASK_FIRST_NAME				MaskFirstName
+DEF MASK_LAST_NAME				MaskLastName
+DEF MASK_FULL_NAME				MaskFullName
+DEF MASK_DATE					MaskDate
+DEF MASK_MONTH					MaskMonth
+DEF MASK_YEAR					MaskYear
+DEF MASK_HOUR					MaskHour
+DEF MASK_MINUTE					MaskMinute
+DEF MASK_SECONDS				MaskSeconds
+DEF MASK_TELEPHONE_NUMBER		MaskTelNum
+DEF MASK_ADDRESS				MaskAddress
+DEF MASK_POSTAL_CODE			MaskPostalCode
+DEF MASK_INTEGER				MaskInteger
+DEF MASK_PRICE					MaskPrice
+DEF MASK_NIC					MaskNIC
 
 DEF	LDEL_SCRIPT_FILE				script.ldel
 DEF	LDEL_LOG_FILE					log.txt

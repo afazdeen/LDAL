@@ -93,7 +93,6 @@ bool ScriptReader::ProcessScript(MetaData* pMD, ScriptReaderOutput& op, MSTRING 
     {
         LST_INT lstLineNumbersDummy;    // line numbers in code library are disregarded
         ReadFileToLines(pMD->s_CodeLibraryFile, pMD->s_LineContinuation, pMD->s_CommentStart, lstLines, lstLineNumbersDummy);
-        std::cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
     }
 
 	ReadStringToLines(code, pMD->s_LineContinuation, pMD->s_CommentStart, lstLines, lstLineNumbers);

@@ -48,7 +48,7 @@ int main(int argc, const char * argv[])
    // tt.RunTest6();
     std::string line;
     std::string jsonline;
-    std::ifstream jsonfile ("D:/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/resultJSON.json");
+    std::ifstream jsonfile ("D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/resultJSON.json");
     if (jsonfile.is_open())
     {
         getline (jsonfile,line);
@@ -58,7 +58,8 @@ int main(int argc, const char * argv[])
     Node* jsonroot = LogJsonParser::LogJSONToNodeTree(jsonline);
 
     std::string scriptline;
-    std::ifstream scriptfile ("D:/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/Scripts/scripttest.txt");
+    std::ifstream scriptfile ("D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/Scripts/script.txt");
+    //std::ifstream scriptfile ("D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/Masking/maskscript.txt");
     std::string script="";
 
     while(getline(scriptfile,scriptline))
@@ -76,3 +77,17 @@ int main(int argc, const char * argv[])
 
     return 0;
 }
+/*
+#include <iostream>
+#include "easylogging++.h"
+#include "D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/SQLAPI/include/SQLAPI.h"
+
+INITIALIZE_EASYLOGGINGPP
+int main()
+{
+    // create connection object to connect to database
+        //SAConnection con;
+
+    std::cout<<"Hello";
+return 0;
+}*/

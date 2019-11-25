@@ -17,8 +17,9 @@
 #include <set>
 #include <algorithm>
 #include <functional>
-#include <LogJsonParser.h>
-#include <QueryExecuter.h>
+
+//Global variable
+int setSize = 0;
 
 Command::Command()
 :ul_CommandType(COMMAND_TYPE_INVALID), p_Arg(0), p_EntityArg(0), s_AdditionalFuncName(EMPTY_STRING)
@@ -894,7 +895,10 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
 			p_EntityArg = p_Arg->Execute(pContext);
             pArg = p_EntityArg;
 		}
-        
+        MSTRING argument;
+        MSTRING nodeString;
+        MSTRING replacement;
+
         switch(ulCommand)
         {
             case COMMAND_TYPE_LEFT_SIBLING:
@@ -1006,76 +1010,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         pNode->SetValue((PMCHAR)pStrArg->GetValue().c_str());
                     }
                 }
-                break;
-            }
-
-            case COMMAND_TYPE_MASK_LOGDATA:
-            {
-                std::cout<<"--------------------------------------------Mask Log-----------------------------------------------\n";
-                MSTRING maskingAttribute;
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    String* pStrArg = (String*)pArg;
-                    maskingAttribute=pStrArg->GetValue();
-                    if(maskingAttribute=="testsuitename")
-                    {
-                        std::string line;
-                        std::string jsonline;
-                        std::ifstream jsonfile ("D:/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/resultJSON.json");
-                        if (jsonfile.is_open())
-                        {
-                            getline (jsonfile,line);
-                            jsonline = line;
-                            jsonfile.close();
-                        }
-                        Node* jsonroot = LogJsonParser::LogJSONToNodeTree(jsonline);
-
-                        std::string scriptline;
-                        std::ifstream scriptfile ("D:/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/Scripts/script.txt");
-                        std::string script="";
-
-                        while(getline(scriptfile,scriptline))
-                        {
-                            script+=scriptline;
-                            script+="\n";
-                        }
-
-                        std::string res = QueryExecuter::run(jsonroot,script);
-                        std::cout << "START the Mask Log\n";
-                        std::cout <<res;
-                        std::cout << "\n";
-
-                    }
-                    std::cout<<maskingAttribute<<"\n";
-
-                }
-                break;
-            }
-
-            case COMMAND_TYPE_MASK_VALUE:
-            {
-                std::cout<<"--------------------------------------------Mask Node-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                MSTRING testSuiteName;
-                MSTRING testSuiteString;
-                MSTRING replacement ="dummyTestName";
-                    if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                    {
-                        String* pStrArg = (String*)pArg;
-                        testSuiteName=pStrArg->GetValue();
-                        testSuiteString=pNode->GetValue();
-                        int length1=testSuiteName.length();
-                        std::size_t pos=testSuiteString.find(testSuiteName);
-                        testSuiteString.replace(pos,length1,replacement);
-
-                        std::cout<<testSuiteName<<"\n";
-                        std::cout<<testSuiteString<<"\n";
-
-                        if(0 != pStrArg)
-                        {
-                            pNode->SetValue((PMCHAR)testSuiteString.c_str());
-                        }
-                    }
                 break;
             }
             case COMMAND_TYPE_SET_LVALUE:
@@ -1398,10 +1332,323 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                 pNodeRes = (PNODE)pNode->GetCustomObj();
                 break;
             }
+            case COMMAND_TYPE_MASK_VALUE:
+            {
+                std::cout<<"--------------------------------------------Mask Test Suite-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    argument=pStrArg->GetValue();
+                    nodeString=pNode->GetValue();
+                    replacement ="dummyTestName";
+
+                    static std::set<std::string> setbeforemask;
+                    std::set<std::string>::iterator it;
+                    int temp =setSize;
+                    setbeforemask.insert (argument);
+                    setSize=setbeforemask.size();
+                    MSTRING tempStr=std::to_string(setSize);
+                    MSTRING tempReplace;
+                    std::cout<<temp<<"\n";
+                    std::cout<<setSize<<"\n";
+                    if(temp==setSize)
+                    {
+                        std::cout<<"No repeat\n";
+                    }
+                    else
+                    {
+                        std::cout<<"Repeat yes\n";
+                    }
+
+                    std::cout << "setbeforemask contains : ";
+                    for (it=setbeforemask.begin(); it!=setbeforemask.end(); ++it)
+                    {
+                        std::cout << *it<<" , ";
+                    }
+                    std::cout << '\n';
+
+                    std::size_t pos=nodeString.find(argument);
+                    nodeString.replace(pos,argument.length(),replacement);
+                    std::cout<<argument<<"\n";
+                    std::cout<<nodeString<<"\n";
+                    pNode->SetValue((PMCHAR) nodeString.c_str());
+                }
+                break;
+            }
+            case COMMAND_TYPE_MASK_FIRST_NAME:
+            {
+                std::cout<<"--------------------------------------------Mask First Name-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    argument=pStrArg->GetValue();
+                    nodeString=pNode->GetValue();
+                    replacement ="dummyFirstName";
+                    std::size_t pos=nodeString.find(argument);
+                    nodeString.replace(pos,argument.length(),replacement);
+                    std::cout<<argument<<"\n";
+                    std::cout<<nodeString<<"\n";
+                    pNode->SetValue((PMCHAR) nodeString.c_str());
+                }
+                break;
+            }
+            case COMMAND_TYPE_MASK_LAST_NAME:
+            {
+                std::cout<<"--------------------------------------------Mask Last name-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    argument=pStrArg->GetValue();
+                    nodeString=pNode->GetValue();
+                    replacement ="dummyLastName";
+                    std::size_t pos=nodeString.find(argument);
+                    nodeString.replace(pos,argument.length(),replacement);
+                    std::cout<<argument<<"\n";
+                    std::cout<<nodeString<<"\n";
+                    pNode->SetValue((PMCHAR) nodeString.c_str());
+                }
+                break;
+            }
+            case COMMAND_TYPE_MASK_FULL_NAME:
+            {
+                std::cout<<"--------------------------------------------Mask Full name-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    argument=pStrArg->GetValue();
+                    nodeString=pNode->GetValue();
+                    replacement ="dummyFullName";
+                    std::size_t pos=nodeString.find(argument);
+                    nodeString.replace(pos,argument.length(),replacement);
+                    std::cout<<argument<<"\n";
+                    std::cout<<nodeString<<"\n";
+                    pNode->SetValue((PMCHAR) nodeString.c_str());
+                }
+                break;
+            }
+            case COMMAND_TYPE_MASK_DATE:
+            {
+                std::cout<<"--------------------------------------------Mask Date-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    argument=pStrArg->GetValue();
+                    nodeString=pNode->GetValue();
+                    replacement ="dummyDate";
+                    std::size_t pos=nodeString.find(argument);
+                    nodeString.replace(pos,argument.length(),replacement);
+                    std::cout<<argument<<"\n";
+                    std::cout<<nodeString<<"\n";
+                    pNode->SetValue((PMCHAR) nodeString.c_str());
+                }
+                break;
+            }
+            case COMMAND_TYPE_MASK_MONTH:
+            {
+                std::cout<<"--------------------------------------------Mask Month-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    argument=pStrArg->GetValue();
+                    nodeString=pNode->GetValue();
+                    replacement ="dummyMonth";
+                    std::size_t pos=nodeString.find(argument);
+                    nodeString.replace(pos,argument.length(),replacement);
+                    std::cout<<argument<<"\n";
+                    std::cout<<nodeString<<"\n";
+                    pNode->SetValue((PMCHAR) nodeString.c_str());
+                }
+                break;
+            }
+            case COMMAND_TYPE_MASK_YEAR:
+            {
+                std::cout<<"--------------------------------------------Mask Year-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    argument=pStrArg->GetValue();
+                    nodeString=pNode->GetValue();
+                    replacement ="dummyYear";
+                    std::size_t pos=nodeString.find(argument);
+                    nodeString.replace(pos,argument.length(),replacement);
+                    std::cout<<argument<<"\n";
+                    std::cout<<nodeString<<"\n";
+                    pNode->SetValue((PMCHAR) nodeString.c_str());
+                }
+                break;
+            }
+            case COMMAND_TYPE_MASK_HOUR:
+            {
+                std::cout<<"--------------------------------------------Mask Hour-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    argument=pStrArg->GetValue();
+                    nodeString=pNode->GetValue();
+                    replacement ="dummyHour";
+                    std::size_t pos=nodeString.find(argument);
+                    nodeString.replace(pos,argument.length(),replacement);
+                    std::cout<<argument<<"\n";
+                    std::cout<<nodeString<<"\n";
+                    pNode->SetValue((PMCHAR) nodeString.c_str());
+                }
+                break;
+            }
+            case COMMAND_TYPE_MASK_MINUTE:
+            {
+                std::cout<<"--------------------------------------------Mask Minute-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    argument=pStrArg->GetValue();
+                    nodeString=pNode->GetValue();
+                    replacement ="dummyMinute";
+                    std::size_t pos=nodeString.find(argument);
+                    nodeString.replace(pos,argument.length(),replacement);
+                    std::cout<<argument<<"\n";
+                    std::cout<<nodeString<<"\n";
+                    pNode->SetValue((PMCHAR) nodeString.c_str());
+                }
+                break;
+            }
+            case COMMAND_TYPE_MASK_SECONDS:
+            {
+                std::cout<<"--------------------------------------------Mask Seconds-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    argument=pStrArg->GetValue();
+                    nodeString=pNode->GetValue();
+                    replacement ="dummySecond";
+                    std::size_t pos=nodeString.find(argument);
+                    nodeString.replace(pos,argument.length(),replacement);
+                    std::cout<<argument<<"\n";
+                    std::cout<<nodeString<<"\n";
+                    pNode->SetValue((PMCHAR) nodeString.c_str());
+                }
+                break;
+            }
+            case COMMAND_TYPE_MASK_TELEPHONE_NUMBER:
+            {
+                std::cout<<"--------------------------------------------Mask Telephone number-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    argument=pStrArg->GetValue();
+                    nodeString=pNode->GetValue();
+                    replacement ="dummyTelNum";
+                    std::size_t pos=nodeString.find(argument);
+                    nodeString.replace(pos,argument.length(),replacement);
+                    std::cout<<argument<<"\n";
+                    std::cout<<nodeString<<"\n";
+                    pNode->SetValue((PMCHAR) nodeString.c_str());
+                }
+                break;
+            }
+            case COMMAND_TYPE_MASK_ADDRESS:
+            {
+                std::cout<<"--------------------------------------------Mask Address-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    argument=pStrArg->GetValue();
+                    nodeString=pNode->GetValue();
+                    replacement ="dummyAddress";
+                    std::size_t pos=nodeString.find(argument);
+                    nodeString.replace(pos,argument.length(),replacement);
+                    std::cout<<argument<<"\n";
+                    std::cout<<nodeString<<"\n";
+                    pNode->SetValue((PMCHAR) nodeString.c_str());
+                }
+                break;
+            }
+            case COMMAND_TYPE_MASK_POSTAL_CODE:
+            {
+                std::cout<<"--------------------------------------------Mask Postal Code-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    argument=pStrArg->GetValue();
+                    nodeString=pNode->GetValue();
+                    replacement ="dummyPostalcode";
+                    std::size_t pos=nodeString.find(argument);
+                    nodeString.replace(pos,argument.length(),replacement);
+                    std::cout<<argument<<"\n";
+                    std::cout<<nodeString<<"\n";
+                    pNode->SetValue((PMCHAR) nodeString.c_str());
+                }
+                break;
+            }
+            case COMMAND_TYPE_MASK_INTEGER:
+            {
+                std::cout<<"--------------------------------------------Mask Integer-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    argument=pStrArg->GetValue();
+                    nodeString=pNode->GetValue();
+                    replacement ="dummyInteger";
+                    std::size_t pos=nodeString.find(argument);
+                    nodeString.replace(pos,argument.length(),replacement);
+                    std::cout<<argument<<"\n";
+                    std::cout<<nodeString<<"\n";
+                    pNode->SetValue((PMCHAR) nodeString.c_str());
+                }
+                break;
+            }
+            case COMMAND_TYPE_MASK_PRICE:
+            {
+                std::cout<<"--------------------------------------------Mask Price-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    argument=pStrArg->GetValue();
+                    nodeString=pNode->GetValue();
+                    replacement ="dummyPrice";
+                    std::size_t pos=nodeString.find(argument);
+                    nodeString.replace(pos,argument.length(),replacement);
+                    std::cout<<argument<<"\n";
+                    std::cout<<nodeString<<"\n";
+                    pNode->SetValue((PMCHAR) nodeString.c_str());
+                }
+                break;
+            }
+            case COMMAND_TYPE_MASK_NIC:
+            {
+                std::cout<<"--------------------------------------------Mask NIC-----------------------------------------------\n";
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                if(ENTITY_TYPE_STRING == pArg->ul_Type)
+                {
+                    String* pStrArg = (String*)pArg;
+                    argument=pStrArg->GetValue();
+                    nodeString=pNode->GetValue();
+                    replacement ="dummyNIC";
+                    std::size_t pos=nodeString.find(argument);
+                    nodeString.replace(pos,argument.length(),replacement);
+                    std::cout<<argument<<"\n";
+                    std::cout<<nodeString<<"\n";
+                    pNode->SetValue((PMCHAR) nodeString.c_str());
+                }
+                break;
+            }
+
         }
     }
-    
-	
 	
 	if(0 != pNodeRes)
 	{
@@ -1448,7 +1695,7 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
 	PENTITY pEntityRes = 0;
 	PNODE pNodeRes = 0;
 	PString pStrRes = 0;
-    
+
 	if(COMMAND_TYPE_GET_ITEM_COUNT == ulCommand)
 	{
 		MemoryManager::Inst.CreateObject(&pIntRes);
@@ -1511,7 +1758,7 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
                 }
             }
         }
-        
+
         std::map<MSTRING, PENTITYLIST>::iterator ite2 = groupedLists.begin();
         std::map<MSTRING, PENTITYLIST>::iterator end2 = groupedLists.end();
         for ( ; ite2 != end2; ++ite2) {
@@ -1700,6 +1947,28 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
             }
         }
     }
+    else if(COMMAND_TYPE_ADD_NODE_TO_LIST == ulCommand)
+    {
+        if(ENTITY_TYPE_STRING == pArg->ul_Type)
+        {
+            String* pStrArg = (String*)pArg;
+            Node *newListNode = MemoryManager::Inst.CreateNode(1);
+            if(0 != pStrArg)
+            {
+                newListNode->SetValue((PMCHAR)pStrArg->GetValue().c_str());
+            }
+            pEntityList->push_back(newListNode);
+        }
+        MemoryManager::Inst.CreateObject(&pNullRes);
+    }
+    /*else if(COMMAND_TYPE_ADD_NODE_TO_LI   ST == ulCommand)
+    {
+        if(ENTITY_TYPE_NODE == pArg->ul_Type)
+        {
+            pEntityList->push_back((PNODE)pArg);
+        }
+        MemoryManager::Inst.CreateObject(&pNullRes);
+    }*/
 	else if(COMMAND_TYPE_SEEK == ulCommand)
 	{
 		PInt pInt = (PInt)p_Arg->GetEntity();
@@ -1799,8 +2068,9 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
 		pStrRes->SetValue(DateTimeOperations::GetLatestDate(dateList));
 	}
 	// first handle the commands that would need to access the execution context
-	else if (COMMAND_TYPE_FILTER_SUBTREE == ulCommand) {
-        MemoryManager::Inst.CreateObject(&pListRes);
+	else if (COMMAND_TYPE_FILTER_SUBTREE == ulCommand)
+	{
+	    MemoryManager::Inst.CreateObject(&pListRes);
         pEntityList->SeekToBegin();
         PNODE currNode = (PNODE)pEntityList->GetCurrElem();
         while(currNode != 0)
@@ -1837,7 +2107,7 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
             } else {
                 pRes = ExecuteEntityCommand(ulCommand, *ite1, p_EntityArg);
             }
-            
+
 			switch(pRes->ul_Type)
 			{
                 case ENTITY_TYPE_NULL:
@@ -1871,7 +2141,7 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
 			}
 		}
 	}
-    
+
 	if(0 != pIntRes)
 	{
 		return pIntRes;
@@ -1916,10 +2186,11 @@ void Command::FilterSubTree(PNODE root, ExecutionTemplate* arg, ExecutionContext
     PBool res = (PBool)arg->Execute(context);
     if (res->GetValue()) {
         resultList->push_back(root);
+        //std::cout<<root ->GetValue()<<"\n";
     }
     PNODE pChild = root->GetFirstChild();
-	while(0 != pChild)
-	{
+        while(0 != pChild)
+        {
 		FilterSubTree(pChild, arg, context, resultList);
 		pChild = pChild->GetRightSibling();
 	}

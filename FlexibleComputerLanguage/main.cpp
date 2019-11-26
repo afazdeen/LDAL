@@ -88,26 +88,22 @@ int main(int argc, const char * argv[])
 #include "rapidjson/stringbuffer.h"
 #include <TypeDefs.h>
 #include "D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/SQLAPI/include/SQLAPI.h"
+#include <random>
 
 INITIALIZE_EASYLOGGINGPP
 int main()
 {
     // create connection object to connect to database
-        //SAConnection con;
+    //SAConnection con;
 
-        srand(time(NULL)); //generates random seed val
+    srand(time(NULL)); //generates random seed val
+    int outPut;
 
-        int arg =1985;
-        int diff=5;
-        int userBeg =arg-diff;
-        int userEnd =arg+diff;
-    for (int i = 0; i < 20; i++)
-    {
-        int outPut = rand()%((userEnd - userBeg) + 1) + userBeg;
-        MSTRING tempStr=std::to_string(outPut);
-        std::cout << tempStr << "  ";
+    for (int i = 0; i < 50; i++) {
+        outPut = rand()%((25000 - 10000) + 1) + 10000;
+        std::cout << outPut << "  ";
     }
-return 0;
+    return 0;
 }
 /*
 int userBeg =1;

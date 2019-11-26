@@ -22,70 +22,70 @@
 int setSize = 0;
 
 Command::Command()
-:ul_CommandType(COMMAND_TYPE_INVALID), p_Arg(0), p_EntityArg(0), s_AdditionalFuncName(EMPTY_STRING)
+        :ul_CommandType(COMMAND_TYPE_INVALID), p_Arg(0), p_EntityArg(0), s_AdditionalFuncName(EMPTY_STRING)
 {
-    
+
 }
 
 Command::~Command()
 {
-    
+
 }
 
 void Command::Destroy()
 {
-	if(0 != p_Arg)
-	{
-		p_Arg->Destroy();
-	}
-	if(0 != p_EntityArg)
-	{
-		p_EntityArg->Destroy();
-	}
+    if(0 != p_Arg)
+    {
+        p_Arg->Destroy();
+    }
+    if(0 != p_EntityArg)
+    {
+        p_EntityArg->Destroy();
+    }
 }
 
 Command* Command::GetCopy()
 {
-	Command* pCopy = 0;
-	MemoryManager::Inst.CreateObject(&pCopy);
-	pCopy->SetType(ul_CommandType);
-	if(0 != p_Arg)
-	{
-		pCopy->SetArg(p_Arg->GetCopy());
-	}
-	if(0 != p_EntityArg)
-	{
-		if(ENTITY_TYPE_NODE != p_EntityArg->ul_Type)
-		{
-			pCopy->SetEntityArg(p_EntityArg->GetCopy());
-		}
-		else
-		{
-			pCopy->SetEntityArg(p_EntityArg);
-		}
-	}
-	pCopy->SetAdditionalFuncName(s_AdditionalFuncName);
-	return pCopy;
+    Command* pCopy = 0;
+    MemoryManager::Inst.CreateObject(&pCopy);
+    pCopy->SetType(ul_CommandType);
+    if(0 != p_Arg)
+    {
+        pCopy->SetArg(p_Arg->GetCopy());
+    }
+    if(0 != p_EntityArg)
+    {
+        if(ENTITY_TYPE_NODE != p_EntityArg->ul_Type)
+        {
+            pCopy->SetEntityArg(p_EntityArg->GetCopy());
+        }
+        else
+        {
+            pCopy->SetEntityArg(p_EntityArg);
+        }
+    }
+    pCopy->SetAdditionalFuncName(s_AdditionalFuncName);
+    return pCopy;
 }
 
 void Command::SetType(MULONG ulType)
 {
-	ul_CommandType = ulType;
+    ul_CommandType = ulType;
 }
 
 void Command::SetArg(ExecutionTemplate* pArg)
 {
-	p_Arg = pArg;
+    p_Arg = pArg;
 }
 
 void Command::SetEntityArg(PENTITY pArg)
 {
-	p_EntityArg = pArg;
+    p_EntityArg = pArg;
 }
 
 void Command::SetAdditionalFuncName(MSTRING sFun)
 {
-	s_AdditionalFuncName = sFun;
+    s_AdditionalFuncName = sFun;
 }
 
 MSTRING Command::GetAdditionalFuncName() {
@@ -94,76 +94,76 @@ MSTRING Command::GetAdditionalFuncName() {
 
 PENTITY Command::Execute(PENTITY pEntity, ExecutionContext* pContext)
 {
-    
-	if(COMMAND_TYPE_ADDITIONAL_FUNCTION == ul_CommandType)
-	{
-		// Additional function can be defined either in the control code or inside the script
-		// First check whether it is a function defined in the script
-		MAP_STR_EXECTMPLIST::const_iterator iteFind2 = pContext->p_mapFunctions->find(s_AdditionalFuncName);
-		if(pContext->p_mapFunctions->end() != iteFind2)
-		{
-			ExecutionContext ec;
-			ec.p_mapFunctions = pContext->p_mapFunctions;
-			ec.p_MD = pContext->p_MD;
-			ec.map_Var[pContext->p_MD->s_FuncArg] = pEntity;
-			((*iteFind2).second)->Execute(&ec);
-			MAP_STR_ENTITYPTR::iterator iteFind3 = ec.map_Var.find(pContext->p_MD->s_FuncRet);
-			if(ec.map_Var.end() == iteFind3)
-			{
-				return new String;  // a hack to return a dummy value when the return value is not expected
-			}
-			return (*iteFind3).second;
-		}
-		else
-		{
-			// Now try functions defined in control code
-			AdditionalFunc fun = 0;
-			MAP_STR_ADDITIONAL_FUNC::const_iterator iteFind = map_AdditionalFunctions.find(s_AdditionalFuncName);
-			if(map_AdditionalFunctions.end() == iteFind)
-			{
-				return 0;
-			}
-			fun = (*iteFind).second;
-			if(0 != p_Arg)
-			{
-				p_EntityArg = p_Arg->Execute(pContext);
-			}
-			return fun(p_EntityArg);
-		}
-	}
-	else if(COMMAND_TYPE_STORE_AS_VARIABLE == ul_CommandType)
-	{
-		// This will change the execution context
-		// Get a copy of the entity and add it as a new variable to the context
-		// Variable name will be in the p_EntityArg
-		PString pVarName = (PString)p_EntityArg;
-		if(0 == pVarName)
-		{
-			return 0;
-		}
-		PENTITY pVar = pEntity;
-		if(ENTITY_TYPE_NODE != pEntity->ul_Type)
-		{
-			pVar = pEntity->GetCopy();
-		}
-		MAP_STR_ENTITYPTR::iterator iteFind = pContext->map_Var.find(pVarName->GetValue());
-		if(pContext->map_Var.end() != iteFind)
-		{
-			((*iteFind).second)->Destroy();
-		}
-		pContext->map_Var[pVarName->GetValue()] = pVar;
-		// Create a Null entity and return
-		PNull pRet = 0;
-		MemoryManager::Inst.CreateObject(&pRet);
-		return pRet;
-	}
-	else
-	{
+
+    if(COMMAND_TYPE_ADDITIONAL_FUNCTION == ul_CommandType)
+    {
+        // Additional function can be defined either in the control code or inside the script
+        // First check whether it is a function defined in the script
+        MAP_STR_EXECTMPLIST::const_iterator iteFind2 = pContext->p_mapFunctions->find(s_AdditionalFuncName);
+        if(pContext->p_mapFunctions->end() != iteFind2)
+        {
+            ExecutionContext ec;
+            ec.p_mapFunctions = pContext->p_mapFunctions;
+            ec.p_MD = pContext->p_MD;
+            ec.map_Var[pContext->p_MD->s_FuncArg] = pEntity;
+            ((*iteFind2).second)->Execute(&ec);
+            MAP_STR_ENTITYPTR::iterator iteFind3 = ec.map_Var.find(pContext->p_MD->s_FuncRet);
+            if(ec.map_Var.end() == iteFind3)
+            {
+                return new String;  // a hack to return a dummy value when the return value is not expected
+            }
+            return (*iteFind3).second;
+        }
+        else
+        {
+            // Now try functions defined in control code
+            AdditionalFunc fun = 0;
+            MAP_STR_ADDITIONAL_FUNC::const_iterator iteFind = map_AdditionalFunctions.find(s_AdditionalFuncName);
+            if(map_AdditionalFunctions.end() == iteFind)
+            {
+                return 0;
+            }
+            fun = (*iteFind).second;
+            if(0 != p_Arg)
+            {
+                p_EntityArg = p_Arg->Execute(pContext);
+            }
+            return fun(p_EntityArg);
+        }
+    }
+    else if(COMMAND_TYPE_STORE_AS_VARIABLE == ul_CommandType)
+    {
+        // This will change the execution context
+        // Get a copy of the entity and add it as a new variable to the context
+        // Variable name will be in the p_EntityArg
+        PString pVarName = (PString)p_EntityArg;
+        if(0 == pVarName)
+        {
+            return 0;
+        }
+        PENTITY pVar = pEntity;
+        if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+        {
+            pVar = pEntity->GetCopy();
+        }
+        MAP_STR_ENTITYPTR::iterator iteFind = pContext->map_Var.find(pVarName->GetValue());
+        if(pContext->map_Var.end() != iteFind)
+        {
+            ((*iteFind).second)->Destroy();
+        }
+        pContext->map_Var[pVarName->GetValue()] = pVar;
+        // Create a Null entity and return
+        PNull pRet = 0;
+        MemoryManager::Inst.CreateObject(&pRet);
+        return pRet;
+    }
+    else
+    {
         if (ENTITY_TYPE_LIST == pEntity->ul_Type) {
-			if(0 != p_Arg)
-			{
-				p_EntityArg = p_Arg->Execute(pContext);
-			}
+            if(0 != p_Arg)
+            {
+                p_EntityArg = p_Arg->Execute(pContext);
+            }
             return ExecuteListCommand(ul_CommandType, pEntity, pContext, p_EntityArg);
         } else if (ENTITY_TYPE_NODE == pEntity->ul_Type) {
             return ExecuteNodeCommand(ul_CommandType, pEntity, pContext);
@@ -174,160 +174,160 @@ PENTITY Command::Execute(PENTITY pEntity, ExecutionContext* pContext)
             }
             return ExecuteEntityCommand(ul_CommandType, pEntity, p_EntityArg);
         }
-	}
-	return 0;
+    }
+    return 0;
 }
 
 PENTITY Command::ExecuteEntityCommand(MULONG ulCommand, PENTITY pEntity, PENTITY pArg)
 {
     // General functions in Entity level
-	if(COMMAND_TYPE_IS_NULL == ulCommand)
-	{
-		PBool pBool = 0;
-		MemoryManager::Inst.CreateObject(&pBool);
-		pBool->SetValue(pEntity->IsNull());
-		return pBool;
-	}
-    
-	if(COMMAND_TYPE_IS_NOT_NULL == ulCommand)
-	{
-		PBool pBool = 0;
-		MemoryManager::Inst.CreateObject(&pBool);
-		pBool->SetValue(!pEntity->IsNull());
-		return pBool;
-	}
-    
-	switch (pEntity->ul_Type)
-	{
+    if(COMMAND_TYPE_IS_NULL == ulCommand)
+    {
+        PBool pBool = 0;
+        MemoryManager::Inst.CreateObject(&pBool);
+        pBool->SetValue(pEntity->IsNull());
+        return pBool;
+    }
+
+    if(COMMAND_TYPE_IS_NOT_NULL == ulCommand)
+    {
+        PBool pBool = 0;
+        MemoryManager::Inst.CreateObject(&pBool);
+        pBool->SetValue(!pEntity->IsNull());
+        return pBool;
+    }
+
+    switch (pEntity->ul_Type)
+    {
         case ENTITY_TYPE_INT:
-		{
-			return ExecuteIntCommand(ulCommand, pEntity, pArg);
-		}
+        {
+            return ExecuteIntCommand(ulCommand, pEntity, pArg);
+        }
         case ENTITY_TYPE_STRING:
-		{
-			return ExecuteStringCommand(ulCommand, pEntity, pArg);
-		}
+        {
+            return ExecuteStringCommand(ulCommand, pEntity, pArg);
+        }
         case ENTITY_TYPE_BOOL:
-		{
-			return ExecuteBoolCommand(ulCommand, pEntity, pArg);
-		}
+        {
+            return ExecuteBoolCommand(ulCommand, pEntity, pArg);
+        }
         case ENTITY_TYPE_DATETIME:
         {
             return ExecuteDateTimeCommand(ulCommand, pEntity, pArg);
         }
-	}
-	return 0;
+    }
+    return 0;
 }
 
 PENTITY Command::ExecuteIntCommand(MULONG ulCommand, PENTITY pEntity, PENTITY pArg)
 {
-	PInt pInt = (PInt)pEntity;
-	if(0 == pInt)
-	{
-		return 0;
-	}
-    
-	PBool pBoolRes = 0;
-	PNull pNullRes = 0;
-	PString pStrRes = 0;
-    
-	switch(ulCommand)
-	{
+    PInt pInt = (PInt)pEntity;
+    if(0 == pInt)
+    {
+        return 0;
+    }
+
+    PBool pBoolRes = 0;
+    PNull pNullRes = 0;
+    PString pStrRes = 0;
+
+    switch(ulCommand)
+    {
         case COMMAND_TYPE_IS_INT_EQUAL_TO:
-		{
-			if(ENTITY_TYPE_INT == pArg->ul_Type)
-			{
-				MemoryManager::Inst.CreateObject(&pBoolRes);
-				PInt pIntArg = (PInt)pArg;
-				pBoolRes->SetValue(pInt->GetValue() == pIntArg->GetValue());
-				break;
-			}
-			break;
-		}
+        {
+            if(ENTITY_TYPE_INT == pArg->ul_Type)
+            {
+                MemoryManager::Inst.CreateObject(&pBoolRes);
+                PInt pIntArg = (PInt)pArg;
+                pBoolRes->SetValue(pInt->GetValue() == pIntArg->GetValue());
+                break;
+            }
+            break;
+        }
         case COMMAND_TYPE_IS_INT_MEMBER_OF:
-		{
-			if(ENTITY_TYPE_LIST == pArg->ul_Type)
-			{
-				MemoryManager::Inst.CreateObject(&pBoolRes);
-				pBoolRes->SetValue(false);
-				PENTITYLIST pIntListArg = (PENTITYLIST)pArg;
-				EntityList::const_iterator ite1 = pIntListArg->begin();
-				EntityList::const_iterator iteEnd1 = pIntListArg->end();
-				for( ; ite1 != iteEnd1; ++ite1)
-				{
-					if(((PInt)(*ite1))->GetValue() == pInt->GetValue())
-					{
-						pBoolRes->SetValue(true);
-						break;
-					}
-				}
-			}
-			break;
-		}
+        {
+            if(ENTITY_TYPE_LIST == pArg->ul_Type)
+            {
+                MemoryManager::Inst.CreateObject(&pBoolRes);
+                pBoolRes->SetValue(false);
+                PENTITYLIST pIntListArg = (PENTITYLIST)pArg;
+                EntityList::const_iterator ite1 = pIntListArg->begin();
+                EntityList::const_iterator iteEnd1 = pIntListArg->end();
+                for( ; ite1 != iteEnd1; ++ite1)
+                {
+                    if(((PInt)(*ite1))->GetValue() == pInt->GetValue())
+                    {
+                        pBoolRes->SetValue(true);
+                        break;
+                    }
+                }
+            }
+            break;
+        }
         case COMMAND_TYPE_IS_LESS_THAN:
-		{
-			if(ENTITY_TYPE_INT == pArg->ul_Type)
-			{
-				MemoryManager::Inst.CreateObject(&pBoolRes);
-				PInt pIntArg = (PInt)pArg;
-				pBoolRes->SetValue(pInt->GetValue() < pIntArg->GetValue());
-			}
-			break;
-		}
+        {
+            if(ENTITY_TYPE_INT == pArg->ul_Type)
+            {
+                MemoryManager::Inst.CreateObject(&pBoolRes);
+                PInt pIntArg = (PInt)pArg;
+                pBoolRes->SetValue(pInt->GetValue() < pIntArg->GetValue());
+            }
+            break;
+        }
         case COMMAND_TYPE_IS_LESS_THAN_OR_EQUAL_TO:
-		{
-			if(ENTITY_TYPE_INT == pArg->ul_Type)
-			{
-				MemoryManager::Inst.CreateObject(&pBoolRes);
-				PInt pIntArg = (PInt)pArg;
-				pBoolRes->SetValue(pInt->GetValue() <= pIntArg->GetValue());
-			}
-			break;
-		}
+        {
+            if(ENTITY_TYPE_INT == pArg->ul_Type)
+            {
+                MemoryManager::Inst.CreateObject(&pBoolRes);
+                PInt pIntArg = (PInt)pArg;
+                pBoolRes->SetValue(pInt->GetValue() <= pIntArg->GetValue());
+            }
+            break;
+        }
         case COMMAND_TYPE_IS_GREATER_THAN:
-		{
-			if(ENTITY_TYPE_INT == pArg->ul_Type)
-			{
-				MemoryManager::Inst.CreateObject(&pBoolRes);
-				PInt pIntArg = (PInt)pArg;
-				pBoolRes->SetValue(pInt->GetValue() > pIntArg->GetValue());
-			}
-			break;
-		}
+        {
+            if(ENTITY_TYPE_INT == pArg->ul_Type)
+            {
+                MemoryManager::Inst.CreateObject(&pBoolRes);
+                PInt pIntArg = (PInt)pArg;
+                pBoolRes->SetValue(pInt->GetValue() > pIntArg->GetValue());
+            }
+            break;
+        }
         case COMMAND_TYPE_IS_GREATER_THAN_OR_EQUAL_TO:
-		{
-			if(ENTITY_TYPE_INT == pArg->ul_Type)
-			{
-				MemoryManager::Inst.CreateObject(&pBoolRes);
-				PInt pIntArg = (PInt)pArg;
-				pBoolRes->SetValue(pInt->GetValue() >= pIntArg->GetValue());
-			}
-			break;
-		}
+        {
+            if(ENTITY_TYPE_INT == pArg->ul_Type)
+            {
+                MemoryManager::Inst.CreateObject(&pBoolRes);
+                PInt pIntArg = (PInt)pArg;
+                pBoolRes->SetValue(pInt->GetValue() >= pIntArg->GetValue());
+            }
+            break;
+        }
         case COMMAND_TYPE_ADD:
-		{
-			if(ENTITY_TYPE_INT == pArg->ul_Type)
-			{
-				MemoryManager::Inst.CreateObject(&pNullRes);
-				PInt pIntArg = (PInt)pArg;
-				MULONG ulVal = pInt->GetValue();
-				ulVal += (pIntArg->GetValue());
-				pInt->SetValue(ulVal);
-			}
-			break;
-		}
+        {
+            if(ENTITY_TYPE_INT == pArg->ul_Type)
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                PInt pIntArg = (PInt)pArg;
+                MULONG ulVal = pInt->GetValue();
+                ulVal += (pIntArg->GetValue());
+                pInt->SetValue(ulVal);
+            }
+            break;
+        }
         case COMMAND_TYPE_SUBTRACT:
-		{
-			if(ENTITY_TYPE_INT == pArg->ul_Type)
-			{
-				MemoryManager::Inst.CreateObject(&pNullRes);
-				PInt pIntArg = (PInt)pArg;
-				MULONG ulVal = pInt->GetValue();
-				ulVal -= (pIntArg->GetValue());
-				pInt->SetValue(ulVal);
-			}
-			break;
-		}
+        {
+            if(ENTITY_TYPE_INT == pArg->ul_Type)
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+                PInt pIntArg = (PInt)pArg;
+                MULONG ulVal = pInt->GetValue();
+                ulVal -= (pIntArg->GetValue());
+                pInt->SetValue(ulVal);
+            }
+            break;
+        }
         case COMMAND_TYPE_SET_INTEGER:
         {
             if(ENTITY_TYPE_INT == pArg->ul_Type)
@@ -340,108 +340,108 @@ PENTITY Command::ExecuteIntCommand(MULONG ulCommand, PENTITY pEntity, PENTITY pA
             break;
         }
         case COMMAND_TYPE_TOSTRING:
-		{
-			MSTRINGSTREAM ss;
-			ss<<pInt->GetValue();
-			MemoryManager::Inst.CreateObject(&pStrRes);
-			pStrRes->SetValue(ss.str());
-			break;
-		}
-	}
-    
-	if(0 != pBoolRes)
-	{
-		return pBoolRes;
-	}
-	if(0 != pNullRes)
-	{
-		return pNullRes;
-	}
-	if(0 != pStrRes)
-	{
-		return pStrRes;
-	}
-	return 0;
+        {
+            MSTRINGSTREAM ss;
+            ss<<pInt->GetValue();
+            MemoryManager::Inst.CreateObject(&pStrRes);
+            pStrRes->SetValue(ss.str());
+            break;
+        }
+    }
+
+    if(0 != pBoolRes)
+    {
+        return pBoolRes;
+    }
+    if(0 != pNullRes)
+    {
+        return pNullRes;
+    }
+    if(0 != pStrRes)
+    {
+        return pStrRes;
+    }
+    return 0;
 }
 
 PENTITY Command::ExecuteBoolCommand(MULONG ulCommand, PENTITY pEntity, PENTITY pArg)
 {
-	PBool pBool = (PBool)pEntity;
-	if(0 == pBool)
-	{
-		return 0;
-	}
-    
-	PBool pBoolRes = 0;
-	PString pStrRes = 0;
-    
-	switch(ulCommand)
-	{
+    PBool pBool = (PBool)pEntity;
+    if(0 == pBool)
+    {
+        return 0;
+    }
+
+    PBool pBoolRes = 0;
+    PString pStrRes = 0;
+
+    switch(ulCommand)
+    {
         case COMMAND_TYPE_BOOL_AND:
-		{
-			PBool pBoolArg = (PBool)pArg;
-			if(0 != pBoolArg)
-			{
-				MemoryManager::Inst.CreateObject(&pBoolRes);
-				pBoolRes->SetValue(pBool->And(pBoolArg)->GetValue());
-			}
-			break;
-		}
+        {
+            PBool pBoolArg = (PBool)pArg;
+            if(0 != pBoolArg)
+            {
+                MemoryManager::Inst.CreateObject(&pBoolRes);
+                pBoolRes->SetValue(pBool->And(pBoolArg)->GetValue());
+            }
+            break;
+        }
         case COMMAND_TYPE_BOOL_OR:
-		{
-			PBool pBoolArg = (PBool)pArg;
-			if(0 != pBoolArg)
-			{
-				MemoryManager::Inst.CreateObject(&pBoolRes);
-				pBoolRes->SetValue(pBool->Or(pBoolArg)->GetValue());
-			}
-			break;
-		}
+        {
+            PBool pBoolArg = (PBool)pArg;
+            if(0 != pBoolArg)
+            {
+                MemoryManager::Inst.CreateObject(&pBoolRes);
+                pBoolRes->SetValue(pBool->Or(pBoolArg)->GetValue());
+            }
+            break;
+        }
         case COMMAND_TYPE_BOOLTOSTRING:
-		{
-			MemoryManager::Inst.CreateObject(&pStrRes);
-			if (pBool->GetValue()) {
-				pStrRes->SetValue("TRUE");
-			}
-			else {
-				pStrRes->SetValue("FALSE");
-			}
-			break;
-		}
-		case COMMAND_TYPE_SET_BOOL:
-		{
-			if(ENTITY_TYPE_BOOL == pArg->ul_Type)
-			{
-				PBool pBoolArg = (PBool)pArg;
-			}
+        {
+            MemoryManager::Inst.CreateObject(&pStrRes);
+            if (pBool->GetValue()) {
+                pStrRes->SetValue("TRUE");
+            }
+            else {
+                pStrRes->SetValue("FALSE");
+            }
+            break;
+        }
+        case COMMAND_TYPE_SET_BOOL:
+        {
+            if(ENTITY_TYPE_BOOL == pArg->ul_Type)
+            {
+                PBool pBoolArg = (PBool)pArg;
+            }
 //			MemoryManager::Inst.CreateObject(&pBoolRes);
 //			pBoolRes->SetValue(pBoolArg);
 //			pBool->SetValue(pBoolArg);
-			break;
-		}
-		case COMMAND_TYPE_TO_FALSE:
-		{
-			pBool->SetValue(false);
-			break;
-		}
-		case COMMAND_TYPE_TO_TRUE:
-		{
-			pBool->SetValue(true);
-			break;
-		}
-	}
-    
-    
-	if(0 != pBoolRes)
-	{
-		return pBoolRes;
-	}
-	if(0 != pStrRes)
-	{
-		return pStrRes;
-	}
-    
-	return 0;
+            break;
+        }
+        case COMMAND_TYPE_TO_FALSE:
+        {
+            pBool->SetValue(false);
+            break;
+        }
+        case COMMAND_TYPE_TO_TRUE:
+        {
+            pBool->SetValue(true);
+            break;
+        }
+    }
+
+
+    if(0 != pBoolRes)
+    {
+        return pBoolRes;
+    }
+    if(0 != pStrRes)
+    {
+        return pStrRes;
+    }
+
+    return 0;
 }
 
 PENTITY Command::ExecuteStringCommand(MULONG ulCommand, PENTITY pEntity, PENTITY pArg)
@@ -452,141 +452,141 @@ PENTITY Command::ExecuteStringCommand(MULONG ulCommand, PENTITY pEntity, PENTITY
         return 0;
     }
     PString pString = (PString)pEntity;
-	if(0 == pString)
-	{
-		return 0;
-	}
+    if(0 == pString)
+    {
+        return 0;
+    }
 
     PNODE pNodeRes = 0;
-	PInt pIntRes = 0;
-	PNull pNullRes = 0;
-	PBool pBoolRes = 0;
+    PInt pIntRes = 0;
+    PNull pNullRes = 0;
+    PBool pBoolRes = 0;
     PString pStrRes = 0;
-    
-	switch(ulCommand)
-	{
+
+    switch(ulCommand)
+    {
         case COMMAND_TYPE_IS_STRING_EQUAL_TO:
-		{
-			if(ENTITY_TYPE_STRING == pArg->ul_Type)
-			{
-				MemoryManager::Inst.CreateObject(&pBoolRes);
-				PString pStrArg = (PString)pArg;
-				pBoolRes->SetValue(pString->GetValue() == pStrArg->GetValue());
-			}
-			break;
-		}
+        {
+            if(ENTITY_TYPE_STRING == pArg->ul_Type)
+            {
+                MemoryManager::Inst.CreateObject(&pBoolRes);
+                PString pStrArg = (PString)pArg;
+                pBoolRes->SetValue(pString->GetValue() == pStrArg->GetValue());
+            }
+            break;
+        }
         case COMMAND_TYPE_IS_STRING_MEMBER_OF:
-		{
-			if(ENTITY_TYPE_LIST == pArg->ul_Type)
-			{
-				MemoryManager::Inst.CreateObject(&pBoolRes);
-				PENTITYLIST pStrListArg = (PENTITYLIST)pArg;
-				MSTRING sVal = pString->GetValue();
-				pBoolRes->SetValue(false);
-				EntityList::const_iterator ite1 = pStrListArg->begin();
-				EntityList::const_iterator iteEnd1 = pStrListArg->end();
-				for( ; ite1 != iteEnd1; ++ite1)
-				{
-					if(((PString)(*ite1))->GetValue() == sVal)
-					{
-						pBoolRes->SetValue(true);
-						break;
-					}
-				}
-			}
-			break;
-		}
+        {
+            if(ENTITY_TYPE_LIST == pArg->ul_Type)
+            {
+                MemoryManager::Inst.CreateObject(&pBoolRes);
+                PENTITYLIST pStrListArg = (PENTITYLIST)pArg;
+                MSTRING sVal = pString->GetValue();
+                pBoolRes->SetValue(false);
+                EntityList::const_iterator ite1 = pStrListArg->begin();
+                EntityList::const_iterator iteEnd1 = pStrListArg->end();
+                for( ; ite1 != iteEnd1; ++ite1)
+                {
+                    if(((PString)(*ite1))->GetValue() == sVal)
+                    {
+                        pBoolRes->SetValue(true);
+                        break;
+                    }
+                }
+            }
+            break;
+        }
         case COMMAND_TYPE_IS_HAVING_SUBSTRING:
-		{
-			if(ENTITY_TYPE_STRING == pArg->ul_Type)
-			{
-				MemoryManager::Inst.CreateObject(&pBoolRes);
-				PString pStrArg = (PString)pArg;
-				pBoolRes->SetValue(pString->GetValue().find(pStrArg->GetValue()) != MSTRING::npos);
-			}
-			break;
-		}
+        {
+            if(ENTITY_TYPE_STRING == pArg->ul_Type)
+            {
+                MemoryManager::Inst.CreateObject(&pBoolRes);
+                PString pStrArg = (PString)pArg;
+                pBoolRes->SetValue(pString->GetValue().find(pStrArg->GetValue()) != MSTRING::npos);
+            }
+            break;
+        }
         case COMMAND_TYPE_IS_HAVING_LEFT_SUBSTRING:
-		{
-			if(ENTITY_TYPE_STRING == pArg->ul_Type)
-			{
-				MemoryManager::Inst.CreateObject(&pBoolRes);
-				PString pStrArg = (PString)pArg;
-				MSTRING sArg = pStrArg->GetValue();
-				pBoolRes->SetValue(pString->GetValue().substr(0, sArg.length()) == sArg);
-			}
-			break;
-		}
+        {
+            if(ENTITY_TYPE_STRING == pArg->ul_Type)
+            {
+                MemoryManager::Inst.CreateObject(&pBoolRes);
+                PString pStrArg = (PString)pArg;
+                MSTRING sArg = pStrArg->GetValue();
+                pBoolRes->SetValue(pString->GetValue().substr(0, sArg.length()) == sArg);
+            }
+            break;
+        }
         case COMMAND_TYPE_IS_HAVING_RIGHT_SUBSTRING:
-		{
-			if(ENTITY_TYPE_STRING == pArg->ul_Type)
-			{
-				MemoryManager::Inst.CreateObject(&pBoolRes);
-				PString pStrArg = (PString)pArg;
-				MSTRING sArg = pStrArg->GetValue();
-				pBoolRes->SetValue(pString->GetValue().substr(pString->GetValue().length() - sArg.length(), sArg.length()) == sArg);
-			}
-			break;
-		}
+        {
+            if(ENTITY_TYPE_STRING == pArg->ul_Type)
+            {
+                MemoryManager::Inst.CreateObject(&pBoolRes);
+                PString pStrArg = (PString)pArg;
+                MSTRING sArg = pStrArg->GetValue();
+                pBoolRes->SetValue(pString->GetValue().substr(pString->GetValue().length() - sArg.length(), sArg.length()) == sArg);
+            }
+            break;
+        }
         case COMMAND_TYPE_ADD_PREFIX:
-		{
-			MemoryManager::Inst.CreateObject(&pNullRes);
-			if(ENTITY_TYPE_STRING == pArg->ul_Type)
-			{
-				PString pStrArg = (PString)pArg;
-				MSTRING sVal = pString->GetValue();
-				sVal = pStrArg->GetValue() + sVal;
-				pString->SetValue(sVal);
-			}
-			break;
-		}
+        {
+            MemoryManager::Inst.CreateObject(&pNullRes);
+            if(ENTITY_TYPE_STRING == pArg->ul_Type)
+            {
+                PString pStrArg = (PString)pArg;
+                MSTRING sVal = pString->GetValue();
+                sVal = pStrArg->GetValue() + sVal;
+                pString->SetValue(sVal);
+            }
+            break;
+        }
         case COMMAND_TYPE_ADD_POSTFIX:
-		{
-			MemoryManager::Inst.CreateObject(&pNullRes);
-			if(ENTITY_TYPE_STRING == pArg->ul_Type)
-			{
-				PString pStrArg = (PString)pArg;
-				MSTRING sVal = pString->GetValue();
-				sVal += pStrArg->GetValue();
-				pString->SetValue(sVal);
-			}
-			break;
-		}
+        {
+            MemoryManager::Inst.CreateObject(&pNullRes);
+            if(ENTITY_TYPE_STRING == pArg->ul_Type)
+            {
+                PString pStrArg = (PString)pArg;
+                MSTRING sVal = pString->GetValue();
+                sVal += pStrArg->GetValue();
+                pString->SetValue(sVal);
+            }
+            break;
+        }
         case COMMAND_TYPE_TRIM_LEFT:
-		{
-			MemoryManager::Inst.CreateObject(&pNullRes);
-			MSTRING sVal = pString->GetValue();
-			Utils::TrimLeft(sVal, _MSTR( \t\n));
-			pString->SetValue(sVal);
-			break;
-		}
+        {
+            MemoryManager::Inst.CreateObject(&pNullRes);
+            MSTRING sVal = pString->GetValue();
+            Utils::TrimLeft(sVal, _MSTR( \t\n));
+            pString->SetValue(sVal);
+            break;
+        }
         case COMMAND_TYPE_TRIM_RIGHT:
-		{
-			MemoryManager::Inst.CreateObject(&pNullRes);
-			MSTRING sVal = pString->GetValue();
-			Utils::TrimRight(sVal, _MSTR( \t\n));
-			pString->SetValue(sVal);
-			break;
-		}
+        {
+            MemoryManager::Inst.CreateObject(&pNullRes);
+            MSTRING sVal = pString->GetValue();
+            Utils::TrimRight(sVal, _MSTR( \t\n));
+            pString->SetValue(sVal);
+            break;
+        }
         case COMMAND_TYPE_WRITE_TO_FILE:
-		{
-			MemoryManager::Inst.CreateObject(&pNullRes);
-			PString pStrArg = (PString)pArg;
-			if(0 != pStrArg)
-			{
-				MOFSTREAM file;
-				file.open(pStrArg->GetValue().c_str(), std::ios::out | std::ios::trunc);
-				file<<(pString->GetValue().c_str());
-				file.close();
-			}
-			break;
-		}
+        {
+            MemoryManager::Inst.CreateObject(&pNullRes);
+            PString pStrArg = (PString)pArg;
+            if(0 != pStrArg)
+            {
+                MOFSTREAM file;
+                file.open(pStrArg->GetValue().c_str(), std::ios::out | std::ios::trunc);
+                file<<(pString->GetValue().c_str());
+                file.close();
+            }
+            break;
+        }
         case COMMAND_TYPE_GET_LENGTH:
-		{
-			MemoryManager::Inst.CreateObject(&pIntRes);
-			pIntRes->SetValue(pString->GetValue().length());
-			break;
-		}
+        {
+            MemoryManager::Inst.CreateObject(&pIntRes);
+            pIntRes->SetValue(pString->GetValue().length());
+            break;
+        }
         case COMMAND_TYPE_SECONDS_TO_MONTHS:
         {
             MemoryManager::Inst.CreateObject(&pStrRes);
@@ -633,51 +633,51 @@ PENTITY Command::ExecuteStringCommand(MULONG ulCommand, PENTITY pEntity, PENTITY
             }
             break;
         }
-		case COMMAND_TYPE_GET_DAY_OF_THE_WEEK_SHORT_STRING:
-		{
-			MemoryManager::Inst.CreateObject(&pStrRes);
-			if (pString->GetValue() != "")
-			{
-				pStrRes->SetValue(DateTimeOperations::GetDayOfTheWeekShortString(pString->GetValue()));
-			}
-			break;
-		}
-		case COMMAND_TYPE_GET_DAY_STRING:
-		{
-			MemoryManager::Inst.CreateObject(&pStrRes);
-			if (pString->GetValue() != "")
-			{
-				pStrRes->SetValue(DateTimeOperations::GetDayString(pString->GetValue()));
-			}
-			break;
-		}
-		case COMMAND_TYPE_GET_MONTH_SHORT_STRING:
-		{
-			MemoryManager::Inst.CreateObject(&pStrRes);
-			if (pString->GetValue() != "")
-			{
-				pStrRes->SetValue(DateTimeOperations::GetMonthShortString(pString->GetValue()));
-			}
-			break;
-		}
-		case COMMAND_TYPE_GET_TIME_24_HOUR_FORMAT:
-		{
-			MemoryManager::Inst.CreateObject(&pStrRes);
-			if (pString->GetValue() != "")
-			{
-				pStrRes->SetValue(DateTimeOperations::GetTime24HourFormat(pString->GetValue()));
-			}
-			break;
-		}
-		case COMMAND_TYPE_GET_YEAR:
-		{
-			MemoryManager::Inst.CreateObject(&pStrRes);
-			if (pString->GetValue() != "")
-			{
-				pStrRes->SetValue(DateTimeOperations::GetYear(pString->GetValue()));
-			}
-			break;
-		}
+        case COMMAND_TYPE_GET_DAY_OF_THE_WEEK_SHORT_STRING:
+        {
+            MemoryManager::Inst.CreateObject(&pStrRes);
+            if (pString->GetValue() != "")
+            {
+                pStrRes->SetValue(DateTimeOperations::GetDayOfTheWeekShortString(pString->GetValue()));
+            }
+            break;
+        }
+        case COMMAND_TYPE_GET_DAY_STRING:
+        {
+            MemoryManager::Inst.CreateObject(&pStrRes);
+            if (pString->GetValue() != "")
+            {
+                pStrRes->SetValue(DateTimeOperations::GetDayString(pString->GetValue()));
+            }
+            break;
+        }
+        case COMMAND_TYPE_GET_MONTH_SHORT_STRING:
+        {
+            MemoryManager::Inst.CreateObject(&pStrRes);
+            if (pString->GetValue() != "")
+            {
+                pStrRes->SetValue(DateTimeOperations::GetMonthShortString(pString->GetValue()));
+            }
+            break;
+        }
+        case COMMAND_TYPE_GET_TIME_24_HOUR_FORMAT:
+        {
+            MemoryManager::Inst.CreateObject(&pStrRes);
+            if (pString->GetValue() != "")
+            {
+                pStrRes->SetValue(DateTimeOperations::GetTime24HourFormat(pString->GetValue()));
+            }
+            break;
+        }
+        case COMMAND_TYPE_GET_YEAR:
+        {
+            MemoryManager::Inst.CreateObject(&pStrRes);
+            if (pString->GetValue() != "")
+            {
+                pStrRes->SetValue(DateTimeOperations::GetYear(pString->GetValue()));
+            }
+            break;
+        }
         case COMMAND_TYPE_DATE_NOW:
         {
             MemoryManager::Inst.CreateObject(&pStrRes);
@@ -697,31 +697,31 @@ PENTITY Command::ExecuteStringCommand(MULONG ulCommand, PENTITY pEntity, PENTITY
             break;
         }
         case COMMAND_TYPE_STRINGTOINTEGER:
-		{
-			MemoryManager::Inst.CreateObject(&pIntRes);
-			if (pString->GetValue() != "")
-			{
-				if (pString->GetValue().find_first_not_of("0123456789") == std::string::npos)
-				{
-					try
-					{
-						pIntRes->SetValue(std::atoi(pString->GetValue().c_str()));
-					}
-					catch (...)
-					{
-						pIntRes->SetValue(0);
-					}
-				}
-				else
-				{
-					pIntRes->SetValue(0);
-				}
-			}
-			else
-			{
-				pIntRes->SetValue(0);
-			}
-			break;
+        {
+            MemoryManager::Inst.CreateObject(&pIntRes);
+            if (pString->GetValue() != "")
+            {
+                if (pString->GetValue().find_first_not_of("0123456789") == std::string::npos)
+                {
+                    try
+                    {
+                        pIntRes->SetValue(std::atoi(pString->GetValue().c_str()));
+                    }
+                    catch (...)
+                    {
+                        pIntRes->SetValue(0);
+                    }
+                }
+                else
+                {
+                    pIntRes->SetValue(0);
+                }
+            }
+            else
+            {
+                pIntRes->SetValue(0);
+            }
+            break;
         }
         case COMMAND_TYPE_STRINGTOBOOLEAN:
         {
@@ -749,15 +749,15 @@ PENTITY Command::ExecuteStringCommand(MULONG ulCommand, PENTITY pEntity, PENTITY
             pBoolRes->SetValue(sArg == "true");
             break;
         }
-		case COMMAND_TYPE_CONVERT_TO_SENTENCE_CASE:
-		{
-			MemoryManager::Inst.CreateObject(&pStrRes);
-			PString pStrArg = (PString)pEntity;
-			std::string str = pStrArg->GetValue();
-			str[0] = std::toupper(str[0]);
-			pStrRes->SetValue(str);
-			break;
-		}
+        case COMMAND_TYPE_CONVERT_TO_SENTENCE_CASE:
+        {
+            MemoryManager::Inst.CreateObject(&pStrRes);
+            PString pStrArg = (PString)pEntity;
+            std::string str = pStrArg->GetValue();
+            str[0] = std::toupper(str[0]);
+            pStrRes->SetValue(str);
+            break;
+        }
         case COMMAND_TYPE_ADD_PERIOD:
         {
             MemoryManager::Inst.CreateObject(&pNullRes);
@@ -767,30 +767,30 @@ PENTITY Command::ExecuteStringCommand(MULONG ulCommand, PENTITY pEntity, PENTITY
             pString->SetValue(sVal);
         }
             break;
-	}
+    }
     if(0 != pNodeRes)
     {
         return pNodeRes;
     }
-    
-	if(0 != pIntRes)
-	{
-		return pIntRes;
-	}
-	if(0 != pNullRes)
-	{
-		return pNullRes;
-	}
-	if(0 != pBoolRes)
-	{
-		return pBoolRes;
+
+    if(0 != pIntRes)
+    {
+        return pIntRes;
+    }
+    if(0 != pNullRes)
+    {
+        return pNullRes;
+    }
+    if(0 != pBoolRes)
+    {
+        return pBoolRes;
     }
     if(0 != pStrRes)
     {
         return pStrRes;
     }
-    
-	return 0;
+
+    return 0;
 }
 
 PENTITY Command::ExecuteDateTimeCommand(MULONG ulCommand, PENTITY pEntity, PENTITY pArg)
@@ -800,13 +800,13 @@ PENTITY Command::ExecuteDateTimeCommand(MULONG ulCommand, PENTITY pEntity, PENTI
     {
         return 0;
     }
-    
+
     PInt pIntRes = 0;
     PNull pNullRes = 0;
     PBool pBoolRes = 0;
     PString pStrRes = 0;
     PDateTime pDateTimeRes = 0;
-    
+
 //    switch(ulCommand)
 //    {
 //        case COMMAND_TYPE_DATETOSTRING:
@@ -842,7 +842,7 @@ PENTITY Command::ExecuteDateTimeCommand(MULONG ulCommand, PENTITY pEntity, PENTI
 //            }
 //        }
 //    }
-    
+
     if(0 != pIntRes)
     {
         return pIntRes;
@@ -870,19 +870,19 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
 {
     srand(time(NULL)); //generates random seed val
     PNODE pNode = (PNODE)pEntity;
-	if(0 == pNode)
-	{
-		return 0;
-	}
-    
-	PNODE pNodeRes = 0;
-	PInt pIntRes = 0;
-	PString pStrRes = 0;
-	PENTITYLIST pNodeListRes = 0;
-	PNull pNullRes = 0;
-	PBool pBoolRes = 0;
+    if(0 == pNode)
+    {
+        return 0;
+    }
+
+    PNODE pNodeRes = 0;
+    PInt pIntRes = 0;
+    PString pStrRes = 0;
+    PENTITYLIST pNodeListRes = 0;
+    PNull pNullRes = 0;
+    PBool pBoolRes = 0;
     PENTITY pEntityRes = 0;
-    
+
     // first handle the commands that would need to access the execution context
     if (COMMAND_TYPE_FILTER_SUBTREE == ulCommand) {
         MemoryManager::Inst.CreateObject(&pNodeListRes);
@@ -892,10 +892,10 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
         // for these command, for the sake of simplicity, we first evaluate the command argument and use it subsequently
         PENTITY pArg = 0;
         if(0 != p_Arg)
-		{
-			p_EntityArg = p_Arg->Execute(pContext);
+        {
+            p_EntityArg = p_Arg->Execute(pContext);
             pArg = p_EntityArg;
-		}
+        }
         MSTRING argument;
         MSTRING nodeString;
         MSTRING replacement;
@@ -1003,14 +1003,14 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
             {
                 MemoryManager::Inst.CreateObject(&pNullRes);
                 if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    String* pStrArg = (String*)pArg;
-                    if(0 != pStrArg)
+                    if(ENTITY_TYPE_STRING == pArg->ul_Type)
                     {
-                        pNode->SetValue((PMCHAR)pStrArg->GetValue().c_str());
+                        String* pStrArg = (String*)pArg;
+                        if(0 != pStrArg)
+                        {
+                            pNode->SetValue((PMCHAR)pStrArg->GetValue().c_str());
+                        }
                     }
-                }
                 break;
             }
             case COMMAND_TYPE_SET_LVALUE:
@@ -1308,24 +1308,24 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
             case COMMAND_TYPE_GET_BOOLEAN:
             {
                 MemoryManager::Inst.CreateObject(&pBoolRes);
-				pBoolRes->SetValue(true);
+                pBoolRes->SetValue(true);
                 break;
             }
-			case COMMAND_TYPE_GET_COMMA:
-			{
-				MemoryManager::Inst.CreateObject(&pStrRes);
-				PString pStr = (PString) ",";
-				pStrRes->SetValue(",");
-				break;
-			}
+            case COMMAND_TYPE_GET_COMMA:
+            {
+                MemoryManager::Inst.CreateObject(&pStrRes);
+                PString pStr = (PString) ",";
+                pStrRes->SetValue(",");
+                break;
+            }
             case COMMAND_TYPE_NEXT_SIBLING:
             {
-				pNodeRes = pNode->GetRightSibling();
-				if (pNodeRes == 0)
-				{
-					MemoryManager::Inst.CreateObject(&pNullRes);
-					pNodeRes == 0;
-				}
+                pNodeRes = pNode->GetRightSibling();
+                if (pNodeRes == 0)
+                {
+                    MemoryManager::Inst.CreateObject(&pNullRes);
+                    pNodeRes == 0;
+                }
                 break;
             }
             case COMMAND_TYPE_GET_CUSTOM_OBJ:
@@ -1488,7 +1488,12 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    replacement ="dummyYear";
+                    int arg = std::stoi(argument);
+                    int diff=5;
+                    int userBeg =arg-diff;
+                    int userEnd =arg+diff;
+                    int randomYear = rand()%((userEnd - userBeg) + 1) + userBeg;
+                    replacement=std::to_string(randomYear);
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1506,7 +1511,14 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    replacement ="dummyHour";
+                    //Assuming hours in 24-hour format
+                    int randomHour = rand()%((23) + 1);
+                    MSTRING tempStr=std::to_string(randomHour);
+                    if(tempStr.length()==1)
+                    {
+                        tempStr="0"+tempStr;
+                    }
+                    replacement =tempStr;
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1524,7 +1536,13 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    replacement ="dummyMinute";
+                    int randomMinute = rand()%((59) + 1);
+                    MSTRING tempStr=std::to_string(randomMinute);
+                    if(tempStr.length()==1)
+                    {
+                        tempStr="0"+tempStr;
+                    }
+                    replacement =tempStr;
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1542,7 +1560,13 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    replacement ="dummySecond";
+                    int randomSecond = rand()%((59) + 1);
+                    MSTRING tempStr=std::to_string(randomSecond);
+                    if(tempStr.length()==1)
+                    {
+                        tempStr="0"+tempStr;
+                    }
+                    replacement =tempStr;
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1614,7 +1638,10 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    replacement ="dummyInteger";
+                    int userBeg =10000;
+                    int userEnd =20000;
+                    int randomInteger = rand()%((userEnd - userBeg) + 1) + userBeg;
+                    replacement=std::to_string(randomInteger);
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1662,58 +1689,58 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
 
         }
     }
-	
-	if(0 != pNodeRes)
-	{
-		return pNodeRes;
-	}
+
+    if(0 != pNodeRes)
+    {
+        return pNodeRes;
+    }
     if(0 != pEntityRes)
     {
         return pEntityRes;
     }
-	if(0 != pNodeListRes)
-	{
-		return pNodeListRes;
-	}
-	if(0 != pStrRes)
-	{
-		return pStrRes;
-	}
-	if(0 != pIntRes)
-	{
-		return pIntRes;
-	}
-	if(0 != pNullRes)
-	{
-		return pNullRes;
-	}
-	if(0 != pBoolRes)
-	{
-		return pBoolRes;
-	}
-	return 0;
+    if(0 != pNodeListRes)
+    {
+        return pNodeListRes;
+    }
+    if(0 != pStrRes)
+    {
+        return pStrRes;
+    }
+    if(0 != pIntRes)
+    {
+        return pIntRes;
+    }
+    if(0 != pNullRes)
+    {
+        return pNullRes;
+    }
+    if(0 != pBoolRes)
+    {
+        return pBoolRes;
+    }
+    return 0;
 }
 
 PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, ExecutionContext* pContext, PENTITY pArg)
 {
-	PENTITYLIST pEntityList = (PENTITYLIST)pEntity;
-	if(0 == pEntityList)
-	{
-		return 0;
-	}
-    
-	PInt pIntRes = 0;
-	PENTITYLIST pListRes = 0;
-	PNull pNullRes = 0;
-	PENTITY pEntityRes = 0;
-	PNODE pNodeRes = 0;
-	PString pStrRes = 0;
+    PENTITYLIST pEntityList = (PENTITYLIST)pEntity;
+    if(0 == pEntityList)
+    {
+        return 0;
+    }
 
-	if(COMMAND_TYPE_GET_ITEM_COUNT == ulCommand)
-	{
-		MemoryManager::Inst.CreateObject(&pIntRes);
-		pIntRes->SetValue(pEntityList->size());
-	}
+    PInt pIntRes = 0;
+    PENTITYLIST pListRes = 0;
+    PNull pNullRes = 0;
+    PENTITY pEntityRes = 0;
+    PNODE pNodeRes = 0;
+    PString pStrRes = 0;
+
+    if(COMMAND_TYPE_GET_ITEM_COUNT == ulCommand)
+    {
+        MemoryManager::Inst.CreateObject(&pIntRes);
+        pIntRes->SetValue(pEntityList->size());
+    }
     else if(COMMAND_TYPE_GET_INNER_ITEM_COUNT == ulCommand)
     {
         pListRes = pEntityList->GetInnerCount();
@@ -1733,10 +1760,10 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
     else if(COMMAND_TYPE_LIST_FILTER == ulCommand)
     {
         MemoryManager::Inst.CreateObject(&pListRes);
-		EntityList::const_iterator ite1 = pEntityList->begin();
-		EntityList::const_iterator iteEnd1 = pEntityList->end();
-		for( ; ite1 != iteEnd1; ++ite1)
-		{
+        EntityList::const_iterator ite1 = pEntityList->begin();
+        EntityList::const_iterator iteEnd1 = pEntityList->end();
+        for( ; ite1 != iteEnd1; ++ite1)
+        {
             pContext->map_Var[pContext->p_MD->s_ListItemVar] = *ite1;
             if(0 != p_Arg)
             {
@@ -1751,10 +1778,10 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
     {
         MemoryManager::Inst.CreateObject(&pListRes);
         std::map<MSTRING, PENTITYLIST> groupedLists;
-		EntityList::const_iterator ite1 = pEntityList->begin();
-		EntityList::const_iterator iteEnd1 = pEntityList->end();
-		for( ; ite1 != iteEnd1; ++ite1)
-		{
+        EntityList::const_iterator ite1 = pEntityList->begin();
+        EntityList::const_iterator iteEnd1 = pEntityList->end();
+        for( ; ite1 != iteEnd1; ++ite1)
+        {
             pContext->map_Var[pContext->p_MD->s_ListItemVar] = *ite1;
             if(0 != p_Arg)
             {
@@ -1815,7 +1842,7 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
             pListRes->push_back(item);
         }
     }
-        else if(COMMAND_TYPE_GET_UNIQUE_NODE_LIST_WITH_NODE_REF == ulCommand)
+    else if(COMMAND_TYPE_GET_UNIQUE_NODE_LIST_WITH_NODE_REF == ulCommand)
     {
         // ONLY FOR NODE LIST
         MemoryManager::Inst.CreateObject(&pListRes);
@@ -1856,7 +1883,7 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
     {
         // ONLY FOR NODE LIST
         MemoryManager::Inst.CreateObject(&pListRes);
-		String* pStrArg = (String*)pArg;
+        String* pStrArg = (String*)pArg;
         pEntityList->SeekToBegin();
         PNODE currNode = (PNODE)pEntityList->GetCurrElem();
         std::map<std::string, int> uniqueMap;
@@ -1882,29 +1909,29 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
 
         // Defining a lambda function to compare two pairs. It will compare two pairs using second field
         Comparator compFunctor;
-		if (pStrArg != 0)
-		{
-			int pInt = atoi(pStrArg->GetValue().c_str());
-			if (pInt >= 0)
-			{
-				compFunctor = [](std::pair<std::string, int> elem1 ,std::pair<std::string, int> elem2)
-				{
-					return elem1.second >= elem2.second;
-				};
-			}
-			else if (pInt <= 0)
-			{
-				compFunctor = [](std::pair<std::string, int> elem1 ,std::pair<std::string, int> elem2)
-				{
-					return elem1.second <= elem2.second;
-				};
-			}
-		} else {
-			compFunctor = [](std::pair<std::string, int> elem1 ,std::pair<std::string, int> elem2)
-					{
-						return elem1.second >= elem2.second;
-					};
-		}
+        if (pStrArg != 0)
+        {
+            int pInt = atoi(pStrArg->GetValue().c_str());
+            if (pInt >= 0)
+            {
+                compFunctor = [](std::pair<std::string, int> elem1 ,std::pair<std::string, int> elem2)
+                {
+                    return elem1.second >= elem2.second;
+                };
+            }
+            else if (pInt <= 0)
+            {
+                compFunctor = [](std::pair<std::string, int> elem1 ,std::pair<std::string, int> elem2)
+                {
+                    return elem1.second <= elem2.second;
+                };
+            }
+        } else {
+            compFunctor = [](std::pair<std::string, int> elem1 ,std::pair<std::string, int> elem2)
+            {
+                return elem1.second >= elem2.second;
+            };
+        }
         // Declaring a set that will store the pairs using above comparision logic
         std::set<std::pair<std::string, int>, Comparator> setOfSorted(uniqueMap.begin(), uniqueMap.end(), compFunctor);
         for (auto const& x : setOfSorted)
@@ -1919,8 +1946,8 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
     {
         // ONLY FOR NODE LIST
         MemoryManager::Inst.CreateObject(&pListRes);
-		String* pStrArg = (String*)pArg;
-		int pInt = atoi(pStrArg->GetValue().c_str());
+        String* pStrArg = (String*)pArg;
+        int pInt = atoi(pStrArg->GetValue().c_str());
         pEntityList->SeekToBegin();
         PNODE currNode = (PNODE)pEntityList->GetCurrElem();
         int entitySize = pEntityList->size();
@@ -1937,9 +1964,9 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
         MSTRING currentkey;
         PENTITYLIST currentlist = 0;
         EntityList::const_iterator ite1 = pEntityList->begin();
-		EntityList::const_iterator iteEnd1 = pEntityList->end();
-		for( ; ite1 != iteEnd1; ++ite1)
-		{
+        EntityList::const_iterator iteEnd1 = pEntityList->end();
+        for( ; ite1 != iteEnd1; ++ite1)
+        {
             pContext->map_Var[pContext->p_MD->s_ListItemVar] = *ite1;
             if(0 != p_Arg)
             {
@@ -1974,54 +2001,54 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
         }
         MemoryManager::Inst.CreateObject(&pNullRes);
     }
-    /*else if(COMMAND_TYPE_ADD_NODE_TO_LI   ST == ulCommand)
-    {
-        if(ENTITY_TYPE_NODE == pArg->ul_Type)
+        /*else if(COMMAND_TYPE_ADD_NODE_TO_LI   ST == ulCommand)
         {
-            pEntityList->push_back((PNODE)pArg);
+            if(ENTITY_TYPE_NODE == pArg->ul_Type)
+            {
+                pEntityList->push_back((PNODE)pArg);
+            }
+            MemoryManager::Inst.CreateObject(&pNullRes);
+        }*/
+    else if(COMMAND_TYPE_SEEK == ulCommand)
+    {
+        PInt pInt = (PInt)p_Arg->GetEntity();
+        if(0 != pInt)
+        {
+            pEntityList->Seek(pInt->GetValue(), pInt->b_IsNegative);
         }
         MemoryManager::Inst.CreateObject(&pNullRes);
-    }*/
-	else if(COMMAND_TYPE_SEEK == ulCommand)
-	{
-		PInt pInt = (PInt)p_Arg->GetEntity();
-		if(0 != pInt)
-		{
-			pEntityList->Seek(pInt->GetValue(), pInt->b_IsNegative);
-		}
-		MemoryManager::Inst.CreateObject(&pNullRes);
-	}
-	else if(COMMAND_TYPE_SEEK_TO_BEGIN == ulCommand)
-	{
-		pEntityList->SeekToBegin();
-		MemoryManager::Inst.CreateObject(&pNullRes);
-	}
-	else if(COMMAND_TYPE_SEEK_TO_END == ulCommand)
-	{
-		pEntityList->SeekToEnd();
-		MemoryManager::Inst.CreateObject(&pNullRes);
-	}
-	else if(COMMAND_TYPE_GET_CURR_ELEM == ulCommand)
-	{
-		PENTITY pEntity = pEntityList->GetCurrElem();
-		if(0 != pEntity)
-		{
-			// If the entity is not a node then it will be deleted immediately after use.
-			// Therefore we need to get a copy.
-			if(ENTITY_TYPE_NODE != pEntity->ul_Type)
-			{
-				pEntityRes = pEntity->GetCopy();
-			}
-			else
-			{
-				pEntityRes = pEntity;
-			}
-		}
-		else
-		{
-			MemoryManager::Inst.CreateObject(&pNullRes);
-		}
-	}
+    }
+    else if(COMMAND_TYPE_SEEK_TO_BEGIN == ulCommand)
+    {
+        pEntityList->SeekToBegin();
+        MemoryManager::Inst.CreateObject(&pNullRes);
+    }
+    else if(COMMAND_TYPE_SEEK_TO_END == ulCommand)
+    {
+        pEntityList->SeekToEnd();
+        MemoryManager::Inst.CreateObject(&pNullRes);
+    }
+    else if(COMMAND_TYPE_GET_CURR_ELEM == ulCommand)
+    {
+        PENTITY pEntity = pEntityList->GetCurrElem();
+        if(0 != pEntity)
+        {
+            // If the entity is not a node then it will be deleted immediately after use.
+            // Therefore we need to get a copy.
+            if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+            {
+                pEntityRes = pEntity->GetCopy();
+            }
+            else
+            {
+                pEntityRes = pEntity;
+            }
+        }
+        else
+        {
+            MemoryManager::Inst.CreateObject(&pNullRes);
+        }
+    }
     else if (COMMAND_TYPE_GET_NEXT_ELEM == ulCommand)
     {
         pEntityList->Seek(1, false);
@@ -2044,46 +2071,46 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
             MemoryManager::Inst.CreateObject(&pNullRes);
         }
     }
-	else if (COMMAND_TYPE_GET_OLDEST_DATE == ulCommand)
-	{
-		MemoryManager::Inst.CreateObject(&pStrRes);
-		pEntityList->SeekToBegin();
-		PNODE currNode = (PNODE)pEntityList->GetCurrElem();
-		String* pStrArg = (String*)pArg;
-		std::vector<std::string> dateList;
-		while(currNode != 0) {
-			if (currNode->GetLVal() != 0)
-			{
-				dateList.push_back(std::string(currNode->GetLVal()));
-			}
-			pEntityList->Seek(1, false);
-			currNode = (PNODE)pEntityList->GetCurrElem();
-		}
-		std::string oldestDate = (DateTimeOperations::GetOldestDate(dateList));
-		pStrRes->SetValue(DateTimeOperations::GetOldestDate(dateList));
-	}
-	else if (COMMAND_TYPE_GET_LATEST_DATE == ulCommand)
-	{
-		MemoryManager::Inst.CreateObject(&pStrRes);
-		pEntityList->SeekToBegin();
-		PNODE currNode = (PNODE)pEntityList->GetCurrElem();
-		String* pStrArg = (String*)pArg;
-		std::vector<std::string> dateList;
-		while(currNode != 0) {
-			if (currNode->GetLVal() != 0)
-			{
-				dateList.push_back(currNode->GetLVal());
-			}
-			pEntityList->Seek(1, false);
-			currNode = (PNODE)pEntityList->GetCurrElem();
-		}
-		std::string latestDate = (DateTimeOperations::GetLatestDate(dateList));
-		pStrRes->SetValue(DateTimeOperations::GetLatestDate(dateList));
-	}
-	// first handle the commands that would need to access the execution context
-	else if (COMMAND_TYPE_FILTER_SUBTREE == ulCommand)
-	{
-	    MemoryManager::Inst.CreateObject(&pListRes);
+    else if (COMMAND_TYPE_GET_OLDEST_DATE == ulCommand)
+    {
+        MemoryManager::Inst.CreateObject(&pStrRes);
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        std::vector<std::string> dateList;
+        while(currNode != 0) {
+            if (currNode->GetLVal() != 0)
+            {
+                dateList.push_back(std::string(currNode->GetLVal()));
+            }
+            pEntityList->Seek(1, false);
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+        std::string oldestDate = (DateTimeOperations::GetOldestDate(dateList));
+        pStrRes->SetValue(DateTimeOperations::GetOldestDate(dateList));
+    }
+    else if (COMMAND_TYPE_GET_LATEST_DATE == ulCommand)
+    {
+        MemoryManager::Inst.CreateObject(&pStrRes);
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        std::vector<std::string> dateList;
+        while(currNode != 0) {
+            if (currNode->GetLVal() != 0)
+            {
+                dateList.push_back(currNode->GetLVal());
+            }
+            pEntityList->Seek(1, false);
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+        std::string latestDate = (DateTimeOperations::GetLatestDate(dateList));
+        pStrRes->SetValue(DateTimeOperations::GetLatestDate(dateList));
+    }
+        // first handle the commands that would need to access the execution context
+    else if (COMMAND_TYPE_FILTER_SUBTREE == ulCommand)
+    {
+        MemoryManager::Inst.CreateObject(&pListRes);
         pEntityList->SeekToBegin();
         PNODE currNode = (PNODE)pEntityList->GetCurrElem();
         while(currNode != 0)
@@ -2102,95 +2129,95 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
             pEntityList->Seek(1, false);
             currNode = (PNODE)pEntityList->GetCurrElem();
         }
-	}
-	else
-	{
+    }
+    else
+    {
         if(0 != p_Arg)
-		{
-			p_EntityArg = p_Arg->Execute(pContext);
-		}
-		MemoryManager::Inst.CreateObject(&pListRes);
-		EntityList::const_iterator ite1 = pEntityList->begin();
-		EntityList::const_iterator iteEnd1 = pEntityList->end();
-		for( ; ite1 != iteEnd1; ++ite1)
-		{
-			PENTITY pRes = 0;
+        {
+            p_EntityArg = p_Arg->Execute(pContext);
+        }
+        MemoryManager::Inst.CreateObject(&pListRes);
+        EntityList::const_iterator ite1 = pEntityList->begin();
+        EntityList::const_iterator iteEnd1 = pEntityList->end();
+        for( ; ite1 != iteEnd1; ++ite1)
+        {
+            PENTITY pRes = 0;
             if ((*ite1)->ul_Type == ENTITY_TYPE_NODE) {
                 pRes = ExecuteNodeCommand(ulCommand, *ite1, pContext);
             } else {
                 pRes = ExecuteEntityCommand(ulCommand, *ite1, p_EntityArg);
             }
 
-			switch(pRes->ul_Type)
-			{
+            switch(pRes->ul_Type)
+            {
                 case ENTITY_TYPE_NULL:
-				{
-					MemoryManager::Inst.DeleteObject(pRes);
-				}
+                {
+                    MemoryManager::Inst.DeleteObject(pRes);
+                }
                 case ENTITY_TYPE_INT:
                 case ENTITY_TYPE_NODE:
                 case ENTITY_TYPE_STRING:
                 case ENTITY_TYPE_LIST:
-				{
-					pListRes->push_back(pRes);
-					break;
-				}
+                {
+                    pListRes->push_back(pRes);
+                    break;
+                }
                 case ENTITY_TYPE_BOOL:
-				{
-					if(((PBool)pRes)->GetValue())
-					{
-						if(ENTITY_TYPE_NODE != (*ite1)->ul_Type)
-						{
-							pListRes->push_back((*ite1)->GetCopy());
-						}
-						else
-						{
-							pListRes->push_back(*ite1);
-						}
-					}
-					MemoryManager::Inst.DeleteObject(pRes);
-					break;
-				}
-			}
-		}
-	}
+                {
+                    if(((PBool)pRes)->GetValue())
+                    {
+                        if(ENTITY_TYPE_NODE != (*ite1)->ul_Type)
+                        {
+                            pListRes->push_back((*ite1)->GetCopy());
+                        }
+                        else
+                        {
+                            pListRes->push_back(*ite1);
+                        }
+                    }
+                    MemoryManager::Inst.DeleteObject(pRes);
+                    break;
+                }
+            }
+        }
+    }
 
-	if(0 != pIntRes)
-	{
-		return pIntRes;
-	}
-	if(0 != pListRes)
-	{
-		return pListRes;
-	}
-	if(0 != pNullRes)
-	{
-		return pNullRes;
-	}
-	if(0 != pEntityRes)
-	{
-		return pEntityRes;
-	}
-	if(0 != pNodeRes)
-	{
-		return pNodeRes;
-	}
+    if(0 != pIntRes)
+    {
+        return pIntRes;
+    }
+    if(0 != pListRes)
+    {
+        return pListRes;
+    }
+    if(0 != pNullRes)
+    {
+        return pNullRes;
+    }
+    if(0 != pEntityRes)
+    {
+        return pEntityRes;
+    }
+    if(0 != pNodeRes)
+    {
+        return pNodeRes;
+    }
     if(0 != pStrRes)
     {
         return pStrRes;
     }
-	return 0;
+    return 0;
 }
 
 void Command::AddSubtreeToNodeList(PENTITYLIST pList, PNODE pRoot)
 {
-	pList->push_back(pRoot);
-	PNODE pChild = pRoot->GetFirstChild();
-	while(0 != pChild)
-	{
-		AddSubtreeToNodeList(pList, pChild);
-		pChild = pChild->GetRightSibling();
-	}
+    pList->push_back(pRoot);
+    PNODE pChild = pRoot->GetFirstChild();
+    while(0 != pChild)
+    {
+        AddSubtreeToNodeList(pList, pChild);
+        pChild = pChild->GetRightSibling();
+    }
 }
 
 void Command::FilterSubTree(PNODE root, ExecutionTemplate* arg, ExecutionContext* context, PENTITYLIST resultList)
@@ -2202,9 +2229,9 @@ void Command::FilterSubTree(PNODE root, ExecutionTemplate* arg, ExecutionContext
         //std::cout<<root ->GetValue()<<"\n";
     }
     PNODE pChild = root->GetFirstChild();
-        while(0 != pChild)
-        {
-		FilterSubTree(pChild, arg, context, resultList);
-		pChild = pChild->GetRightSibling();
-	}
+    while(0 != pChild)
+    {
+        FilterSubTree(pChild, arg, context, resultList);
+        pChild = pChild->GetRightSibling();
+    }
 }

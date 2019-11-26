@@ -92,7 +92,13 @@ add_executable(FlexibleComputerLanguage1
         FlexibleComputerLanguage/NamedPipeOperations.cpp
         FlexibleComputerLanguage/easylogging++.h
         FlexibleComputerLanguage/easylogging++.cc
-        FlexibleComputerLanguage/Logger.h FlexibleComputerLanguage/LogJsonParser.cpp FlexibleComputerLanguage/LogJsonParser.h FlexibleComputerLanguage/QueryExecuter.cpp FlexibleComputerLanguage/QueryExecuter.h FlexibleComputerLanguage/DbConnection.cpp FlexibleComputerLanguage/DbConnection.h)
+        FlexibleComputerLanguage/Logger.h
+        FlexibleComputerLanguage/LogJsonParser.cpp
+        FlexibleComputerLanguage/LogJsonParser.h
+        FlexibleComputerLanguage/QueryExecuter.cpp
+        FlexibleComputerLanguage/QueryExecuter.h
+        FlexibleComputerLanguage/DbConnection.cpp
+        FlexibleComputerLanguage/DbConnection.h)
 
 
 

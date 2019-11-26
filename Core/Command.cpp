@@ -868,7 +868,8 @@ PENTITY Command::ExecuteDateTimeCommand(MULONG ulCommand, PENTITY pEntity, PENTI
 
 PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, ExecutionContext* pContext)
 {
-	PNODE pNode = (PNODE)pEntity;
+    srand(time(NULL)); //generates random seed val
+    PNODE pNode = (PNODE)pEntity;
 	if(0 == pNode)
 	{
 		return 0;
@@ -1439,7 +1440,13 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    replacement ="dummyDate";
+                    int randomDate = rand()%((30 - 1) + 1) + 1;
+                    MSTRING tempStr=std::to_string(randomDate);
+                    if(tempStr.length()==1)
+                    {
+                        tempStr="0"+tempStr;
+                    }
+                    replacement =tempStr;
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1457,7 +1464,13 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    replacement ="dummyMonth";
+                    int randomMonth = rand()%((12 - 1) + 1) + 1;
+                    MSTRING tempStr=std::to_string(randomMonth);
+                    if(tempStr.length()==1)
+                    {
+                        tempStr="0"+tempStr;
+                    }
+                    replacement =tempStr;
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";

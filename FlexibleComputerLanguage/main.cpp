@@ -1,4 +1,4 @@
-//
+/*//
 //  main.cpp
 //  FlexibleComputerLanguage
 //
@@ -76,10 +76,17 @@ int main(int argc, const char * argv[])
 
 
     return 0;
-}
-/*
+}*/
 #include <iostream>
+#include "json.hpp"
+#include "Int.h"
+#include "OTPParser.h"
+#include "NamedPipeOperations.h"
 #include "easylogging++.h"
+#include <pthread.h>
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
+#include <TypeDefs.h>
 #include "D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/SQLAPI/include/SQLAPI.h"
 
 INITIALIZE_EASYLOGGINGPP
@@ -88,6 +95,28 @@ int main()
     // create connection object to connect to database
         //SAConnection con;
 
-    std::cout<<"Hello";
+        srand(time(NULL)); //generates random seed val
+
+        int arg =1985;
+        int diff=5;
+        int userBeg =arg-diff;
+        int userEnd =arg+diff;
+    for (int i = 0; i < 20; i++)
+    {
+        int outPut = rand()%((userEnd - userBeg) + 1) + userBeg;
+        MSTRING tempStr=std::to_string(outPut);
+        std::cout << tempStr << "  ";
+    }
 return 0;
+}
+/*
+int userBeg =1;
+int userEnd =30;
+int outPut;
+
+srand(time(NULL)); //generates random seed val
+
+for (int i = 0; i < 20; i++) {
+outPut = rand()%((userEnd - userBeg) + 1) + userBeg;
+std::cout << outPut << "  ";
 }*/

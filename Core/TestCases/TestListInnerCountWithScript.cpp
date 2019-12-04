@@ -16,7 +16,7 @@
 #include "MetaData.h"
 #include "ExecutionContext.h"
 
-TestCaseExecutionResult TestListInnerCountWithScript::Execute(TestCaseArgument* arg) {
+TestCaseExecutionResult TestListInnerCountWithScript::Execute(TestCaseArgument* arg,MYSQL* conn) {
     TestCaseExecutionResult res;
     PNull a[10];
     for (int i = 0; i < 10; ++i) {
@@ -67,7 +67,7 @@ TestCaseExecutionResult TestListInnerCountWithScript::Execute(TestCaseArgument* 
 	ec.p_mapFunctions = &op.map_Functions;
 	ec.p_MD = pMD;
 	ec.map_Var["BigList"] = upperList;
-	op.p_ETL->Execute(&ec);
+	op.p_ETL->Execute(&ec,conn);
     PENTITYLIST result = (PENTITYLIST)(ec.map_Var["Result"]);
     
     if (result->size() != 3) {

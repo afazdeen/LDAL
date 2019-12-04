@@ -43,7 +43,7 @@ Entity* EntityList::GetCopy()
 	return pNew;
 }
 
-void EntityList::ExecuteElements(ExecutionContext* pContext)
+void EntityList::ExecuteElements(ExecutionContext* pContext,MYSQL* conn)
 {
 	iterator ite1 = this->begin();
 	const_iterator iteEnd1 = this->end();
@@ -54,7 +54,7 @@ void EntityList::ExecuteElements(ExecutionContext* pContext)
 			ExecutionTemplate* pET = (ExecutionTemplate*)(*ite1);
 			if(0 != pET)
 			{
-				PENTITY pRes = pET->Execute(pContext);
+				PENTITY pRes = pET->Execute(pContext,conn);
 				(*ite1) = pRes;
 				pET->Destroy();
 			}

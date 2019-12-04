@@ -9,7 +9,7 @@
 #include "TestLoadFromCodeLibrary.h"
 #include "TestCaseIncludes.h"
 
-TestCaseExecutionResult TestLoadFromCodeLibrary::Execute(TestCaseArgument* arg) {
+TestCaseExecutionResult TestLoadFromCodeLibrary::Execute(TestCaseArgument* arg,MYSQL* conn) {
     PNODE nodeX = new Node(1);
     PNODE nodeY = new Node(2);
     PNODE nodeZ = new Node(3);
@@ -30,7 +30,7 @@ TestCaseExecutionResult TestLoadFromCodeLibrary::Execute(TestCaseArgument* arg) 
     ec.map_Var["Y"] = nodeY;
     ec.map_Var["Z"] = nodeZ;
     ec.map_Var["RET"] = new Node(4);
-	op.p_ETL->Execute(&ec);
+	op.p_ETL->Execute(&ec,conn);
     
     MULONG zChildCount = nodeZ->GetChildCount();
     if (zChildCount != 2) {

@@ -12,7 +12,7 @@
 
 // shared data
 int id = 0;
-MSTRING QueryExecuter::run(Node *root, MSTRING querycode)
+MSTRING QueryExecuter::run(Node *root, MSTRING querycode,MYSQL* conn)
 {
 
     DefFileReader dfr;
@@ -36,7 +36,7 @@ MSTRING QueryExecuter::run(Node *root, MSTRING querycode)
     ec.map_Var["X"] = root;
     ec.map_Var["Y"] = pY;
     ec.map_Var["RESULT"] = pRESULT;
-    op.p_ETL->Execute(&ec);
+    op.p_ETL->Execute(&ec,conn);
     return ResultGenerator::CreateResult(pRESULT);
 
 }

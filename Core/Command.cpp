@@ -17,6 +17,10 @@
 #include <set>
 #include <algorithm>
 #include <functional>
+#include <random>
+#include <windows.h>
+#include <mysql.h>
+#include <MysqlConnector.h>
 
 //Global variable
 int setSize = 0;
@@ -29,6 +33,7 @@ Command::Command()
 
 Command::~Command()
 {
+    std::cout<<"Connected\n";
 
 }
 
@@ -92,7 +97,7 @@ MSTRING Command::GetAdditionalFuncName() {
     return s_AdditionalFuncName;
 }
 
-PENTITY Command::Execute(PENTITY pEntity, ExecutionContext* pContext)
+PENTITY Command::Execute(PENTITY pEntity, ExecutionContext* pContext,MYSQL* conn)
 {
 
     if(COMMAND_TYPE_ADDITIONAL_FUNCTION == ul_CommandType)
@@ -106,7 +111,7 @@ PENTITY Command::Execute(PENTITY pEntity, ExecutionContext* pContext)
             ec.p_mapFunctions = pContext->p_mapFunctions;
             ec.p_MD = pContext->p_MD;
             ec.map_Var[pContext->p_MD->s_FuncArg] = pEntity;
-            ((*iteFind2).second)->Execute(&ec);
+            ((*iteFind2).second)->Execute(&ec,conn);
             MAP_STR_ENTITYPTR::iterator iteFind3 = ec.map_Var.find(pContext->p_MD->s_FuncRet);
             if(ec.map_Var.end() == iteFind3)
             {
@@ -126,7 +131,7 @@ PENTITY Command::Execute(PENTITY pEntity, ExecutionContext* pContext)
             fun = (*iteFind).second;
             if(0 != p_Arg)
             {
-                p_EntityArg = p_Arg->Execute(pContext);
+                p_EntityArg = p_Arg->Execute(pContext,conn);
             }
             return fun(p_EntityArg);
         }
@@ -162,23 +167,23 @@ PENTITY Command::Execute(PENTITY pEntity, ExecutionContext* pContext)
         if (ENTITY_TYPE_LIST == pEntity->ul_Type) {
             if(0 != p_Arg)
             {
-                p_EntityArg = p_Arg->Execute(pContext);
+                p_EntityArg = p_Arg->Execute(pContext,conn);
             }
-            return ExecuteListCommand(ul_CommandType, pEntity, pContext, p_EntityArg);
+            return ExecuteListCommand(ul_CommandType, pEntity, pContext, p_EntityArg,conn);
         } else if (ENTITY_TYPE_NODE == pEntity->ul_Type) {
-            return ExecuteNodeCommand(ul_CommandType, pEntity, pContext);
+            return ExecuteNodeCommand(ul_CommandType, pEntity, pContext,conn);
         } else {
             if(0 != p_Arg)
             {
-                p_EntityArg = p_Arg->Execute(pContext);
+                p_EntityArg = p_Arg->Execute(pContext,conn);
             }
-            return ExecuteEntityCommand(ul_CommandType, pEntity, p_EntityArg);
+            return ExecuteEntityCommand(ul_CommandType, pEntity, p_EntityArg,conn);
         }
     }
     return 0;
 }
 
-PENTITY Command::ExecuteEntityCommand(MULONG ulCommand, PENTITY pEntity, PENTITY pArg)
+PENTITY Command::ExecuteEntityCommand(MULONG ulCommand, PENTITY pEntity, PENTITY pArg,MYSQL* conn)
 {
     // General functions in Entity level
     if(COMMAND_TYPE_IS_NULL == ulCommand)
@@ -866,8 +871,10 @@ PENTITY Command::ExecuteDateTimeCommand(MULONG ulCommand, PENTITY pEntity, PENTI
     return 0;
 }
 
-PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, ExecutionContext* pContext)
+PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, ExecutionContext* pContext, MYSQL* conn)
 {
+
+
     srand(time(NULL)); //generates random seed val
     PNODE pNode = (PNODE)pEntity;
     if(0 == pNode)
@@ -886,14 +893,14 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
     // first handle the commands that would need to access the execution context
     if (COMMAND_TYPE_FILTER_SUBTREE == ulCommand) {
         MemoryManager::Inst.CreateObject(&pNodeListRes);
-        FilterSubTree(pNode, p_Arg, pContext, pNodeListRes);
+        FilterSubTree(pNode, p_Arg, pContext, pNodeListRes,conn);
     } else {
         // now handle commands that would not explicitly need the execution context
         // for these command, for the sake of simplicity, we first evaluate the command argument and use it subsequently
         PENTITY pArg = 0;
         if(0 != p_Arg)
         {
-            p_EntityArg = p_Arg->Execute(pContext);
+            p_EntityArg = p_Arg->Execute(pContext,conn);
             pArg = p_EntityArg;
         }
         MSTRING argument;
@@ -1386,7 +1393,18 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    replacement ="dummyFirstName";
+                    int randid = rand()%((799 - 1) + 1) + 1;
+
+                    if(conn)
+                    {
+                        std::cout<<"Connected\n";
+                        MysqlConnector mysqlobj;
+                        replacement = mysqlobj.selectFirstName(conn,randid);
+                    }
+                    else
+                    {
+                        replacement ="dummyFirstName";
+                    }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1404,7 +1422,18 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    replacement ="dummyLastName";
+                    int randid = rand()%((499 - 1) + 1) + 1;
+
+                    if(conn)
+                    {
+                        std::cout<<"Connected\n";
+                        MysqlConnector mysqlobj;
+                        replacement = mysqlobj.selectLastName(conn,randid);
+                    }
+                    else
+                    {
+                        replacement ="dummyLastName";
+                    }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1422,7 +1451,22 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    replacement ="dummyFullName";
+
+                    int randfnameid = rand()%((499 - 1) + 1) + 1;
+                    int randlnameid = rand()%((499 - 1) + 1) + 1;
+
+                    if(conn)
+                    {
+                        std::cout<<"Connected\n";
+                        MysqlConnector mysqlobj;
+                        MSTRING fname = mysqlobj.selectFirstName(conn,randfnameid);
+                        MSTRING lname = mysqlobj.selectLastName(conn,randlnameid);
+                        replacement = fname + " " + lname;
+                    }
+                    else
+                    {
+                        replacement ="dummyFullName";
+                    }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1446,7 +1490,14 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     {
                         tempStr="0"+tempStr;
                     }
-                    replacement =tempStr;
+                    if(argument.at(0)=='-')
+                    {
+                        replacement ="-"+tempStr;
+                    }
+                    else
+                    {
+                        replacement =tempStr;
+                    }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1470,7 +1521,14 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     {
                         tempStr="0"+tempStr;
                     }
-                    replacement =tempStr;
+                    if(argument.at(0)=='-' && argument.at(argument.length()-1)=='-')
+                    {
+                        replacement ="-"+tempStr+"-";
+                    }
+                    else
+                    {
+                        replacement =tempStr;
+                    }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1493,7 +1551,14 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     int userBeg =arg-diff;
                     int userEnd =arg+diff;
                     int randomYear = rand()%((userEnd - userBeg) + 1) + userBeg;
-                    replacement=std::to_string(randomYear);
+                    if(argument.at(argument.length()-1)=='-')
+                    {
+                        replacement =std::to_string(randomYear)+"-";
+                    }
+                    else
+                    {
+                        replacement =std::to_string(randomYear);
+                    }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1518,7 +1583,14 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     {
                         tempStr="0"+tempStr;
                     }
-                    replacement =tempStr;
+                    if(argument.at(argument.length()-1)==':')
+                    {
+                        replacement =tempStr+":";
+                    }
+                    else
+                    {
+                        replacement =tempStr;
+                    }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1542,7 +1614,14 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     {
                         tempStr="0"+tempStr;
                     }
-                    replacement =tempStr;
+                    if(argument.at(0)==':' && argument.at(argument.length()-1)==':')
+                    {
+                        replacement =":"+tempStr+":";
+                    }
+                    else
+                    {
+                        replacement =tempStr;
+                    }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1566,7 +1645,14 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     {
                         tempStr="0"+tempStr;
                     }
-                    replacement =tempStr;
+                    if(argument.at(0)==':')
+                    {
+                        replacement =":"+tempStr;
+                    }
+                    else
+                    {
+                        replacement =tempStr;
+                    }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1584,7 +1670,36 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    replacement ="dummyTelNum";
+                    int telLength=0;
+                    MSTRING telNum;
+                    int randid = rand()%((13 - 1) + 1) + 1;
+
+                    if(conn)
+                    {
+                        std::cout<<"Connected\n";
+                        MysqlConnector mysqlobj;
+                        replacement = mysqlobj.selectCityCode(conn,randid);
+                    }
+                    else
+                    {
+                        replacement="62";
+                    }
+
+                    if(replacement.length()==1)
+                    {
+                        telLength=7;
+                    }
+                    else if(replacement.length()==2)
+                    {
+                        telLength=6;
+                    }
+                    for(int i=0;i<telLength;i++)
+                    {
+                        telNum+=(std::to_string(rand()%((9) + 1)));
+                    }
+
+
+                    replacement+=telNum;
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1602,7 +1717,19 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    replacement ="dummyAddress";
+                    int randid = rand()%((499 - 1) + 1) + 1;
+
+                    if(conn)
+                    {
+                        std::cout<<"Connected\n";
+                        MysqlConnector mysqlobj;
+                        replacement = mysqlobj.selectAddress(conn,randid);
+                    }
+                    else
+                    {
+                        replacement ="dummyAddress";
+                    }
+
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1620,7 +1747,18 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    replacement ="dummyPostalcode";
+                    int randid = rand()%((200 - 1) + 1) + 1;
+
+                    if(conn)
+                    {
+                        std::cout<<"Connected\n";
+                        MysqlConnector mysqlobj;
+                        replacement = mysqlobj.selectPostalCode(conn,randid);
+                    }
+                    else
+                    {
+                        replacement ="dummyPostalcode";
+                    }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1640,8 +1778,9 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     nodeString=pNode->GetValue();
                     int userBeg =10000;
                     int userEnd =20000;
-                    int randomInteger = rand()%((userEnd - userBeg) + 1) + userBeg;
-                    replacement=std::to_string(randomInteger);
+                    std::default_random_engine generator;
+                    std::uniform_int_distribution<int> distribution(userBeg,userEnd);
+                    replacement = std::to_string(distribution(generator));
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1653,13 +1792,60 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
             case COMMAND_TYPE_MASK_PRICE:
             {
                 std::cout<<"--------------------------------------------Mask Price-----------------------------------------------\n";
+                //Assume in the format 10,383.435
                 MemoryManager::Inst.CreateObject(&pNullRes);
                 if(ENTITY_TYPE_STRING == pArg->ul_Type)
                 {
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    replacement ="dummyPrice";
+                    int upperBound=50000;
+                    int lowererBound=10000;
+                    int precision=2;
+
+                    std::default_random_engine generator;
+                    std::uniform_int_distribution<int> distribution(lowererBound,upperBound);
+                    MSTRING intPart = std::to_string(distribution(generator));
+                    std::cout<<intPart<<".";
+                    MSTRING decPart;
+                    for(int i=0;i<precision;i++)
+                    {
+                        decPart+=(std::to_string(rand()%((9) + 1)));
+                    }
+                    reverse(intPart.begin(), intPart.end());
+                    int lengthrev = intPart.length();
+                    MSTRING final;
+                    MSTRING finalprice;
+                    int noofrounds=lengthrev/3;
+                    int count=1;
+                    int count2=1;
+
+                    if(lengthrev>3)
+                    {
+                        while(count2<=noofrounds)
+                        {
+                            MSTRING sub=intPart.substr(count-1,3);
+                            MSTRING subwithsep = sub+",";
+                            finalprice+=subwithsep;
+                            count+=3;
+                            count2++;
+                        }
+                        MSTRING strremain = intPart.substr(count-1,lengthrev - count + 1);
+                        if(strremain.length()<1)
+                        {
+                            finalprice= finalprice.substr(0,finalprice.length()-1);
+                        } else
+                        {
+                            finalprice+=strremain;
+                        }
+                        reverse(finalprice.begin(), finalprice.end());
+                        final = finalprice+"."+decPart;
+                    }
+                    else
+                    {
+                        final = intPart+"."+decPart;
+                    }
+                    replacement =final;
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1677,7 +1863,73 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    replacement ="dummyNIC";
+
+                    int diff =5;
+                    MSTRING rand1 = std::to_string(rand()%((30 - 1) + 1) + 1);
+                    MSTRING rand2 = std::to_string(rand()%((12 - 1) + 1) + 1);
+                    MSTRING rand5 = std::to_string(rand()%((99) + 1));
+                    MSTRING rand4;
+
+                    int year = std::stoi(argument.substr(4, 2));
+                    int highyear = (year + 2000 + diff) ;
+                    int lowyear = (year + 2000 - diff);
+                    int rand3int=rand()%((highyear - lowyear) + 1) + lowyear;
+                    MSTRING rand3 =std::to_string(rand3int).substr(2, 2);
+                    int individual = std::stoi(rand3);
+                    if(individual<40)
+                    {
+                        rand4 = std::to_string(rand()%((999) + 1));
+                    }
+                    else if(individual<55)
+                    {
+                        MSTRING rand41 = std::to_string(rand()%((499) + 1));
+                        MSTRING rand42 = std::to_string(rand()%((999 - 900) + 1) + 900);
+                        int randchoice=rand()%(2)+1;
+                        if(randchoice==1)
+                        {
+                            rand4=rand41;
+                        }
+                        else if(randchoice==2)
+                        {
+                            rand4=rand42;
+                        }
+
+                    }
+                    else if(individual<100)
+                    {
+                        MSTRING rand41 = std::to_string(rand()%((750) + 1));
+                        MSTRING rand42 = std::to_string(rand()%((999 - 900) + 1) + 900);
+                        int randchoice=rand()%(2)+1;
+                        if(randchoice==1)
+                        {
+                            rand4=rand41;
+                        }
+                        else if(randchoice==2)
+                        {
+                            rand4=rand42;
+                        }
+                    }
+                    if(rand1.length()==1)
+                    {
+                        rand1="0"+rand1;
+                    }
+                    if(rand2.length()==1)
+                    {
+                        rand2="0"+rand2;
+                    }
+                    if(rand5.length()==1)
+                    {
+                        rand5="0"+rand5;
+                    }
+                    if(rand4.length()==1)
+                    {
+                        rand4="00"+rand4;
+                    }
+                    else if(rand4.length()==2)
+                    {
+                        rand4="0"+rand4;
+                    }
+                    replacement=rand1+rand2+rand3+rand4+rand5;
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1721,7 +1973,7 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
     return 0;
 }
 
-PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, ExecutionContext* pContext, PENTITY pArg)
+PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, ExecutionContext* pContext, PENTITY pArg,MYSQL* conn)
 {
     PENTITYLIST pEntityList = (PENTITYLIST)pEntity;
     if(0 == pEntityList)
@@ -1767,7 +2019,7 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
             pContext->map_Var[pContext->p_MD->s_ListItemVar] = *ite1;
             if(0 != p_Arg)
             {
-                PBool pRes = (PBool)p_Arg->Execute(pContext);
+                PBool pRes = (PBool)p_Arg->Execute(pContext,conn);
                 if (pRes->GetValue()) {
                     pListRes->push_back(*ite1);
                 }
@@ -1785,7 +2037,7 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
             pContext->map_Var[pContext->p_MD->s_ListItemVar] = *ite1;
             if(0 != p_Arg)
             {
-                PENTITY pRes = p_Arg->Execute(pContext);
+                PENTITY pRes = p_Arg->Execute(pContext,conn);
                 MSTRING key = pRes->ToString();
                 std::map<MSTRING, PENTITYLIST>::iterator ite = groupedLists.find(key);
                 if (ite == groupedLists.end()) {
@@ -1970,7 +2222,7 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
             pContext->map_Var[pContext->p_MD->s_ListItemVar] = *ite1;
             if(0 != p_Arg)
             {
-                PENTITY pRes = p_Arg->Execute(pContext);
+                PENTITY pRes = p_Arg->Execute(pContext,conn);
                 MSTRING key = pRes->ToString();
                 if (firstKeyDetected && (key == currentkey)) {
                     currentlist->push_back(*ite1);
@@ -2117,7 +2369,7 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
         {
             PENTITYLIST pNodeList = 0;
             MemoryManager::Inst.CreateObject(&pNodeList);
-            FilterSubTree(currNode, p_Arg, pContext, pNodeList);
+            FilterSubTree(currNode, p_Arg, pContext, pNodeList,conn);
             pListRes->SeekToBegin();
             PNODE internalNode = (PNODE)pNodeList->GetCurrElem();
             while(internalNode != 0)
@@ -2134,7 +2386,7 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
     {
         if(0 != p_Arg)
         {
-            p_EntityArg = p_Arg->Execute(pContext);
+            p_EntityArg = p_Arg->Execute(pContext,conn);
         }
         MemoryManager::Inst.CreateObject(&pListRes);
         EntityList::const_iterator ite1 = pEntityList->begin();
@@ -2143,9 +2395,9 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
         {
             PENTITY pRes = 0;
             if ((*ite1)->ul_Type == ENTITY_TYPE_NODE) {
-                pRes = ExecuteNodeCommand(ulCommand, *ite1, pContext);
+                pRes = ExecuteNodeCommand(ulCommand, *ite1, pContext,conn);
             } else {
-                pRes = ExecuteEntityCommand(ulCommand, *ite1, p_EntityArg);
+                pRes = ExecuteEntityCommand(ulCommand, *ite1, p_EntityArg,conn);
             }
 
             switch(pRes->ul_Type)
@@ -2220,10 +2472,10 @@ void Command::AddSubtreeToNodeList(PENTITYLIST pList, PNODE pRoot)
     }
 }
 
-void Command::FilterSubTree(PNODE root, ExecutionTemplate* arg, ExecutionContext* context, PENTITYLIST resultList)
+void Command::FilterSubTree(PNODE root, ExecutionTemplate* arg, ExecutionContext* context, PENTITYLIST resultList,MYSQL* conn)
 {
     context->map_Var[context->p_MD->s_ListItemVar] = root;
-    PBool res = (PBool)arg->Execute(context);
+    PBool res = (PBool)arg->Execute(context,conn);
     if (res->GetValue()) {
         resultList->push_back(root);
         //std::cout<<root ->GetValue()<<"\n";
@@ -2231,7 +2483,7 @@ void Command::FilterSubTree(PNODE root, ExecutionTemplate* arg, ExecutionContext
     PNODE pChild = root->GetFirstChild();
     while(0 != pChild)
     {
-        FilterSubTree(pChild, arg, context, resultList);
+        FilterSubTree(pChild, arg, context, resultList,conn);
         pChild = pChild->GetRightSibling();
     }
 }

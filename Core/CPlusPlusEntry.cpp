@@ -196,28 +196,28 @@ int TestTokenize()
 	return 1;
 }
 
-int RunUnitTest1()
+int RunUnitTest1(MYSQL* conn)
 {
 	Tests tests;
-	tests.RunTest1();
+	tests.RunTest1(conn);
 	return 1;
 }
 
-int RunUnitTest2()
+int RunUnitTest2(MYSQL* conn)
 {
 	Tests tests;
-	tests.RunTest2();
+	tests.RunTest2(conn);
 	return 1;
 }
 
-int RunUnitTest3()
+int RunUnitTest3(MYSQL* conn)
 {
 	Tests tests;
-	tests.RunTest3();
+	tests.RunTest3(conn);
 	return 1;
 }
 
-void CPlusPlusEntry::RunMenu()
+void CPlusPlusEntry::RunMenu(MYSQL* conn)
 {
 	Menu* pMain = new Menu;
 	{
@@ -229,9 +229,9 @@ void CPlusPlusEntry::RunMenu()
 			}
 			Menu* pTestScriptMenu = pMain->AddMenu("Test Script");
 			{
-				pTestScriptMenu->AddFunction("test 1", RunUnitTest1);
-				pTestScriptMenu->AddFunction("test 2", RunUnitTest2);
-				pTestScriptMenu->AddFunction("test 3", RunUnitTest3);
+				pTestScriptMenu->AddFunction("test 1", reinterpret_cast<FuncType>(RunUnitTest1(conn)));
+				pTestScriptMenu->AddFunction("test 2", reinterpret_cast<FuncType>(RunUnitTest2(conn)));
+				pTestScriptMenu->AddFunction("test 3", reinterpret_cast<FuncType>(RunUnitTest3(conn)));
 			}
 		}
 		pMain->AddFunction("Quit", Quit);

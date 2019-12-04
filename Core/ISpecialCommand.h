@@ -10,6 +10,8 @@
 #define LogAnalyzer_ISpecialCommand_h
 
 #include "CommonIncludes.h"
+#include <windows.h>
+#include <mysql.h>
 
 class Entity;
 class Command;
@@ -17,7 +19,7 @@ class ExecutionContext;
 
 class ISpecialCommand {
 public:
-    virtual PENTITY ExecuteSpecialCommand(PENTITY entity, ExecutionContext* context, Command* cmd) = 0;
+    virtual PENTITY ExecuteSpecialCommand(PENTITY entity, ExecutionContext* context, Command* cmd,MYSQL* conn) = 0;
 };
 
 

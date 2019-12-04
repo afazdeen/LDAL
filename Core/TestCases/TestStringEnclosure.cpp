@@ -9,7 +9,7 @@
 #include "TestStringEnclosure.h"
 #include "TestCaseIncludes.h"
 
-TestCaseExecutionResult TestStringEnclosure::Execute(TestCaseArgument* arg) {
+TestCaseExecutionResult TestStringEnclosure::Execute(TestCaseArgument* arg,MYSQL* conn) {
     PNODE node1 = new Node(1);
     PNODE node2 = new Node(2);
     PNODE node3 = new Node(3);
@@ -51,7 +51,7 @@ TestCaseExecutionResult TestStringEnclosure::Execute(TestCaseArgument* arg) {
 	ec.p_mapFunctions = &op.map_Functions;
 	ec.p_MD = pMD;
 	ec.map_Var["RootNode"] = node1;
-	op.p_ETL->Execute(&ec);
+	op.p_ETL->Execute(&ec,conn);
     
     MSTRING str = node1->GetLVal();
     if (MSTRING(node1->GetLVal()) != "pqrs") {

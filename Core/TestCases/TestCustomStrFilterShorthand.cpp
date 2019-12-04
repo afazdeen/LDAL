@@ -9,7 +9,7 @@
 #include "TestCustomStrFilterShorthand.h"
 #include "TestCaseIncludes.h"
 
-TestCaseExecutionResult TestCustomStrFilterShorthand::Execute(TestCaseArgument* arg) {
+TestCaseExecutionResult TestCustomStrFilterShorthand::Execute(TestCaseArgument* arg,MYSQL* conn) {
     PNODE node1 = new Node(1);
     PNODE node2 = new Node(2);
     PNODE node3 = new Node(3);
@@ -51,7 +51,7 @@ TestCaseExecutionResult TestCustomStrFilterShorthand::Execute(TestCaseArgument* 
 	ec.p_mapFunctions = &op.map_Functions;
 	ec.p_MD = pMD;
 	ec.map_Var["RootNode"] = node1;
-	op.p_ETL->Execute(&ec);
+	op.p_ETL->Execute(&ec,conn);
     PENTITYLIST result = (PENTITYLIST)(ec.map_Var["Result"]);
     
     if (result->size() != 4) {

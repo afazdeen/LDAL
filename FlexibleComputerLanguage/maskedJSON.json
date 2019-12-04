@@ -1,15 +1,15 @@
 [{
 "LINE1":{
 "NONEMPTY_LINE":{
-"Value":"Test Suite '/Users/Shared/Jenkins/Home/jobs/PagePlanner/workspace/Build/Products/Debug/PagePlannerTests.octest(Tests)' started at 2013-07-07 22:01:41 +0000"
+"Value":"Test Suite '/Users/Shared/Jenkins/Home/jobs/PagePlanner/workspace/Build/Products/Debug/PagePlannerTests.octest(Tests)' started at 2015-11-05 10:34:34 +0000"
 },
 "VARIABLE SEQUENCE1":{
 "NONEMPTY_LINE":{
-"Value":"Test Suite '/Users/Shared/Jenkins/Home/jobs/PagePlanner/workspace/Build/Products/Debug/PagePlannerTests.octest(Tests)' started at 2013-07-07 22:01:41 +0000"
+"Value":"Test Suite '/Users/Shared/Jenkins/Home/jobs/PagePlanner/workspace/Build/Products/Debug/PagePlannerTests.octest(Tests)' started at 2015-11-05 10:34:34 +0000"
 },
 "VARIABLE1":{
 "Anonymous":{
-"Value":"Test Suite '/Users/Shared/Jenkins/Home/jobs/PagePlanner/workspace/Build/Products/Debug/PagePlannerTests.octest(Tests)' started at 2013-07-07 22:01:41 +0000"
+"Value":"Test Suite '/Users/Shared/Jenkins/Home/jobs/PagePlanner/workspace/Build/Products/Debug/PagePlannerTests.octest(Tests)' started at 2015-11-05 10:34:34 +0000"
 },
 "BLOCK2":{
 "TEST_SUITE_EXECUTION":{
@@ -17,11 +17,11 @@
 },
 "LINE2":{
 "TEST_SUITE_START":{
-"Value":"Test Suite 'dummyTestName' started at 2013-07-07 22:01:41 +0000"
+"Value":"Test Suite 'dummyTestName' started at 2015-11-05 10:34:34 +0000"
 },
 "VARIABLE SEQUENCE2":{
 "TEST_SUITE_START":{
-"Value":"Test Suite 'dummyTestName' started at 2013-07-07 22:01:41 +0000"
+"Value":"Test Suite 'dummyTestName' started at 2015-11-05 10:34:34 +0000"
 },
 "VARIABLE2":{
 "CONSTANT STRING":{
@@ -37,7 +37,7 @@
 },
 "VARIABLE SEQUENCE5":{
 "TIMESTAMP":{
-"Value":"2013-07-07 22:01:41 +0000"
+"Value":"2015-11-05 10:34:34 +0000"
 },
 "VARIABLE5":{
 "YEAR":{
@@ -669,11 +669,11 @@
 },
 "LINE11":{
 "TEST_SUITE_END":{
-"Value":"Test Suite 'dummyTestName' finished at 2013-07-07 22:01:41 +0000."
+"Value":"Test Suite 'dummyTestName' finished at 2015-11-05 10:34:34 +0000."
 },
 "VARIABLE SEQUENCE11":{
 "TEST_SUITE_END":{
-"Value":"Test Suite 'dummyTestName' finished at 2013-07-07 22:01:41 +0000"
+"Value":"Test Suite 'dummyTestName' finished at 2015-11-05 10:34:34 +0000"
 },
 "VARIABLE11":{
 "CONSTANT STRING":{
@@ -689,7 +689,7 @@
 },
 "VARIABLE SEQUENCE14":{
 "TIMESTAMP":{
-"Value":"2013-07-07 22:01:41 +0000"
+"Value":"2015-11-05 10:34:34 +0000"
 },
 "VARIABLE14":{
 "YEAR":{

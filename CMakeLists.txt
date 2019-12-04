@@ -7,6 +7,8 @@ SET(CMAKE_CXX_FLAGS -pthread)
 include_directories(Core)
 include_directories(Core/TestCases)
 include_directories(FlexibleComputerLanguage)
+include_directories(MySql/mysqlheaders/mysqlheaders)
+link_directories(MySql/libmysql.a)
 
 add_executable(FlexibleComputerLanguage1
         Core/TestCases/TestCaseBase.cpp
@@ -97,8 +99,12 @@ add_executable(FlexibleComputerLanguage1
         FlexibleComputerLanguage/LogJsonParser.h
         FlexibleComputerLanguage/QueryExecuter.cpp
         FlexibleComputerLanguage/QueryExecuter.h
-        FlexibleComputerLanguage/DbConnection.cpp
-        FlexibleComputerLanguage/DbConnection.h)
+        FlexibleComputerLanguage/DbConnection.h
+        MySql/mysqlheaders/mysqlheaders/mysql.h
+        FlexibleComputerLanguage/MysqlConnector.cpp
+        FlexibleComputerLanguage/MysqlConnector.h)
+
+target_link_libraries(FlexibleComputerLanguage1 libmysql.a)
 
 
 

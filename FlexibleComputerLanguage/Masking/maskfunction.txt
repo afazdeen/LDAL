@@ -163,30 +163,32 @@ Function:=MaskFunction
 			$NEWSTRING.AddPostFix(-)
 			$NEWSTRING.AddPostFix($date)
 			$COUNT.Add(#1)
+
 			If($COUNT.ToString.IsStringEqualTo(1))
 				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
 				$LIST2.SeekToBegin()
 				$LIST2.GetCurrentElement:=ELEM2
-				$LIST2.AddNodeToList($date)
+				
 				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskDate($date)			
+					$ELEM2.MaskDate($NEWSTRING)			
 					$LIST2.GetNextElement:=ELEM2
 				Do
-			EndIf
 			
+			EndIf
+
 			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($date))
 				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
 				$LIST2.SeekToBegin()
 				$LIST2.GetCurrentElement:=ELEM2
-				$LIST2.AddNodeToList($date)
 				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskDate($date)					
+					$ELEM2.MaskDate($NEWSTRING)					
 					$LIST2.GetNextElement:=ELEM2
 				Do
-			EndIf		
+			EndIf
+			
 			$LIST.GetNextElement:=ELEM
 		Do
-		
+
 	EndIf
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(MONTH))
@@ -205,30 +207,32 @@ Function:=MaskFunction
 			$NEWSTRING.AddPostFix($month)
 			$NEWSTRING.AddPostFix(-)
 			$COUNT.Add(#1)
+
 			If($COUNT.ToString.IsStringEqualTo(1))
 				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
 				$LIST2.SeekToBegin()
 				$LIST2.GetCurrentElement:=ELEM2
-				$LIST2.AddNodeToList($month)
+				
 				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskMonth($month)			
+					$ELEM2.MaskMonth($NEWSTRING)			
 					$LIST2.GetNextElement:=ELEM2
 				Do
-			EndIf
 			
+			EndIf
+
 			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($month))
 				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
 				$LIST2.SeekToBegin()
 				$LIST2.GetCurrentElement:=ELEM2
-				$LIST2.AddNodeToList($month)
 				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskMonth($month)					
+					$ELEM2.MaskMonth($NEWSTRING)					
 					$LIST2.GetNextElement:=ELEM2
 				Do
-			EndIf		
+			EndIf
+			
 			$LIST.GetNextElement:=ELEM
 		Do
-		
+
 	EndIf
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(YEAR))
@@ -246,30 +250,32 @@ Function:=MaskFunction
 			$NEWSTRING.AddPostFix($year)
 			$NEWSTRING.AddPostFix(-)
 			$COUNT.Add(#1)
+
 			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHsavingSubstring($NEWSTRING)):=LIST2
+				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
 				$LIST2.SeekToBegin()
 				$LIST2.GetCurrentElement:=ELEM2
-				$LIST2.AddNodeToList($year)
+				
 				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskYear($year)			
+					$ELEM2.MaskYear($NEWSTRING)			
 					$LIST2.GetNextElement:=ELEM2
 				Do
-			EndIf
 			
+			EndIf
+
 			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($year))
 				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
 				$LIST2.SeekToBegin()
 				$LIST2.GetCurrentElement:=ELEM2
-				$LIST2.AddNodeToList($year)
 				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskYear($year)					
+					$ELEM2.MaskYear($NEWSTRING)					
 					$LIST2.GetNextElement:=ELEM2
 				Do
-			EndIf		
+			EndIf
+			
 			$LIST.GetNextElement:=ELEM
 		Do
-		
+
 	EndIf
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(HOUR))
@@ -287,30 +293,32 @@ Function:=MaskFunction
 			$NEWSTRING.AddPostFix($hour)
 			$NEWSTRING.AddPostFix(:)
 			$COUNT.Add(#1)
+
 			If($COUNT.ToString.IsStringEqualTo(1))
 				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
 				$LIST2.SeekToBegin()
 				$LIST2.GetCurrentElement:=ELEM2
-				$LIST2.AddNodeToList($hour)
+				
 				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskHour($hour)			
+					$ELEM2.MaskHour($NEWSTRING)			
 					$LIST2.GetNextElement:=ELEM2
 				Do
-			EndIf
 			
+			EndIf
+
 			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($hour))
 				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
 				$LIST2.SeekToBegin()
 				$LIST2.GetCurrentElement:=ELEM2
-				$LIST2.AddNodeToList($hour)
 				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskHour($hour)					
+					$ELEM2.MaskHour($NEWSTRING)					
 					$LIST2.GetNextElement:=ELEM2
 				Do
-			EndIf		
+			EndIf
+			
 			$LIST.GetNextElement:=ELEM
 		Do
-		
+
 	EndIf
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(MINUTE))
@@ -329,30 +337,32 @@ Function:=MaskFunction
 			$NEWSTRING.AddPostFix($minute)
 			$NEWSTRING.AddPostFix(:)
 			$COUNT.Add(#1)
+
 			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING):=LIST2
+				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
 				$LIST2.SeekToBegin()
 				$LIST2.GetCurrentElement:=ELEM2
-				$LIST2.AddNodeToList($minute)
+				
 				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskMinute($minute)			
+					$ELEM2.MaskMinute($NEWSTRING)			
 					$LIST2.GetNextElement:=ELEM2
 				Do
-			EndIf
 			
+			EndIf
+
 			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($minute))
 				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
 				$LIST2.SeekToBegin()
 				$LIST2.GetCurrentElement:=ELEM2
-				$LIST2.AddNodeToList($minute)
 				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskMinute($minute)					
+					$ELEM2.MaskMinute($NEWSTRING)					
 					$LIST2.GetNextElement:=ELEM2
 				Do
-			EndIf		
+			EndIf
+			
 			$LIST.GetNextElement:=ELEM
 		Do
-		
+
 	EndIf
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(SECONDS))
@@ -370,30 +380,32 @@ Function:=MaskFunction
 			$NEWSTRING.AddPostFix(:)
 			$NEWSTRING.AddPostFix($seconds)
 			$COUNT.Add(#1)
+
 			If($COUNT.ToString.IsStringEqualTo(1))
 				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
 				$LIST2.SeekToBegin()
 				$LIST2.GetCurrentElement:=ELEM2
-				$LIST2.AddNodeToList($seconds)
+				
 				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskSeconds($seconds)			
+					$ELEM2.MaskSeconds($NEWSTRING)			
 					$LIST2.GetNextElement:=ELEM2
 				Do
-			EndIf
 			
+			EndIf
+
 			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($seconds))
 				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
 				$LIST2.SeekToBegin()
 				$LIST2.GetCurrentElement:=ELEM2
-				$LIST2.AddNodeToList($seconds)
 				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskSeconds($seconds)					
+					$ELEM2.MaskSeconds($NEWSTRING)					
 					$LIST2.GetNextElement:=ELEM2
 				Do
-			EndIf		
+			EndIf
+			
 			$LIST.GetNextElement:=ELEM
 		Do
-		
+
 	EndIf
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(TELEPHONE_NUMBER))

@@ -79,7 +79,7 @@ public:
     void SetEntityObj(PENTITY obj);
     
     // Overridden from Entity
-    virtual MSTRING ToString();
+    virtual MSTRING     ToString();
 	
 	// Other functions
 	void Expand(LST_STR& lstTokens);

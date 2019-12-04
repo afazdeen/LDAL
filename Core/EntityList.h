@@ -3,6 +3,8 @@
 
 #include "CommonIncludes.h"
 #include "Entity.h"
+#include <windows.h>
+#include <mysql.h>
 
 class ExecutionContext;
 
@@ -15,7 +17,7 @@ public:
 	virtual void Destroy();
 	
 	Entity* GetCopy();
-	void ExecuteElements(ExecutionContext* pContext);
+	void ExecuteElements(ExecutionContext* pContext,MYSQL* conn);
 	Entity* GetCurrElem();
 	void SeekToBegin();
 	void SeekToEnd();

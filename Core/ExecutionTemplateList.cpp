@@ -14,7 +14,7 @@ void ExecutionTemplateList::Destroy()
 	MemoryManager::Inst.DeleteObject(this);
 }
 
-void ExecutionTemplateList::Execute(ExecutionContext* pContext)
+void ExecutionTemplateList::Execute(ExecutionContext* pContext,MYSQL* conn)
 {
 	STK_ITER stkLoopStart;
 	MAP_ITER_ITER mapLoopStartEnd;
@@ -57,7 +57,7 @@ void ExecutionTemplateList::Execute(ExecutionContext* pContext)
 		{
             case COMMAND_TYPE_IF:
 			{
-				PENTITY pRes = (*ite1)->Execute(pContext);
+				PENTITY pRes = (*ite1)->Execute(pContext,conn);
 				if((0 != (PBool)pRes) && (((PBool)pRes)->GetValue()))
 				{
 					++ite1;
@@ -72,7 +72,7 @@ void ExecutionTemplateList::Execute(ExecutionContext* pContext)
 			}
             case COMMAND_TYPE_IFNOT:
 			{
-				PENTITY pRes = (*ite1)->Execute(pContext);
+				PENTITY pRes = (*ite1)->Execute(pContext,conn);
 				if((0 != (PBool)pRes) && (((PBool)pRes)->GetValue()))
 				{
 					// If evaluated to false
@@ -100,7 +100,7 @@ void ExecutionTemplateList::Execute(ExecutionContext* pContext)
 				}
 				else
 				{
-					PENTITY pRes = (*ite1)->Execute(pContext);
+					PENTITY pRes = (*ite1)->Execute(pContext,conn);
 					if((0 != (PBool)pRes) && (((PBool)pRes)->GetValue()))
 					{
 						bGoInsideWhileLoop = true;
@@ -155,7 +155,7 @@ void ExecutionTemplateList::Execute(ExecutionContext* pContext)
 			}
             default:
 			{
-				(*ite1)->Execute(pContext);
+				(*ite1)->Execute(pContext,conn);
 				++ite1;
 			}
 		}

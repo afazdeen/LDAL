@@ -9,7 +9,7 @@
 #include "TestListGroupBy.h"
 #include "TestCaseIncludes.h"
 
-TestCaseExecutionResult TestListGroupBy::Execute(TestCaseArgument* arg) {
+TestCaseExecutionResult TestListGroupBy::Execute(TestCaseArgument* arg,MYSQL* conn) {
     PENTITYLIST list = new EntityList();
     list->push_back(new String("abc"));
     list->push_back(new String("abcde"));
@@ -30,7 +30,7 @@ TestCaseExecutionResult TestListGroupBy::Execute(TestCaseArgument* arg) {
 	ec.p_mapFunctions = &op.map_Functions;
 	ec.p_MD = pMD;
 	ec.map_Var["BigList"] = list;
-	op.p_ETL->Execute(&ec);
+	op.p_ETL->Execute(&ec,conn);
     PENTITYLIST result = (PENTITYLIST)(ec.map_Var["Result"]);
     
     if (result->size() != 3) {

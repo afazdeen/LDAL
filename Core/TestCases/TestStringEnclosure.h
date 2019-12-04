@@ -11,9 +11,11 @@
 
 #include <iostream>
 #include "TestCaseBase.h"
+#include <windows.h>
+#include <mysql.h>
 
 class TestStringEnclosure : public TestCaseBase {
-    virtual TestCaseExecutionResult Execute(TestCaseArgument* arg);
+    virtual TestCaseExecutionResult Execute(TestCaseArgument* arg,MYSQL* conn);
 };
 
 #endif /* defined(__FlexibleComputerLanguage__TestStringEnclosure__) */

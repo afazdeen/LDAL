@@ -24,11 +24,11 @@ void SpecialCommandExecuter::RegisterSpecialCommands() {
     commands.push_back(new NodeCustomValueShorthand);
 }
 
-PENTITY SpecialCommandExecuter::ExecuteSpecialCommand(PENTITY entity, ExecutionContext* context, Command* cmd) {
+PENTITY SpecialCommandExecuter::ExecuteSpecialCommand(PENTITY entity, ExecutionContext* context, Command* cmd,MYSQL* conn) {
     std::vector<ISpecialCommand*>::iterator ite = commands.begin();
     std::vector<ISpecialCommand*>::iterator end = commands.end();
     for ( ; ite != end; ++ite) {
-        PENTITY res = (*ite)->ExecuteSpecialCommand(entity, context, cmd);
+        PENTITY res = (*ite)->ExecuteSpecialCommand(entity, context, cmd,conn);
         if (res) {
             return res;
         }

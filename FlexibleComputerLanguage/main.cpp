@@ -1,4 +1,4 @@
-/*//
+//
 //  main.cpp
 //  FlexibleComputerLanguage
 //
@@ -34,6 +34,9 @@
 #include "dotenv.h"
 #include "EntityList.h"
 #include "QueryExecuter.h"
+#include "MysqlConnector.h"
+#include <windows.h>
+#include <mysql.h>
 
 using namespace rapidjson;
 using json = nlohmann::json;
@@ -44,6 +47,24 @@ INITIALIZE_EASYLOGGINGPP
 int main(int argc, const char * argv[])
 {
     std::cout << "Started\n";
+    MYSQL *conn = nullptr;
+    MSTRING hostname = "localhost" ;
+    MSTRING username = "admin";
+    MSTRING password = "admin";
+    MSTRING dbname = "substitutiondb";
+    int port = 0;
+
+    MysqlConnector mysqlobj;
+    conn = mysqlobj.getConnection(hostname, username, password, dbname, port);
+    if(conn)
+    {
+        std::cout<<"Connected\n";
+    }
+    else
+    {
+        std::cout<<"Not Connected\n";
+    }
+
     //Tests tt;
    // tt.RunTest6();
     std::string line;
@@ -58,8 +79,8 @@ int main(int argc, const char * argv[])
     Node* jsonroot = LogJsonParser::LogJSONToNodeTree(jsonline);
 
     std::string scriptline;
-    std::ifstream scriptfile ("D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/Scripts/script.txt");
-    //std::ifstream scriptfile ("D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/Masking/maskscript.txt");
+    //std::ifstream scriptfile ("D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/Scripts/duplicatetestscript.txt");
+    std::ifstream scriptfile ("D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/Masking/maskscript.txt");
     std::string script="";
 
     while(getline(scriptfile,scriptline))
@@ -68,7 +89,7 @@ int main(int argc, const char * argv[])
         script+="\n";
     }
 
-    std::string res = QueryExecuter::run(jsonroot,script);
+    std::string res = QueryExecuter::run(jsonroot,script,conn);
     std::cout << "\n";
     std::cout <<res;
 
@@ -76,43 +97,4 @@ int main(int argc, const char * argv[])
 
 
     return 0;
-}*/
-#include <iostream>
-#include "json.hpp"
-#include "Int.h"
-#include "OTPParser.h"
-#include "NamedPipeOperations.h"
-#include "easylogging++.h"
-#include <pthread.h>
-#include "rapidjson/writer.h"
-#include "rapidjson/stringbuffer.h"
-#include <TypeDefs.h>
-#include "D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/SQLAPI/include/SQLAPI.h"
-#include <random>
-
-INITIALIZE_EASYLOGGINGPP
-int main()
-{
-    // create connection object to connect to database
-    //SAConnection con;
-
-    srand(time(NULL)); //generates random seed val
-    int outPut;
-
-    for (int i = 0; i < 50; i++) {
-        outPut = rand()%((25000 - 10000) + 1) + 10000;
-        std::cout << outPut << "  ";
-    }
-    return 0;
 }
-/*
-int userBeg =1;
-int userEnd =30;
-int outPut;
-
-srand(time(NULL)); //generates random seed val
-
-for (int i = 0; i < 20; i++) {
-outPut = rand()%((userEnd - userBeg) + 1) + userBeg;
-std::cout << outPut << "  ";
-}*/

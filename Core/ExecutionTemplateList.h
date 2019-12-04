@@ -2,6 +2,8 @@
 #define _EXECUTIONTEMPLATELIST_H
 
 #include "CommonIncludes.h"
+#include <windows.h>
+#include <mysql.h>
 
 class ExecutionTemplate;
 class ExecutionContext;
@@ -21,7 +23,7 @@ class ExecutionTemplateList : public std::vector<ExecutionTemplate*>
 	typedef std::stack<StackFrame>	STK_FRAMES;
 public:
 	void Destroy();
-	void Execute(ExecutionContext* pContext);
+	void Execute(ExecutionContext* pContext,MYSQL* conn);
 };
 
 #endif

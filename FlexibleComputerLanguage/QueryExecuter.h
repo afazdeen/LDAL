@@ -9,7 +9,7 @@
 class QueryExecuter{
 
 public:
-    static MSTRING run(Node *root, MSTRING querycode);
+    static MSTRING run(Node *root, MSTRING querycode,MYSQL* conn);
 };
 
 

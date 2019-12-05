@@ -1,4 +1,4 @@
-DEF	RULE_FILE_NAME					TestInnerCountScript.txt
+DEF	RULE_FILE_NAME					../Core/TestCases/files/TestInnerCountScript.txt
 DEF	LINE_CONTINUATION_STRING			__
 DEF	FUNCTION_SEPERATOR				.
 DEF	EQUAL_SIGN					:=

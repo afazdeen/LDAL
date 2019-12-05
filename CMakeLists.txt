@@ -90,8 +90,6 @@ add_executable(FlexibleComputerLanguage1
         FlexibleComputerLanguage/ResultGenerator.cpp
         FlexibleComputerLanguage/OTPParser.h
         FlexibleComputerLanguage/OTPParser.cpp
-        FlexibleComputerLanguage/NamedPipeOperations.h
-        FlexibleComputerLanguage/NamedPipeOperations.cpp
         FlexibleComputerLanguage/easylogging++.h
         FlexibleComputerLanguage/easylogging++.cc
         FlexibleComputerLanguage/Logger.h

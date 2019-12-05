@@ -22,7 +22,6 @@
 #include "Int.h"
 #include "OTPParser.h"
 #include "LogJsonParser.h"
-#include "NamedPipeOperations.h"
 #include "easylogging++.h"
 #include "Logger.h"
 #include <iostream>
@@ -61,7 +60,7 @@ int main(int argc, const char * argv[])
    // tt.RunTest6();
     std::string line;
     std::string jsonline;
-    std::ifstream jsonfile ("D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/resultJSON.json");
+    std::ifstream jsonfile ("../FlexibleComputerLanguage/resultJSON.json");
     if (jsonfile.is_open())
     {
         getline (jsonfile,line);
@@ -81,8 +80,8 @@ int main(int argc, const char * argv[])
     }
 
     std::string scriptline;
-    //std::ifstream scriptfile ("D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/Scripts/duplicatetestscript.txt");
-    std::ifstream scriptfile ("D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/Masking/maskscript.txt");
+    //std::ifstream scriptfile ("../FlexibleComputerLanguage/Scripts/duplicatetestscript.txt");
+    std::ifstream scriptfile ("../FlexibleComputerLanguage/Masking/maskscript.txt");
     std::string script="";
 
     while(getline(scriptfile,scriptline))

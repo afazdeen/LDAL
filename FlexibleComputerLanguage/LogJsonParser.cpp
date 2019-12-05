@@ -66,8 +66,13 @@ Node* LogJsonParser::LOGJSONToNodeTreeRecursively(rapidjson::Value &j,Node* pare
 
 void LogJsonParser::LogNodeTreetoJson(Node* node)
 {
+
+    char buffer[MAX_PATH];
+    ::GetCurrentDirectory(MAX_PATH, buffer);
+    std::cout << "Current directory: " << buffer <<"\n";
+
     std::ofstream newjsonfile;
-    newjsonfile.open("D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/maskedJSON.json");
+    newjsonfile.open("../FlexibleComputerLanguage/maskedJSON.json");
     Node* curr =node->GetFirstChild();
     newjsonfile<<_MSTR([{)<<_MSTR(\n);
     bool hasChild =false;

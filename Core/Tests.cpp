@@ -89,7 +89,7 @@ void Tests::RunTest4(MYSQL* conn)
     MetaData* pMD = dfr.Read("../Core/TestCases/files/test5/Defs.txt");
 	ScriptReader sr;
 	ScriptReaderOutput op;
-	bool bSucc = sr.ProcessScript(pMD, op, "$X.GetAggregatedValue.WriteToFile(/Users/MurtazaA/99X/Backend/MurtazaQLVersion/FlexibleComputerLanguage/FlexibleComputerLanguage/report_Unix)");
+	bool bSucc = sr.ProcessScript(pMD, op, "$X.GetAggregatedValue.WriteToFile(../FlexibleComputerLanguage/report_Unix)");
 	if(!bSucc)
 	{
 		std::wcout<<"\nFailed to read script\n";
@@ -135,7 +135,7 @@ void Tests::RunTest5(MYSQL* conn)
 void Tests::RunTest6(MYSQL* conn)
 {
     DefFileReader dfr;
-    MetaData* pMD = dfr.Read("D:/MurtazaCode/FlexibleComputerLanguage/Core/TestCases/files/TestLoadFromCodeLibraryScriptDefs.txt");
+    MetaData* pMD = dfr.Read("../Core/TestCases/files/TestLoadFromCodeLibraryScriptDefs.txt");
     ScriptReader sr;
     ScriptReaderOutput op;
     bool bSucc = sr.ProcessScript(pMD->s_RuleFileName, pMD, op);

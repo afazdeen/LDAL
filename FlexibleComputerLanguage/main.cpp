@@ -60,7 +60,7 @@ int main(int argc, const char * argv[])
    // tt.RunTest6();
     std::string line;
     std::string jsonline;
-    std::ifstream jsonfile ("../FlexibleComputerLanguage/resultJSON.json");
+    std::ifstream jsonfile ("../FlexibleComputerLanguage/norwayresultJSON.json");
     if (jsonfile.is_open())
     {
         getline (jsonfile,line);
@@ -80,8 +80,9 @@ int main(int argc, const char * argv[])
     }
 
     std::string scriptline;
+    //std::ifstream scriptfile ("../FlexibleComputerLanguage/Masking/maskscript.txt");
     //std::ifstream scriptfile ("../FlexibleComputerLanguage/Scripts/duplicatetestscript.txt");
-    std::ifstream scriptfile ("../FlexibleComputerLanguage/Masking/maskscript.txt");
+    std::ifstream scriptfile ("../FlexibleComputerLanguage/Masking/norwaymaskscript.txt");
     std::string script="";
 
     while(getline(scriptfile,scriptline))

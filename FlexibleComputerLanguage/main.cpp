@@ -46,24 +46,16 @@ INITIALIZE_EASYLOGGINGPP
 
 int main(int argc, const char * argv[])
 {
-    std::cout << "Started\n";
+    std::cout<<"Log analyzer masking started\n";
+
     MYSQL *conn = nullptr;
     MSTRING hostname = "localhost" ;
     MSTRING username = "admin";
     MSTRING password = "admin";
     MSTRING dbname = "substitutiondb";
     int port = 0;
-
     MysqlConnector mysqlobj;
     conn = mysqlobj.getConnection(hostname, username, password, dbname, port);
-    if(conn)
-    {
-        std::cout<<"Connected\n";
-    }
-    else
-    {
-        std::cout<<"Not Connected\n";
-    }
 
     //Tests tt;
    // tt.RunTest6();
@@ -77,6 +69,16 @@ int main(int argc, const char * argv[])
         jsonfile.close();
     }
     Node* jsonroot = LogJsonParser::LogJSONToNodeTree(jsonline);
+
+    if(conn)
+    {
+        std::cout<<"Connected\n";
+    }
+    else
+    {
+        perror ("The Database could bot be connected, Please check the db connection!");
+        throw std::exception();
+    }
 
     std::string scriptline;
     //std::ifstream scriptfile ("D:/99xProjects/MurtazaCode/FlexibleComputerLanguage/FlexibleComputerLanguage/Scripts/duplicatetestscript.txt");

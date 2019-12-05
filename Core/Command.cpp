@@ -1393,17 +1393,58 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    int randid = rand()%((799 - 1) + 1) + 1;
 
-                    if(conn)
+                    static std::set<std::string> setbeforemaskfname;
+                    std::set<std::string>::iterator it;
+                    int temp =setSize;
+                    setbeforemaskfname.insert (argument);
+                    setSize=setbeforemaskfname.size();
+                    MSTRING tempStr=std::to_string(setSize);
+                    MSTRING tempReplace;
+                    std::cout<<temp<<"\n";
+                    std::cout<<setSize<<"\n";
+                    if(temp==setSize)
                     {
-                        std::cout<<"Connected\n";
-                        MysqlConnector mysqlobj;
-                        replacement = mysqlobj.selectFirstName(conn,randid);
+                        std::cout<<"No repeat\n";
                     }
                     else
                     {
-                        replacement ="dummyFirstName";
+                        std::cout<<"Repeat yes\n";
+                    }
+
+                    std::cout << "setbeforemaskfname contains : ";
+                    for (it=setbeforemaskfname.begin(); it!=setbeforemaskfname.end(); ++it)
+                    {
+                        std::cout << *it<<" , ";
+                    }
+                    std::cout << '\n';
+
+                    if(conn)
+                    {
+                        MysqlConnector mysqlobj;
+                        int resultmale = mysqlobj.existsFirstNameMale(conn,argument);
+                        int resultfemale = mysqlobj.existsFirstNameFemale(conn,argument);
+
+                        if(resultmale==1)
+                        {
+                            int randid = rand()%((7732 - 1) + 1) + 1;
+                            replacement = mysqlobj.selectFirstNameMale(conn,randid);
+                        }
+                        else if(resultfemale == 1)
+                        {
+                            int randid = rand()%((7144 - 1) + 1) + 1;
+                            replacement = mysqlobj.selectFirstNameFemale(conn,randid);
+                        }
+                        else
+                        {
+                            int randid = rand()%((744 - 1) + 1) + 1;
+                            replacement = mysqlobj.selectFirstNameUnisex(conn,randid);
+                        }
+
+                    }
+                    else
+                    {
+                        perror ("The Database could bot be connected!");
                     }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
@@ -1422,17 +1463,42 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
-                    int randid = rand()%((499 - 1) + 1) + 1;
+
+                    static std::set<std::string> setbeforemasklname;
+                    std::set<std::string>::iterator it;
+                    int temp =setSize;
+                    setbeforemasklname.insert (argument);
+                    setSize=setbeforemasklname.size();
+                    MSTRING tempStr=std::to_string(setSize);
+                    MSTRING tempReplace;
+                    std::cout<<temp<<"\n";
+                    std::cout<<setSize<<"\n";
+                    if(temp==setSize)
+                    {
+                        std::cout<<"No repeat\n";
+                    }
+                    else
+                    {
+                        std::cout<<"Repeat yes\n";
+                    }
+
+                    std::cout << "setbeforemasklname contains : ";
+                    for (it=setbeforemasklname.begin(); it!=setbeforemasklname.end(); ++it)
+                    {
+                        std::cout << *it<<" , ";
+                    }
+                    std::cout << '\n';
+
+                    int randid = rand()%((789 - 1) + 1) + 1;
 
                     if(conn)
                     {
-                        std::cout<<"Connected\n";
                         MysqlConnector mysqlobj;
                         replacement = mysqlobj.selectLastName(conn,randid);
                     }
                     else
                     {
-                        replacement ="dummyLastName";
+                        perror ("The Database could bot be connected!");
                     }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
@@ -1452,20 +1518,62 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
 
-                    int randfnameid = rand()%((499 - 1) + 1) + 1;
-                    int randlnameid = rand()%((499 - 1) + 1) + 1;
+                    static std::set<std::string> setbeforemaskfullname;
+                    std::set<std::string>::iterator it;
+                    int temp =setSize;
+                    setbeforemaskfullname.insert (argument);
+                    setSize=setbeforemaskfullname.size();
+                    MSTRING tempStr=std::to_string(setSize);
+                    MSTRING tempReplace;
+                    std::cout<<temp<<"\n";
+                    std::cout<<setSize<<"\n";
+                    if(temp==setSize)
+                    {
+                        std::cout<<"No repeat\n";
+                    }
+                    else
+                    {
+                        std::cout<<"Repeat yes\n";
+                    }
+
+                    std::cout << "setbeforemaskfullname contains : ";
+                    for (it=setbeforemaskfullname.begin(); it!=setbeforemaskfullname.end(); ++it)
+                    {
+                        std::cout << *it<<" , ";
+                    }
+                    std::cout << '\n';
+
+                    int randlnameid = rand()%((789 - 1) + 1) + 1;
 
                     if(conn)
                     {
-                        std::cout<<"Connected\n";
                         MysqlConnector mysqlobj;
-                        MSTRING fname = mysqlobj.selectFirstName(conn,randfnameid);
+                        MSTRING fname;
+
+                        int resultmale = mysqlobj.existsFirstNameMale(conn,argument);
+                        int resultfemale = mysqlobj.existsFirstNameFemale(conn,argument);
+
+                        if(resultmale==1)
+                        {
+                            int randid = rand()%((7732 - 1) + 1) + 1;
+                            fname = mysqlobj.selectFirstNameMale(conn,randid);
+                        }
+                        else if(resultfemale == 1)
+                        {
+                            int randid = rand()%((7144 - 1) + 1) + 1;
+                            fname = mysqlobj.selectFirstNameFemale(conn,randid);
+                        }
+                        else
+                        {
+                            int randid = rand()%((744 - 1) + 1) + 1;
+                            fname = mysqlobj.selectFirstNameUnisex(conn,randid);
+                        }
                         MSTRING lname = mysqlobj.selectLastName(conn,randlnameid);
                         replacement = fname + " " + lname;
                     }
                     else
                     {
-                        replacement ="dummyFullName";
+                        perror ("The Database could bot be connected!");
                     }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
@@ -1676,13 +1784,12 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
 
                     if(conn)
                     {
-                        std::cout<<"Connected\n";
                         MysqlConnector mysqlobj;
                         replacement = mysqlobj.selectCityCode(conn,randid);
                     }
                     else
                     {
-                        replacement="62";
+                        perror ("The Database could bot be connected!");
                     }
 
                     if(replacement.length()==1)
@@ -1717,17 +1824,42 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
+
+                    static std::set<std::string> setbeforemaskaddress;
+                    std::set<std::string>::iterator it;
+                    int temp =setSize;
+                    setbeforemaskaddress.insert (argument);
+                    setSize=setbeforemaskaddress.size();
+                    MSTRING tempStr=std::to_string(setSize);
+                    MSTRING tempReplace;
+                    std::cout<<temp<<"\n";
+                    std::cout<<setSize<<"\n";
+                    if(temp==setSize)
+                    {
+                        std::cout<<"No repeat\n";
+                    }
+                    else
+                    {
+                        std::cout<<"Repeat yes\n";
+                    }
+
+                    std::cout << "setbeforemaskaddress contains : ";
+                    for (it=setbeforemaskaddress.begin(); it!=setbeforemaskaddress.end(); ++it)
+                    {
+                        std::cout << *it<<" , ";
+                    }
+                    std::cout << '\n';
+
                     int randid = rand()%((499 - 1) + 1) + 1;
 
                     if(conn)
                     {
-                        std::cout<<"Connected\n";
                         MysqlConnector mysqlobj;
                         replacement = mysqlobj.selectAddress(conn,randid);
                     }
                     else
                     {
-                        replacement ="dummyAddress";
+                        perror ("The Database could bot be connected!");
                     }
 
                     std::size_t pos=nodeString.find(argument);
@@ -1747,17 +1879,42 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
+
+                    static std::set<std::string> setbeforemaskpostalcode;
+                    std::set<std::string>::iterator it;
+                    int temp =setSize;
+                    setbeforemaskpostalcode.insert (argument);
+                    setSize=setbeforemaskpostalcode.size();
+                    MSTRING tempStr=std::to_string(setSize);
+                    MSTRING tempReplace;
+                    std::cout<<temp<<"\n";
+                    std::cout<<setSize<<"\n";
+                    if(temp==setSize)
+                    {
+                        std::cout<<"No repeat\n";
+                    }
+                    else
+                    {
+                        std::cout<<"Repeat yes\n";
+                    }
+
+                    std::cout << "setbeforemaskpostalcode contains : ";
+                    for (it=setbeforemaskpostalcode.begin(); it!=setbeforemaskpostalcode.end(); ++it)
+                    {
+                        std::cout << *it<<" , ";
+                    }
+                    std::cout << '\n';
+
                     int randid = rand()%((200 - 1) + 1) + 1;
 
                     if(conn)
                     {
-                        std::cout<<"Connected\n";
                         MysqlConnector mysqlobj;
                         replacement = mysqlobj.selectPostalCode(conn,randid);
                     }
                     else
                     {
-                        replacement ="dummyPostalcode";
+                        perror ("The Database could bot be connected!");
                     }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);

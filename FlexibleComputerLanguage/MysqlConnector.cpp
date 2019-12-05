@@ -38,11 +38,69 @@ MSTRING MysqlConnector::selectPostalCode(MYSQL *conn, int id)
     MSTRING result =row[0];
     return result;
 }
-MSTRING MysqlConnector::selectFirstName(MYSQL *conn, int id)
+int MysqlConnector::existsFirstNameMale(MYSQL *conn, MSTRING fname)
 {
     MYSQL_RES *res; /* holds the result set */
     MYSQL_ROW row;
-    MSTRING query = "SELECT name FROM test_table WHERE id = "+std::to_string(id);
+    int result;
+    MSTRING query = "SELECT ID FROM norwayfirstnamemale WHERE FirstName = '"+fname+"'";
+    mysql_query(conn,query.c_str());
+    res = mysql_store_result(conn);
+    row = mysql_fetch_row(res);
+    if(row==NULL)
+    {
+        result = 0;
+    } else
+    {
+        result = 1;
+    }
+    return result;
+}
+int MysqlConnector::existsFirstNameFemale(MYSQL *conn, MSTRING fname)
+{
+    MYSQL_RES *res; /* holds the result set */
+    MYSQL_ROW row;
+    int result;
+    MSTRING query = "SELECT ID FROM norwayfirstnamefemale WHERE FirstName = '"+fname+"'";
+    mysql_query(conn,query.c_str());
+    res = mysql_store_result(conn);
+    row = mysql_fetch_row(res);
+    if(row==NULL)
+    {
+        result = 0;
+    } else
+    {
+        result = 1;
+    }
+    return result;
+}
+MSTRING MysqlConnector::selectFirstNameMale(MYSQL *conn, int id)
+{
+    MYSQL_RES *res; /* holds the result set */
+    MYSQL_ROW row;
+    MSTRING query = "SELECT FirstName FROM norwayfirstnamemale WHERE ID = "+std::to_string(id);
+    mysql_query(conn,query.c_str());
+    res = mysql_store_result(conn);
+    row = mysql_fetch_row(res);
+    MSTRING result =row[0];
+    return result;
+}
+MSTRING MysqlConnector::selectFirstNameFemale(MYSQL *conn, int id)
+{
+    MYSQL_RES *res; /* holds the result set */
+    MYSQL_ROW row;
+    MSTRING query = "SELECT FirstName FROM norwayfirstnamefemale WHERE ID = "+std::to_string(id);
+    mysql_query(conn,query.c_str());
+    res = mysql_store_result(conn);
+    row = mysql_fetch_row(res);
+    MSTRING result =row[0];
+    return result;
+}
+MSTRING MysqlConnector::selectFirstNameUnisex(MYSQL *conn, int id)
+{
+    MYSQL_RES *res; /* holds the result set */
+    MYSQL_ROW row;
+    MSTRING query = "SELECT FirstName FROM norwayfirstnameunisex WHERE ID = "+std::to_string(id);
     mysql_query(conn,query.c_str());
     res = mysql_store_result(conn);
     row = mysql_fetch_row(res);

@@ -64,56 +64,45 @@ Node* LogJsonParser::LOGJSONToNodeTreeRecursively(rapidjson::Value &j,Node* pare
     return parent;
 }
 
-void LogJsonParser::LogNodeTreetoJson(Node* node)
+void LogJsonParser::LogNodeTreetoJsonRecursivly(Node* root)
 {
-    std::ofstream newjsonfile;
+    MOFSTREAM newjsonfile;
     newjsonfile.open("../FlexibleComputerLanguage/maskedJSON.json");
-    Node* curr =node->GetFirstChild();
-    newjsonfile<<_MSTR([{)<<_MSTR(\n);
-    bool hasChild =false;
-    while (curr)
-    {
-        PrintNodeToFile(newjsonfile,curr,hasChild);
-        if(curr->GetRightSibling())
-        {
-            newjsonfile <<"},\n";
-        }
-        curr = curr->GetRightSibling();
-    }
-    newjsonfile<<_MSTR(\n)<<_MSTR(}]);
-    newjsonfile.close();
+    newjsonfile<<"[";
+    LogJsonParser::PrintTreeToFileRecursivly(newjsonfile,root->GetFirstChild());
+    newjsonfile<<"]";
 }
-
-void LogJsonParser::PrintNodeToFile(std::ofstream &newjsonfile,Node* node,int count)
-{
-    MSTRING nodeValue = node->GetValue();
-    json j1=nodeValue;
-    if(node->GetChildCount()>0)
-    {
-        if(nodeValue=="Value")
-        {
-            newjsonfile <<j1 << _MSTR(:);
+void LogJsonParser::PrintTreeToFileRecursivly(MOFSTREAM &newjsonfile,PNODE node){
+    Node* curr=node;
+    Node* prev;
+    newjsonfile<<"{";
+    while(curr){
+        MSTRING currNodeValue = curr->GetValue();
+        if(currNodeValue=="Value"){
+            json value= curr->GetValue();
+            newjsonfile<<value<<_MSTR(:);
+            value=curr->GetFirstChild()->GetValue();
+            newjsonfile<<value;
+            if(curr->GetParent()->GetRightSibling()!=NULL){
+                newjsonfile<<"},";
+            }
+            else{
+                newjsonfile<<"}";
+            }
+            return;
         }
-        else
-        {
-            newjsonfile <<j1 << _MSTR(:)<<_MSTR({\n);
+        else{
+            json value=curr->GetValue();
+            newjsonfile<<value<<_MSTR(:);
+            PrintTreeToFileRecursivly(newjsonfile,curr->GetFirstChild());
+            prev=curr;
+            curr=curr->GetRightSibling();
         }
     }
-    else
-    {
-        newjsonfile <<j1<<_MSTR(\n);
+    if(prev->GetParent()->GetRightSibling()!=NULL){
+        newjsonfile<<"},";
     }
-
-    PNODE child = node->GetFirstChild();
-    bool hasChildren = false;
-    while (child != NULL)
-    {
-        hasChildren = true;
-        PrintNodeToFile(newjsonfile, child,count);
-        if(child->GetRightSibling())
-        {
-            newjsonfile <<"},\n";
-        }
-        child = child->GetRightSibling();
+    else{
+        newjsonfile<<"}";
     }
 }

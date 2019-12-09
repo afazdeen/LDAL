@@ -35,6 +35,6 @@ private:
 	PENTITY ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, ExecutionContext* pContext, PENTITY pArg,MYSQL* conn);
 	PENTITY ExecuteEntityCommand(MULONG ulCommand, PENTITY pEntity, PENTITY pArg,MYSQL* conn);
     PENTITY ExecuteDateTimeCommand(MULONG ulCommand, PENTITY pEntity, PENTITY pArg);
-	void	AddSubtreeToNodeList(PENTITYLIST pList, PNODE pRoot);
-    void    FilterSubTree(PNODE root, ExecutionTemplate* arg, ExecutionContext* context, PENTITYLIST resultList,MYSQL* conn);
+	void AddSubtreeToNodeList(PENTITYLIST pList, PNODE pRoot);
+    void FilterSubTree(PNODE root, ExecutionTemplate* arg, ExecutionContext* context, PENTITYLIST resultList,MYSQL* conn);
 };

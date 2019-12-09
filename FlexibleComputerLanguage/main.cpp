@@ -95,7 +95,7 @@ int main(int argc, const char * argv[])
     std::cout << "\n";
     std::cout <<res;
 
-    LogJsonParser::LogNodeTreetoJson(jsonroot);
+    LogJsonParser::LogNodeTreetoJsonRecursivly(jsonroot);
 
 
     return 0;

@@ -17,13 +17,27 @@
 #include <set>
 #include <algorithm>
 #include <functional>
-#include <random>
 #include <windows.h>
 #include <mysql.h>
 #include <MysqlConnector.h>
 
 //Global variable
-int setSize = 0;
+int counttest=0;
+int countfname = 0;
+int countlname = 0;
+int countfullname = 0;
+int countday=0;
+int countmonth=0;
+int countyear=0;
+int counthour=0;
+int countminute=0;
+int countseconds=0;
+int counttelnum=0;
+int countnic=0;
+int countprice=0;
+int countinteger=0;
+int countaddress = 0;
+int countpostalcode = 0;
 
 Command::Command()
         :ul_CommandType(COMMAND_TYPE_INVALID), p_Arg(0), p_EntityArg(0), s_AdditionalFuncName(EMPTY_STRING)
@@ -33,7 +47,6 @@ Command::Command()
 
 Command::~Command()
 {
-    std::cout<<"Connected\n";
 
 }
 
@@ -875,7 +888,8 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
 {
 
 
-    srand(time(NULL)); //generates random seed val
+    //srand(time(NULL)); //generates random seed val
+    //std::cout<<"The random number generator !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
     PNODE pNode = (PNODE)pEntity;
     if(0 == pNode)
     {
@@ -1353,14 +1367,14 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
 
                     static std::set<std::string> setbeforemask;
                     std::set<std::string>::iterator it;
-                    int temp =setSize;
+                    int temp =countfname;
                     setbeforemask.insert (argument);
-                    setSize=setbeforemask.size();
-                    MSTRING tempStr=std::to_string(setSize);
+                    countfname=setbeforemask.size();
+                    MSTRING tempStr=std::to_string(countfname);
                     MSTRING tempReplace;
                     std::cout<<temp<<"\n";
-                    std::cout<<setSize<<"\n";
-                    if(temp==setSize)
+                    std::cout<<countfname<<"\n";
+                    if(temp==countfname)
                     {
                         std::cout<<"No repeat\n";
                     }
@@ -1396,14 +1410,15 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
 
                     static std::set<std::string> setbeforemaskfname;
                     std::set<std::string>::iterator it;
-                    int temp =setSize;
+                    int temp =countfname;
                     setbeforemaskfname.insert (argument);
-                    setSize=setbeforemaskfname.size();
-                    MSTRING tempStr=std::to_string(setSize);
+                    countfname=setbeforemaskfname.size();
+                    MSTRING tempStr=std::to_string(countfname);
                     MSTRING tempReplace;
                     std::cout<<temp<<"\n";
-                    std::cout<<setSize<<"\n";
-                    if(temp==setSize)
+                    std::cout<<countfname<<"\n";
+
+                    if(temp==countfname)
                     {
                         std::cout<<"No repeat\n";
                     }
@@ -1418,6 +1433,8 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
+
+                    srand(time(NULL)*countfname); //generates random seed val
 
                     if(conn)
                     {
@@ -1466,14 +1483,15 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
 
                     static std::set<std::string> setbeforemasklname;
                     std::set<std::string>::iterator it;
-                    int temp =setSize;
+                    int temp =countlname;
                     setbeforemasklname.insert (argument);
-                    setSize=setbeforemasklname.size();
-                    MSTRING tempStr=std::to_string(setSize);
+                    countlname=setbeforemasklname.size();
+                    MSTRING tempStr=std::to_string(countlname);
                     MSTRING tempReplace;
                     std::cout<<temp<<"\n";
-                    std::cout<<setSize<<"\n";
-                    if(temp==setSize)
+                    std::cout<<countlname<<"\n";
+
+                    if(temp==countlname)
                     {
                         std::cout<<"No repeat\n";
                     }
@@ -1489,11 +1507,12 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     }
                     std::cout << '\n';
 
-                    int randid = rand()%((789 - 1) + 1) + 1;
+                    srand(time(NULL)*countlname); //generates random seed val
 
                     if(conn)
                     {
                         MysqlConnector mysqlobj;
+                        int randid = rand()%((789 - 1) + 1) + 1;
                         replacement = mysqlobj.selectLastName(conn,randid);
                     }
                     else
@@ -1520,14 +1539,14 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
 
                     static std::set<std::string> setbeforemaskfullname;
                     std::set<std::string>::iterator it;
-                    int temp =setSize;
+                    int temp =countfullname;
                     setbeforemaskfullname.insert (argument);
-                    setSize=setbeforemaskfullname.size();
-                    MSTRING tempStr=std::to_string(setSize);
+                    countfullname=setbeforemaskfullname.size();
+                    MSTRING tempStr=std::to_string(countfullname);
                     MSTRING tempReplace;
                     std::cout<<temp<<"\n";
-                    std::cout<<setSize<<"\n";
-                    if(temp==setSize)
+                    std::cout<<countfullname<<"\n";
+                    if(temp==countfullname)
                     {
                         std::cout<<"No repeat\n";
                     }
@@ -1543,13 +1562,13 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     }
                     std::cout << '\n';
 
-                    int randlnameid = rand()%((789 - 1) + 1) + 1;
+                    srand(time(NULL)*countfullname); //generates random seed val
 
                     if(conn)
                     {
                         MysqlConnector mysqlobj;
                         MSTRING fname;
-
+                        int randlnameid = rand()%((789 - 1) + 1) + 1;
                         int resultmale = mysqlobj.existsFirstNameMale(conn,argument);
                         int resultfemale = mysqlobj.existsFirstNameFemale(conn,argument);
 
@@ -1589,9 +1608,38 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                 MemoryManager::Inst.CreateObject(&pNullRes);
                 if(ENTITY_TYPE_STRING == pArg->ul_Type)
                 {
+                    srand(time(NULL)); //generates random seed val
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
+
+                    static std::set<std::string> setbeforemaskdate;
+                    std::set<std::string>::iterator it;
+                    int temp =countday;
+                    setbeforemaskdate.insert (argument);
+                    countday=setbeforemaskdate.size();
+                    std::cout<<temp<<"\n";
+                    std::cout<<countday<<"\n";
+
+                    if(temp==countday)
+                    {
+                        std::cout<<"No repeat\n";
+                    }
+                    else
+                    {
+                        std::cout<<"Repeat yes\n";
+                    }
+
+                    std::cout << "setbeforemaskdate contains : ";
+                    for (it=setbeforemaskdate.begin(); it!=setbeforemaskdate.end(); ++it)
+                    {
+                        std::cout << *it<<" , ";
+                    }
+                    std::cout << '\n';
+
+                    countday++;
+                    srand(time(NULL)*countday); //generates random seed val
+
                     int randomDate = rand()%((30 - 1) + 1) + 1;
                     MSTRING tempStr=std::to_string(randomDate);
                     if(tempStr.length()==1)
@@ -1620,9 +1668,38 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                 MemoryManager::Inst.CreateObject(&pNullRes);
                 if(ENTITY_TYPE_STRING == pArg->ul_Type)
                 {
+                    srand(time(NULL)); //generates random seed val
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
+
+                    static std::set<std::string> setbeforemaskmonth;
+                    std::set<std::string>::iterator it;
+                    int temp =countmonth;
+                    setbeforemaskmonth.insert (argument);
+                    countmonth=setbeforemaskmonth.size();
+                    std::cout<<temp<<"\n";
+                    std::cout<<countmonth<<"\n";
+
+                    if(temp==countmonth)
+                    {
+                        std::cout<<"No repeat\n";
+                    }
+                    else
+                    {
+                        std::cout<<"Repeat yes\n";
+                    }
+
+                    std::cout << "setbeforemaskmonth contains : ";
+                    for (it=setbeforemaskmonth.begin(); it!=setbeforemaskmonth.end(); ++it)
+                    {
+                        std::cout << *it<<" , ";
+                    }
+                    std::cout << '\n';
+
+                    countmonth++;
+                    srand(time(NULL)*countmonth); //generates random seed val
+
                     int randomMonth = rand()%((12 - 1) + 1) + 1;
                     MSTRING tempStr=std::to_string(randomMonth);
                     if(tempStr.length()==1)
@@ -1651,9 +1728,38 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                 MemoryManager::Inst.CreateObject(&pNullRes);
                 if(ENTITY_TYPE_STRING == pArg->ul_Type)
                 {
+                    srand(time(NULL)); //generates random seed val
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
+
+                    static std::set<std::string> setbeforemaskyear;
+                    std::set<std::string>::iterator it;
+                    int temp =countyear;
+                    setbeforemaskyear.insert (argument);
+                    countyear=setbeforemaskyear.size();
+                    std::cout<<temp<<"\n";
+                    std::cout<<countyear<<"\n";
+
+                    if(temp==countyear)
+                    {
+                        std::cout<<"No repeat\n";
+                    }
+                    else
+                    {
+                        std::cout<<"Repeat yes\n";
+                    }
+
+                    std::cout << "setbeforemaskyear contains : ";
+                    for (it=setbeforemaskyear.begin(); it!=setbeforemaskyear.end(); ++it)
+                    {
+                        std::cout << *it<<" , ";
+                    }
+                    std::cout << '\n';
+
+                    countyear++;
+                    srand(time(NULL)*countyear); //generates random seed val
+
                     int arg = std::stoi(argument);
                     int diff=5;
                     int userBeg =arg-diff;
@@ -1681,9 +1787,38 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                 MemoryManager::Inst.CreateObject(&pNullRes);
                 if(ENTITY_TYPE_STRING == pArg->ul_Type)
                 {
+                    srand(time(NULL)); //generates random seed val
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
+
+                    static std::set<std::string> setbeforemaskhour;
+                    std::set<std::string>::iterator it;
+                    int temp =counthour;
+                    setbeforemaskhour.insert (argument);
+                    counthour=setbeforemaskhour.size();
+                    std::cout<<temp<<"\n";
+                    std::cout<<counthour<<"\n";
+
+                    if(temp==counthour)
+                    {
+                        std::cout<<"No repeat\n";
+                    }
+                    else
+                    {
+                        std::cout<<"Repeat yes\n";
+                    }
+
+                    std::cout << "setbeforemaskhour contains : ";
+                    for (it=setbeforemaskhour.begin(); it!=setbeforemaskhour.end(); ++it)
+                    {
+                        std::cout << *it<<" , ";
+                    }
+                    std::cout << '\n';
+
+                    counthour++;
+                    srand(time(NULL)*counthour); //generates random seed val
+
                     //Assuming hours in 24-hour format
                     int randomHour = rand()%((23) + 1);
                     MSTRING tempStr=std::to_string(randomHour);
@@ -1713,9 +1848,38 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                 MemoryManager::Inst.CreateObject(&pNullRes);
                 if(ENTITY_TYPE_STRING == pArg->ul_Type)
                 {
+                    srand(time(NULL)); //generates random seed val
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
+
+                    static std::set<std::string> setbeforemaskminute;
+                    std::set<std::string>::iterator it;
+                    int temp =countminute;
+                    setbeforemaskminute.insert (argument);
+                    countminute=setbeforemaskminute.size();
+                    std::cout<<temp<<"\n";
+                    std::cout<<countminute<<"\n";
+
+                    if(temp==countminute)
+                    {
+                        std::cout<<"No repeat\n";
+                    }
+                    else
+                    {
+                        std::cout<<"Repeat yes\n";
+                    }
+
+                    std::cout << "setbeforemaskminute contains : ";
+                    for (it=setbeforemaskminute.begin(); it!=setbeforemaskminute.end(); ++it)
+                    {
+                        std::cout << *it<<" , ";
+                    }
+                    std::cout << '\n';
+
+                    countminute++;
+                    srand(time(NULL)*countminute); //generates random seed val
+
                     int randomMinute = rand()%((59) + 1);
                     MSTRING tempStr=std::to_string(randomMinute);
                     if(tempStr.length()==1)
@@ -1744,9 +1908,38 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                 MemoryManager::Inst.CreateObject(&pNullRes);
                 if(ENTITY_TYPE_STRING == pArg->ul_Type)
                 {
+                    srand(time(NULL)); //generates random seed val
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
+
+                    static std::set<std::string> setbeforemaskseconds;
+                    std::set<std::string>::iterator it;
+                    int temp =countseconds;
+                    setbeforemaskseconds.insert (argument);
+                    countseconds=setbeforemaskseconds.size();
+                    std::cout<<temp<<"\n";
+                    std::cout<<countseconds<<"\n";
+
+                    if(temp==countseconds)
+                    {
+                        std::cout<<"No repeat\n";
+                    }
+                    else
+                    {
+                        std::cout<<"Repeat yes\n";
+                    }
+
+                    std::cout << "setbeforemaskseconds contains : ";
+                    for (it=setbeforemaskseconds.begin(); it!=setbeforemaskseconds.end(); ++it)
+                    {
+                        std::cout << *it<<" , ";
+                    }
+                    std::cout << '\n';
+
+                    countseconds++;
+                    srand(time(NULL)*countseconds); //generates random seed val
+
                     int randomSecond = rand()%((59) + 1);
                     MSTRING tempStr=std::to_string(randomSecond);
                     if(tempStr.length()==1)
@@ -1775,9 +1968,38 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                 MemoryManager::Inst.CreateObject(&pNullRes);
                 if(ENTITY_TYPE_STRING == pArg->ul_Type)
                 {
+                    srand(time(NULL)); //generates random seed val
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
+
+                    static std::set<std::string> setbeforemasktelnum;
+                    std::set<std::string>::iterator it;
+                    int temp =counttelnum;
+                    setbeforemasktelnum.insert (argument);
+                    counttelnum=setbeforemasktelnum.size();
+                    std::cout<<temp<<"\n";
+                    std::cout<<counttelnum<<"\n";
+
+                    if(temp==counttelnum)
+                    {
+                        std::cout<<"No repeat\n";
+                    }
+                    else
+                    {
+                        std::cout<<"Repeat yes\n";
+                    }
+
+                    std::cout << "setbeforemasktelnum contains : ";
+                    for (it=setbeforemasktelnum.begin(); it!=setbeforemasktelnum.end(); ++it)
+                    {
+                        std::cout << *it<<" , ";
+                    }
+                    std::cout << '\n';
+
+                    counttelnum++;
+                    srand(time(NULL)*counttelnum); //generates random seed val
+
                     int telLength=0;
                     MSTRING telNum;
                     int randid = rand()%((13 - 1) + 1) + 1;
@@ -1827,14 +2049,14 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
 
                     static std::set<std::string> setbeforemaskaddress;
                     std::set<std::string>::iterator it;
-                    int temp =setSize;
+                    int temp =countaddress;
                     setbeforemaskaddress.insert (argument);
-                    setSize=setbeforemaskaddress.size();
-                    MSTRING tempStr=std::to_string(setSize);
+                    countaddress=setbeforemaskaddress.size();
+                    MSTRING tempStr=std::to_string(countaddress);
                     MSTRING tempReplace;
                     std::cout<<temp<<"\n";
-                    std::cout<<setSize<<"\n";
-                    if(temp==setSize)
+                    std::cout<<countaddress<<"\n";
+                    if(temp==countaddress)
                     {
                         std::cout<<"No repeat\n";
                     }
@@ -1850,11 +2072,12 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     }
                     std::cout << '\n';
 
-                    int randid = rand()%((499 - 1) + 1) + 1;
+                    srand(time(NULL)*countaddress); //generates random seed val
 
                     if(conn)
                     {
                         MysqlConnector mysqlobj;
+                        int randid = rand()%((499 - 1) + 1) + 1;
                         replacement = mysqlobj.selectAddress(conn,randid);
                     }
                     else
@@ -1882,14 +2105,14 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
 
                     static std::set<std::string> setbeforemaskpostalcode;
                     std::set<std::string>::iterator it;
-                    int temp =setSize;
+                    int temp =countpostalcode;
                     setbeforemaskpostalcode.insert (argument);
-                    setSize=setbeforemaskpostalcode.size();
-                    MSTRING tempStr=std::to_string(setSize);
+                    countpostalcode=setbeforemaskpostalcode.size();
+                    MSTRING tempStr=std::to_string(countpostalcode);
                     MSTRING tempReplace;
                     std::cout<<temp<<"\n";
-                    std::cout<<setSize<<"\n";
-                    if(temp==setSize)
+                    std::cout<<countpostalcode<<"\n";
+                    if(temp==countpostalcode)
                     {
                         std::cout<<"No repeat\n";
                     }
@@ -1905,11 +2128,12 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     }
                     std::cout << '\n';
 
-                    int randid = rand()%((200 - 1) + 1) + 1;
+                    srand(time(NULL)*countpostalcode); //generates random seed val
 
                     if(conn)
                     {
                         MysqlConnector mysqlobj;
+                        int randid = rand()%((200 - 1) + 1) + 1;
                         replacement = mysqlobj.selectPostalCode(conn,randid);
                     }
                     else
@@ -1930,14 +2154,42 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                 MemoryManager::Inst.CreateObject(&pNullRes);
                 if(ENTITY_TYPE_STRING == pArg->ul_Type)
                 {
+                    srand(time(NULL)); //generates random seed val
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
+
+                    static std::set<std::string> setbeforemaskinteger;
+                    std::set<std::string>::iterator it;
+                    int temp =countinteger;
+                    setbeforemaskinteger.insert (argument);
+                    countinteger=setbeforemaskinteger.size();
+                    std::cout<<temp<<"\n";
+                    std::cout<<countinteger<<"\n";
+
+                    if(temp==countinteger)
+                    {
+                        std::cout<<"No repeat\n";
+                    }
+                    else
+                    {
+                        std::cout<<"Repeat yes\n";
+                    }
+
+                    std::cout << "setbeforemaskinteger contains : ";
+                    for (it=setbeforemaskinteger.begin(); it!=setbeforemaskinteger.end(); ++it)
+                    {
+                        std::cout << *it<<" , ";
+                    }
+                    std::cout << '\n';
+
+                    countinteger++;
+                    srand(time(NULL)*countinteger); //generates random seed val
+
                     int userBeg =10000;
                     int userEnd =20000;
-                    std::default_random_engine generator;
-                    std::uniform_int_distribution<int> distribution(userBeg,userEnd);
-                    replacement = std::to_string(distribution(generator));
+                    int randid = rand()%((userEnd - userBeg) + 1) + userBeg;
+                    replacement = std::to_string(randid);
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1953,17 +2205,45 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                 MemoryManager::Inst.CreateObject(&pNullRes);
                 if(ENTITY_TYPE_STRING == pArg->ul_Type)
                 {
+                    srand(time(NULL)); //generates random seed val
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
+
+                    static std::set<std::string> setbeforemaskprice;
+                    std::set<std::string>::iterator it;
+                    int temp =countprice;
+                    setbeforemaskprice.insert (argument);
+                    countprice=setbeforemaskprice.size();
+                    std::cout<<temp<<"\n";
+                    std::cout<<countprice<<"\n";
+
+                    if(temp==countprice)
+                    {
+                        std::cout<<"No repeat\n";
+                    }
+                    else
+                    {
+                        std::cout<<"Repeat yes\n";
+                    }
+
+                    std::cout << "setbeforemaskprice contains : ";
+                    for (it=setbeforemaskprice.begin(); it!=setbeforemaskprice.end(); ++it)
+                    {
+                        std::cout << *it<<" , ";
+                    }
+                    std::cout << '\n';
+
+                    countprice++;
+                    srand(time(NULL)*countprice); //generates random seed val
+
                     int upperBound=50000;
                     int lowererBound=10000;
-                    int precision=2;
+                    std::size_t decpos=(argument.find(".")+1);
+                    int precision=argument.length() - decpos;
 
-                    std::default_random_engine generator;
-                    std::uniform_int_distribution<int> distribution(lowererBound,upperBound);
-                    MSTRING intPart = std::to_string(distribution(generator));
-                    std::cout<<intPart<<".";
+                    int randid = rand()%((upperBound - lowererBound) + 1) + lowererBound;
+                    MSTRING intPart = std::to_string(randid);
                     MSTRING decPart;
                     for(int i=0;i<precision;i++)
                     {
@@ -2017,9 +2297,37 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                 MemoryManager::Inst.CreateObject(&pNullRes);
                 if(ENTITY_TYPE_STRING == pArg->ul_Type)
                 {
+                    srand(time(NULL)); //generates random seed val
                     String* pStrArg = (String*)pArg;
                     argument=pStrArg->GetValue();
                     nodeString=pNode->GetValue();
+
+                    static std::set<std::string> setbeforemasknic;
+                    std::set<std::string>::iterator it;
+                    int temp =countnic;
+                    setbeforemasknic.insert (argument);
+                    countnic=setbeforemasknic.size();
+                    std::cout<<temp<<"\n";
+                    std::cout<<countnic<<"\n";
+
+                    if(temp==countnic)
+                    {
+                        std::cout<<"No repeat\n";
+                    }
+                    else
+                    {
+                        std::cout<<"Repeat yes\n";
+                    }
+
+                    std::cout << "setbeforemasknic contains : ";
+                    for (it=setbeforemasknic.begin(); it!=setbeforemasknic.end(); ++it)
+                    {
+                        std::cout << *it<<" , ";
+                    }
+                    std::cout << '\n';
+
+                    countnic++;
+                    srand(time(NULL)*countnic); //generates random seed val
 
                     int diff =5;
                     MSTRING rand1 = std::to_string(rand()%((30 - 1) + 1) + 1);
@@ -2050,7 +2358,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         {
                             rand4=rand42;
                         }
-
                     }
                     else if(individual<100)
                     {

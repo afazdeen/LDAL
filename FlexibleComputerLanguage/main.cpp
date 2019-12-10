@@ -76,12 +76,11 @@ int main(int argc, const char * argv[])
     else
     {
         perror ("The Database could bot be connected, Please check the db connection!");
-        throw std::exception();
+        exit(1);
     }
 
     std::string scriptline;
     //std::ifstream scriptfile ("../FlexibleComputerLanguage/Masking/maskscript.txt");
-    //std::ifstream scriptfile ("../FlexibleComputerLanguage/Scripts/duplicatetestscript.txt");
     std::ifstream scriptfile ("../FlexibleComputerLanguage/Masking/norwaymaskscript.txt");
     std::string script="";
 

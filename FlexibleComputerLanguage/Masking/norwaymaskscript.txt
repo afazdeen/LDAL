@@ -6,7 +6,7 @@ $RESULTSTRING.AddPostFix(|BeforeFunc|)
 $Y.SetValue(FIRST_NAME)
 {$X,$Y}:=FUNCARG
 MaskFunction($FUNCARG)
-$Y.SetValue(LAST_NAME)
+$Y.SetValue(LAST_NAME)	
 {$X,$Y}:=FUNCARG
 MaskFunction($FUNCARG)
 $Y.SetValue(TELEPHONE_NUMBER)

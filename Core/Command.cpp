@@ -886,10 +886,6 @@ PENTITY Command::ExecuteDateTimeCommand(MULONG ulCommand, PENTITY pEntity, PENTI
 
 PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, ExecutionContext* pContext, MYSQL* conn)
 {
-
-
-    //srand(time(NULL)); //generates random seed val
-    //std::cout<<"The random number generator !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
     PNODE pNode = (PNODE)pEntity;
     if(0 == pNode)
     {
@@ -1367,29 +1363,17 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
 
                     static std::set<std::string> setbeforemask;
                     std::set<std::string>::iterator it;
-                    int temp =countfname;
+                    int temp =counttest;
                     setbeforemask.insert (argument);
-                    countfname=setbeforemask.size();
-                    MSTRING tempStr=std::to_string(countfname);
+                    counttest=setbeforemask.size();
+                    MSTRING tempStr=std::to_string(counttest);
                     MSTRING tempReplace;
-                    std::cout<<temp<<"\n";
-                    std::cout<<countfname<<"\n";
-                    if(temp==countfname)
-                    {
-                        std::cout<<"No repeat\n";
-                    }
-                    else
-                    {
-                        std::cout<<"Repeat yes\n";
-                    }
-
                     std::cout << "setbeforemask contains : ";
                     for (it=setbeforemask.begin(); it!=setbeforemask.end(); ++it)
                     {
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
-
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -1415,27 +1399,13 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     countfname=setbeforemaskfname.size();
                     MSTRING tempStr=std::to_string(countfname);
                     MSTRING tempReplace;
-                    std::cout<<temp<<"\n";
-                    std::cout<<countfname<<"\n";
-
-                    if(temp==countfname)
-                    {
-                        std::cout<<"No repeat\n";
-                    }
-                    else
-                    {
-                        std::cout<<"Repeat yes\n";
-                    }
-
                     std::cout << "setbeforemaskfname contains : ";
                     for (it=setbeforemaskfname.begin(); it!=setbeforemaskfname.end(); ++it)
                     {
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
-
                     srand(time(NULL)*countfname); //generates random seed val
-
                     if(conn)
                     {
                         MysqlConnector mysqlobj;
@@ -1457,7 +1427,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                             int randid = rand()%((744 - 1) + 1) + 1;
                             replacement = mysqlobj.selectFirstNameUnisex(conn,randid);
                         }
-
                     }
                     else
                     {
@@ -1488,17 +1457,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     countlname=setbeforemasklname.size();
                     MSTRING tempStr=std::to_string(countlname);
                     MSTRING tempReplace;
-                    std::cout<<temp<<"\n";
-                    std::cout<<countlname<<"\n";
-
-                    if(temp==countlname)
-                    {
-                        std::cout<<"No repeat\n";
-                    }
-                    else
-                    {
-                        std::cout<<"Repeat yes\n";
-                    }
 
                     std::cout << "setbeforemasklname contains : ";
                     for (it=setbeforemasklname.begin(); it!=setbeforemasklname.end(); ++it)
@@ -1506,9 +1464,7 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
-
                     srand(time(NULL)*countlname); //generates random seed val
-
                     if(conn)
                     {
                         MysqlConnector mysqlobj;
@@ -1544,16 +1500,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     countfullname=setbeforemaskfullname.size();
                     MSTRING tempStr=std::to_string(countfullname);
                     MSTRING tempReplace;
-                    std::cout<<temp<<"\n";
-                    std::cout<<countfullname<<"\n";
-                    if(temp==countfullname)
-                    {
-                        std::cout<<"No repeat\n";
-                    }
-                    else
-                    {
-                        std::cout<<"Repeat yes\n";
-                    }
 
                     std::cout << "setbeforemaskfullname contains : ";
                     for (it=setbeforemaskfullname.begin(); it!=setbeforemaskfullname.end(); ++it)
@@ -1561,9 +1507,7 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
-
                     srand(time(NULL)*countfullname); //generates random seed val
-
                     if(conn)
                     {
                         MysqlConnector mysqlobj;
@@ -1618,17 +1562,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     int temp =countday;
                     setbeforemaskdate.insert (argument);
                     countday=setbeforemaskdate.size();
-                    std::cout<<temp<<"\n";
-                    std::cout<<countday<<"\n";
-
-                    if(temp==countday)
-                    {
-                        std::cout<<"No repeat\n";
-                    }
-                    else
-                    {
-                        std::cout<<"Repeat yes\n";
-                    }
 
                     std::cout << "setbeforemaskdate contains : ";
                     for (it=setbeforemaskdate.begin(); it!=setbeforemaskdate.end(); ++it)
@@ -1636,7 +1569,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
-
                     countday++;
                     srand(time(NULL)*countday); //generates random seed val
 
@@ -1678,17 +1610,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     int temp =countmonth;
                     setbeforemaskmonth.insert (argument);
                     countmonth=setbeforemaskmonth.size();
-                    std::cout<<temp<<"\n";
-                    std::cout<<countmonth<<"\n";
-
-                    if(temp==countmonth)
-                    {
-                        std::cout<<"No repeat\n";
-                    }
-                    else
-                    {
-                        std::cout<<"Repeat yes\n";
-                    }
 
                     std::cout << "setbeforemaskmonth contains : ";
                     for (it=setbeforemaskmonth.begin(); it!=setbeforemaskmonth.end(); ++it)
@@ -1696,7 +1617,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
-
                     countmonth++;
                     srand(time(NULL)*countmonth); //generates random seed val
 
@@ -1738,17 +1658,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     int temp =countyear;
                     setbeforemaskyear.insert (argument);
                     countyear=setbeforemaskyear.size();
-                    std::cout<<temp<<"\n";
-                    std::cout<<countyear<<"\n";
-
-                    if(temp==countyear)
-                    {
-                        std::cout<<"No repeat\n";
-                    }
-                    else
-                    {
-                        std::cout<<"Repeat yes\n";
-                    }
 
                     std::cout << "setbeforemaskyear contains : ";
                     for (it=setbeforemaskyear.begin(); it!=setbeforemaskyear.end(); ++it)
@@ -1756,7 +1665,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
-
                     countyear++;
                     srand(time(NULL)*countyear); //generates random seed val
 
@@ -1797,17 +1705,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     int temp =counthour;
                     setbeforemaskhour.insert (argument);
                     counthour=setbeforemaskhour.size();
-                    std::cout<<temp<<"\n";
-                    std::cout<<counthour<<"\n";
-
-                    if(temp==counthour)
-                    {
-                        std::cout<<"No repeat\n";
-                    }
-                    else
-                    {
-                        std::cout<<"Repeat yes\n";
-                    }
 
                     std::cout << "setbeforemaskhour contains : ";
                     for (it=setbeforemaskhour.begin(); it!=setbeforemaskhour.end(); ++it)
@@ -1815,7 +1712,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
-
                     counthour++;
                     srand(time(NULL)*counthour); //generates random seed val
 
@@ -1858,17 +1754,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     int temp =countminute;
                     setbeforemaskminute.insert (argument);
                     countminute=setbeforemaskminute.size();
-                    std::cout<<temp<<"\n";
-                    std::cout<<countminute<<"\n";
-
-                    if(temp==countminute)
-                    {
-                        std::cout<<"No repeat\n";
-                    }
-                    else
-                    {
-                        std::cout<<"Repeat yes\n";
-                    }
 
                     std::cout << "setbeforemaskminute contains : ";
                     for (it=setbeforemaskminute.begin(); it!=setbeforemaskminute.end(); ++it)
@@ -1876,7 +1761,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
-
                     countminute++;
                     srand(time(NULL)*countminute); //generates random seed val
 
@@ -1918,17 +1802,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     int temp =countseconds;
                     setbeforemaskseconds.insert (argument);
                     countseconds=setbeforemaskseconds.size();
-                    std::cout<<temp<<"\n";
-                    std::cout<<countseconds<<"\n";
-
-                    if(temp==countseconds)
-                    {
-                        std::cout<<"No repeat\n";
-                    }
-                    else
-                    {
-                        std::cout<<"Repeat yes\n";
-                    }
 
                     std::cout << "setbeforemaskseconds contains : ";
                     for (it=setbeforemaskseconds.begin(); it!=setbeforemaskseconds.end(); ++it)
@@ -1936,7 +1809,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
-
                     countseconds++;
                     srand(time(NULL)*countseconds); //generates random seed val
 
@@ -1978,17 +1850,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     int temp =counttelnum;
                     setbeforemasktelnum.insert (argument);
                     counttelnum=setbeforemasktelnum.size();
-                    std::cout<<temp<<"\n";
-                    std::cout<<counttelnum<<"\n";
-
-                    if(temp==counttelnum)
-                    {
-                        std::cout<<"No repeat\n";
-                    }
-                    else
-                    {
-                        std::cout<<"Repeat yes\n";
-                    }
 
                     std::cout << "setbeforemasktelnum contains : ";
                     for (it=setbeforemasktelnum.begin(); it!=setbeforemasktelnum.end(); ++it)
@@ -1996,7 +1857,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
-
                     counttelnum++;
                     srand(time(NULL)*counttelnum); //generates random seed val
 
@@ -2026,8 +1886,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     {
                         telNum+=(std::to_string(rand()%((9) + 1)));
                     }
-
-
                     replacement+=telNum;
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
@@ -2054,16 +1912,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     countaddress=setbeforemaskaddress.size();
                     MSTRING tempStr=std::to_string(countaddress);
                     MSTRING tempReplace;
-                    std::cout<<temp<<"\n";
-                    std::cout<<countaddress<<"\n";
-                    if(temp==countaddress)
-                    {
-                        std::cout<<"No repeat\n";
-                    }
-                    else
-                    {
-                        std::cout<<"Repeat yes\n";
-                    }
 
                     std::cout << "setbeforemaskaddress contains : ";
                     for (it=setbeforemaskaddress.begin(); it!=setbeforemaskaddress.end(); ++it)
@@ -2071,9 +1919,7 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
-
                     srand(time(NULL)*countaddress); //generates random seed val
-
                     if(conn)
                     {
                         MysqlConnector mysqlobj;
@@ -2084,7 +1930,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     {
                         perror ("The Database could bot be connected!");
                     }
-
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
                     std::cout<<argument<<"\n";
@@ -2110,16 +1955,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     countpostalcode=setbeforemaskpostalcode.size();
                     MSTRING tempStr=std::to_string(countpostalcode);
                     MSTRING tempReplace;
-                    std::cout<<temp<<"\n";
-                    std::cout<<countpostalcode<<"\n";
-                    if(temp==countpostalcode)
-                    {
-                        std::cout<<"No repeat\n";
-                    }
-                    else
-                    {
-                        std::cout<<"Repeat yes\n";
-                    }
 
                     std::cout << "setbeforemaskpostalcode contains : ";
                     for (it=setbeforemaskpostalcode.begin(); it!=setbeforemaskpostalcode.end(); ++it)
@@ -2127,9 +1962,7 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
-
                     srand(time(NULL)*countpostalcode); //generates random seed val
-
                     if(conn)
                     {
                         MysqlConnector mysqlobj;
@@ -2164,17 +1997,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     int temp =countinteger;
                     setbeforemaskinteger.insert (argument);
                     countinteger=setbeforemaskinteger.size();
-                    std::cout<<temp<<"\n";
-                    std::cout<<countinteger<<"\n";
-
-                    if(temp==countinteger)
-                    {
-                        std::cout<<"No repeat\n";
-                    }
-                    else
-                    {
-                        std::cout<<"Repeat yes\n";
-                    }
 
                     std::cout << "setbeforemaskinteger contains : ";
                     for (it=setbeforemaskinteger.begin(); it!=setbeforemaskinteger.end(); ++it)
@@ -2182,7 +2004,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
-
                     countinteger++;
                     srand(time(NULL)*countinteger); //generates random seed val
 
@@ -2215,17 +2036,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     int temp =countprice;
                     setbeforemaskprice.insert (argument);
                     countprice=setbeforemaskprice.size();
-                    std::cout<<temp<<"\n";
-                    std::cout<<countprice<<"\n";
-
-                    if(temp==countprice)
-                    {
-                        std::cout<<"No repeat\n";
-                    }
-                    else
-                    {
-                        std::cout<<"Repeat yes\n";
-                    }
 
                     std::cout << "setbeforemaskprice contains : ";
                     for (it=setbeforemaskprice.begin(); it!=setbeforemaskprice.end(); ++it)
@@ -2233,7 +2043,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
-
                     countprice++;
                     srand(time(NULL)*countprice); //generates random seed val
 
@@ -2307,17 +2116,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     int temp =countnic;
                     setbeforemasknic.insert (argument);
                     countnic=setbeforemasknic.size();
-                    std::cout<<temp<<"\n";
-                    std::cout<<countnic<<"\n";
-
-                    if(temp==countnic)
-                    {
-                        std::cout<<"No repeat\n";
-                    }
-                    else
-                    {
-                        std::cout<<"Repeat yes\n";
-                    }
 
                     std::cout << "setbeforemasknic contains : ";
                     for (it=setbeforemasknic.begin(); it!=setbeforemasknic.end(); ++it)
@@ -2325,7 +2123,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                         std::cout << *it<<" , ";
                     }
                     std::cout << '\n';
-
                     countnic++;
                     srand(time(NULL)*countnic); //generates random seed val
 
@@ -2402,10 +2199,8 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                 }
                 break;
             }
-
         }
     }
-
     if(0 != pNodeRes)
     {
         return pNodeRes;

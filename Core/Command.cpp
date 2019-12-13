@@ -1430,7 +1430,7 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     }
                     else
                     {
-                        perror ("The Database could bot be connected!");
+                        perror ("The Database could not be connected!");
                     }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
@@ -1473,7 +1473,7 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     }
                     else
                     {
-                        perror ("The Database could bot be connected!");
+                        perror ("The Database could not be connected!");
                     }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
@@ -1536,7 +1536,7 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     }
                     else
                     {
-                        perror ("The Database could bot be connected!");
+                        perror ("The Database could not be connected!");
                     }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
@@ -1871,7 +1871,7 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     }
                     else
                     {
-                        perror ("The Database could bot be connected!");
+                        perror ("The Database could not be connected!");
                     }
 
                     if(replacement.length()==1)
@@ -1928,7 +1928,7 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     }
                     else
                     {
-                        perror ("The Database could bot be connected!");
+                        perror ("The Database could not be connected!");
                     }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);
@@ -1971,7 +1971,7 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                     }
                     else
                     {
-                        perror ("The Database could bot be connected!");
+                        perror ("The Database could not be connected!");
                     }
                     std::size_t pos=nodeString.find(argument);
                     nodeString.replace(pos,argument.length(),replacement);

@@ -10,11 +10,13 @@
 #include "rapidjson/writer.h"
 #include "rapidjson/stringbuffer.h"
 class LogJsonParser {
-    public:
+public:
     static Node *LogJSONToNodeTree(std::string otpsString);
     static Node *LOGJSONToNodeTreeRecursively(rapidjson::Value& j,PNODE parent);
     static void LogNodeTreetoJsonRecursivly(PNODE root);
     static void PrintTreeToFileRecursivly(MOFSTREAM &newjsonfile,PNODE node);
+    static void LogNodeTreetoLog(PNODE root);
+    static void PrintTreeToLog(MOFSTREAM &newjsonfile,PNODE node);
 };
 
 

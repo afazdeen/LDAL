@@ -16,8 +16,8 @@ MSTRING QueryExecuter::run(Node *root, MSTRING querycode,MYSQL* conn)
 {
 
     DefFileReader dfr;
-    // CAUTION: This file path is hardcoded and can cause crashes. You have been warned!
     MetaData *pMD = dfr.Read("../FlexibleComputerLanguage/Defs.txt");
+    //MetaData *pMD = dfr.Read("../FlexibleComputerLanguage/testDefs.txt");
     ScriptReader sr;
     ScriptReaderOutput op;
     //bool bSucc = sr.ProcessScript(pMD->s_RuleFileName, pMD, op);

@@ -57,10 +57,12 @@ int main(int argc, const char * argv[])
     conn = mysqlobj.getConnection(hostname, username, password, dbname, port);
 
     //Tests tt;
-   // tt.RunTest6();
+    // tt.RunTest6();
     std::string line;
     std::string jsonline;
-    std::ifstream jsonfile ("../FlexibleComputerLanguage/norwayresultJSON.json");
+    //std::ifstream jsonfile ("../FlexibleComputerLanguage/resultJSON.json");
+    //std::ifstream jsonfile ("../FlexibleComputerLanguage/norwayresultJSON.json");
+    std::ifstream jsonfile ("../FlexibleComputerLanguage/trcfdlogJSON.json");
     if (jsonfile.is_open())
     {
         getline (jsonfile,line);
@@ -75,13 +77,14 @@ int main(int argc, const char * argv[])
     }
     else
     {
-        perror ("The Database could bot be connected, Please check the db connection!");
+        perror ("The Database could not be connected, Please check the db connection!");
         exit(1);
     }
 
     std::string scriptline;
     //std::ifstream scriptfile ("../FlexibleComputerLanguage/Masking/maskscript.txt");
-    std::ifstream scriptfile ("../FlexibleComputerLanguage/Masking/norwaymaskscript.txt");
+    //std::ifstream scriptfile ("../FlexibleComputerLanguage/Masking/norwaymaskscript.txt");
+    std::ifstream scriptfile ("../FlexibleComputerLanguage/Masking/trcfdmaskscript.txt");
     std::string script="";
 
     while(getline(scriptfile,scriptline))
@@ -95,6 +98,8 @@ int main(int argc, const char * argv[])
     std::cout <<res;
 
     LogJsonParser::LogNodeTreetoJsonRecursivly(jsonroot);
+
+    LogJsonParser::LogNodeTreetoLog(jsonroot);
 
 
     return 0;

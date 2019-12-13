@@ -1,0 +1,7 @@
+$RESULT.SetCustomString(normal)
+$RESULT.SetRValue(4)
+$RESULT.GetStringVar:=RESULTSTRING
+$Y.SetValue(FIRST_NAME)
+{$X,$Y}:=FUNCARG
+MaskFunction($FUNCARG)
+$RESULT.SetValue($RESULTSTRING)

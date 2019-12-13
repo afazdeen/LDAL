@@ -67,7 +67,7 @@ Node* LogJsonParser::LOGJSONToNodeTreeRecursively(rapidjson::Value &j,Node* pare
 void LogJsonParser::LogNodeTreetoJsonRecursivly(Node* root)
 {
     MOFSTREAM newjsonfile;
-    newjsonfile.open("../FlexibleComputerLanguage/maskedJSON.json");
+    newjsonfile.open("../FlexibleComputerLanguage/trcfdmaskedJSON.json");
     newjsonfile<<"[";
     LogJsonParser::PrintTreeToFileRecursivly(newjsonfile,root->GetFirstChild());
     newjsonfile<<"]";
@@ -104,5 +104,38 @@ void LogJsonParser::PrintTreeToFileRecursivly(MOFSTREAM &newjsonfile,PNODE node)
     }
     else{
         newjsonfile<<"}";
+    }
+}
+
+void LogJsonParser::LogNodeTreetoLog(Node* root)
+{
+    MOFSTREAM newjsonfile;
+    newjsonfile.open("../FlexibleComputerLanguage/trcfdmaskedLog.txt");
+    LogJsonParser::PrintTreeToLog(newjsonfile,root->GetFirstChild());
+}
+
+void LogJsonParser::PrintTreeToLog(MOFSTREAM &newjsonfile,PNODE node){
+    Node* curr=node;
+    Node* prev;
+    while(curr)
+    {
+        MSTRING currNodeValue = curr->GetValue();
+        if(currNodeValue=="Value"){
+            MSTRING value= curr->GetValue();
+            value=curr->GetFirstChild()->GetValue();
+            return;
+        }
+        else{
+            MSTRING value=curr->GetValue();
+            MSTRING substr = value.substr(0, 4);
+            if(substr=="LINE")
+            {
+                MSTRING printvalue=curr->GetFirstChild()->GetFirstChild()->GetFirstChild()->GetValue();
+                newjsonfile<<printvalue<<_MSTR(\n);
+            }
+            PrintTreeToLog(newjsonfile,curr->GetFirstChild());
+            prev=curr;
+            curr=curr->GetRightSibling();
+        }
     }
 }

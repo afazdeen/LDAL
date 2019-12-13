@@ -1,0 +1,18 @@
+My first name is Torvil
+My last name is Sande
+My full name is Torvil Sande
+My telephone number is 99797992
+My postal address is Platekompaniet - Torgallmenningen, Torgallmenningen 5, Berge
+My postal code is 2652
+My index number is 12757
+My salary is 22,758.979
+My national id number is 09040109747
+My first name is Malaki
+My last name is Dahlem
+My full name is Malaki Dahlem
+My telephone number is 74584657
+My postal address is Hotel Park Bergen, Harald Harfagres gate 35, Berge
+My postal code is 2425
+My index number is 12734
+My salary is 12,734.458
+My national id number is 05038998635

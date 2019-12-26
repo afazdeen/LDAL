@@ -1,18 +1,18 @@
-My first name is Asvald
-My last name is Odland
-My full name is Asvald Odland
-My telephone number is 45130612
-My postal address is Danske Bank Selvbetjeningscenter, Christian Michelsens gate 6 B, Berge
-My postal code is 2646
-My index number is 11120
-My salary is 11,120.513
-My national id number is 11069597691
-My first name is Boruf
-My last name is Hoff
-My full name is Boruf Hoff
-My telephone number is 62291996
-My postal address is SpareBank 1 SMN, Brosetvegen 164, Trondheim
-My postal code is 2080
-My index number is 11661
-My salary is 11,661.291
-My national id number is 12059318499
+My first name is Stener
+My last name is Hola
+My full name is Stener Hola
+My telephone number is 77812541
+My postal address is Handelsbanken Bergen Sentrum, Allehelgens gate 4, Berge
+My postal code is 2319
+My index number is 19039
+My salary is 39,041.812
+My national id number is 02099898441
+My first name is Olvar
+My last name is Riis
+My full name is Olvar Riis
+My telephone number is 62805046
+My postal address is Clear Ink, Marken 32, Berge
+My postal code is 1397
+My index number is 10773
+My salary is 20,774.805
+My national id number is 05018618510

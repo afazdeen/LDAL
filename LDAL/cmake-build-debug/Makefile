@@ -110,17 +110,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named FlexibleComputerLanguage1
+# Target rules for targets named MaskingTool
 
 # Build rule for target.
-FlexibleComputerLanguage1: cmake_check_build_system
-	$(MAKE) -f CMakeFiles\Makefile2 FlexibleComputerLanguage1
-.PHONY : FlexibleComputerLanguage1
+MaskingTool: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 MaskingTool
+.PHONY : MaskingTool
 
 # fast build rule for target.
-FlexibleComputerLanguage1/fast:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/build
-.PHONY : FlexibleComputerLanguage1/fast
+MaskingTool/fast:
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/build
+.PHONY : MaskingTool/fast
 
 Core/Bool.obj: Core/Bool.cpp.obj
 
@@ -128,7 +128,7 @@ Core/Bool.obj: Core/Bool.cpp.obj
 
 # target to build an object file
 Core/Bool.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/Bool.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/Bool.cpp.obj
 .PHONY : Core/Bool.cpp.obj
 
 Core/Bool.i: Core/Bool.cpp.i
@@ -137,7 +137,7 @@ Core/Bool.i: Core/Bool.cpp.i
 
 # target to preprocess a source file
 Core/Bool.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/Bool.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/Bool.cpp.i
 .PHONY : Core/Bool.cpp.i
 
 Core/Bool.s: Core/Bool.cpp.s
@@ -146,7 +146,7 @@ Core/Bool.s: Core/Bool.cpp.s
 
 # target to generate assembly for a file
 Core/Bool.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/Bool.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/Bool.cpp.s
 .PHONY : Core/Bool.cpp.s
 
 Core/Command.obj: Core/Command.cpp.obj
@@ -155,7 +155,7 @@ Core/Command.obj: Core/Command.cpp.obj
 
 # target to build an object file
 Core/Command.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/Command.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/Command.cpp.obj
 .PHONY : Core/Command.cpp.obj
 
 Core/Command.i: Core/Command.cpp.i
@@ -164,7 +164,7 @@ Core/Command.i: Core/Command.cpp.i
 
 # target to preprocess a source file
 Core/Command.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/Command.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/Command.cpp.i
 .PHONY : Core/Command.cpp.i
 
 Core/Command.s: Core/Command.cpp.s
@@ -173,7 +173,7 @@ Core/Command.s: Core/Command.cpp.s
 
 # target to generate assembly for a file
 Core/Command.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/Command.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/Command.cpp.s
 .PHONY : Core/Command.cpp.s
 
 Core/DateTimeOperations.obj: Core/DateTimeOperations.cpp.obj
@@ -182,7 +182,7 @@ Core/DateTimeOperations.obj: Core/DateTimeOperations.cpp.obj
 
 # target to build an object file
 Core/DateTimeOperations.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/DateTimeOperations.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/DateTimeOperations.cpp.obj
 .PHONY : Core/DateTimeOperations.cpp.obj
 
 Core/DateTimeOperations.i: Core/DateTimeOperations.cpp.i
@@ -191,7 +191,7 @@ Core/DateTimeOperations.i: Core/DateTimeOperations.cpp.i
 
 # target to preprocess a source file
 Core/DateTimeOperations.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/DateTimeOperations.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/DateTimeOperations.cpp.i
 .PHONY : Core/DateTimeOperations.cpp.i
 
 Core/DateTimeOperations.s: Core/DateTimeOperations.cpp.s
@@ -200,7 +200,7 @@ Core/DateTimeOperations.s: Core/DateTimeOperations.cpp.s
 
 # target to generate assembly for a file
 Core/DateTimeOperations.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/DateTimeOperations.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/DateTimeOperations.cpp.s
 .PHONY : Core/DateTimeOperations.cpp.s
 
 Core/DefFileReader.obj: Core/DefFileReader.cpp.obj
@@ -209,7 +209,7 @@ Core/DefFileReader.obj: Core/DefFileReader.cpp.obj
 
 # target to build an object file
 Core/DefFileReader.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/DefFileReader.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/DefFileReader.cpp.obj
 .PHONY : Core/DefFileReader.cpp.obj
 
 Core/DefFileReader.i: Core/DefFileReader.cpp.i
@@ -218,7 +218,7 @@ Core/DefFileReader.i: Core/DefFileReader.cpp.i
 
 # target to preprocess a source file
 Core/DefFileReader.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/DefFileReader.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/DefFileReader.cpp.i
 .PHONY : Core/DefFileReader.cpp.i
 
 Core/DefFileReader.s: Core/DefFileReader.cpp.s
@@ -227,7 +227,7 @@ Core/DefFileReader.s: Core/DefFileReader.cpp.s
 
 # target to generate assembly for a file
 Core/DefFileReader.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/DefFileReader.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/DefFileReader.cpp.s
 .PHONY : Core/DefFileReader.cpp.s
 
 Core/EntityList.obj: Core/EntityList.cpp.obj
@@ -236,7 +236,7 @@ Core/EntityList.obj: Core/EntityList.cpp.obj
 
 # target to build an object file
 Core/EntityList.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/EntityList.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/EntityList.cpp.obj
 .PHONY : Core/EntityList.cpp.obj
 
 Core/EntityList.i: Core/EntityList.cpp.i
@@ -245,7 +245,7 @@ Core/EntityList.i: Core/EntityList.cpp.i
 
 # target to preprocess a source file
 Core/EntityList.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/EntityList.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/EntityList.cpp.i
 .PHONY : Core/EntityList.cpp.i
 
 Core/EntityList.s: Core/EntityList.cpp.s
@@ -254,7 +254,7 @@ Core/EntityList.s: Core/EntityList.cpp.s
 
 # target to generate assembly for a file
 Core/EntityList.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/EntityList.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/EntityList.cpp.s
 .PHONY : Core/EntityList.cpp.s
 
 Core/ExecutionTemplate.obj: Core/ExecutionTemplate.cpp.obj
@@ -263,7 +263,7 @@ Core/ExecutionTemplate.obj: Core/ExecutionTemplate.cpp.obj
 
 # target to build an object file
 Core/ExecutionTemplate.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/ExecutionTemplate.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/ExecutionTemplate.cpp.obj
 .PHONY : Core/ExecutionTemplate.cpp.obj
 
 Core/ExecutionTemplate.i: Core/ExecutionTemplate.cpp.i
@@ -272,7 +272,7 @@ Core/ExecutionTemplate.i: Core/ExecutionTemplate.cpp.i
 
 # target to preprocess a source file
 Core/ExecutionTemplate.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/ExecutionTemplate.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/ExecutionTemplate.cpp.i
 .PHONY : Core/ExecutionTemplate.cpp.i
 
 Core/ExecutionTemplate.s: Core/ExecutionTemplate.cpp.s
@@ -281,7 +281,7 @@ Core/ExecutionTemplate.s: Core/ExecutionTemplate.cpp.s
 
 # target to generate assembly for a file
 Core/ExecutionTemplate.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/ExecutionTemplate.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/ExecutionTemplate.cpp.s
 .PHONY : Core/ExecutionTemplate.cpp.s
 
 Core/ExecutionTemplateList.obj: Core/ExecutionTemplateList.cpp.obj
@@ -290,7 +290,7 @@ Core/ExecutionTemplateList.obj: Core/ExecutionTemplateList.cpp.obj
 
 # target to build an object file
 Core/ExecutionTemplateList.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/ExecutionTemplateList.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/ExecutionTemplateList.cpp.obj
 .PHONY : Core/ExecutionTemplateList.cpp.obj
 
 Core/ExecutionTemplateList.i: Core/ExecutionTemplateList.cpp.i
@@ -299,7 +299,7 @@ Core/ExecutionTemplateList.i: Core/ExecutionTemplateList.cpp.i
 
 # target to preprocess a source file
 Core/ExecutionTemplateList.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/ExecutionTemplateList.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/ExecutionTemplateList.cpp.i
 .PHONY : Core/ExecutionTemplateList.cpp.i
 
 Core/ExecutionTemplateList.s: Core/ExecutionTemplateList.cpp.s
@@ -308,7 +308,7 @@ Core/ExecutionTemplateList.s: Core/ExecutionTemplateList.cpp.s
 
 # target to generate assembly for a file
 Core/ExecutionTemplateList.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/ExecutionTemplateList.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/ExecutionTemplateList.cpp.s
 .PHONY : Core/ExecutionTemplateList.cpp.s
 
 Core/MemMan.obj: Core/MemMan.cpp.obj
@@ -317,7 +317,7 @@ Core/MemMan.obj: Core/MemMan.cpp.obj
 
 # target to build an object file
 Core/MemMan.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/MemMan.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/MemMan.cpp.obj
 .PHONY : Core/MemMan.cpp.obj
 
 Core/MemMan.i: Core/MemMan.cpp.i
@@ -326,7 +326,7 @@ Core/MemMan.i: Core/MemMan.cpp.i
 
 # target to preprocess a source file
 Core/MemMan.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/MemMan.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/MemMan.cpp.i
 .PHONY : Core/MemMan.cpp.i
 
 Core/MemMan.s: Core/MemMan.cpp.s
@@ -335,7 +335,7 @@ Core/MemMan.s: Core/MemMan.cpp.s
 
 # target to generate assembly for a file
 Core/MemMan.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/MemMan.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/MemMan.cpp.s
 .PHONY : Core/MemMan.cpp.s
 
 Core/Node.obj: Core/Node.cpp.obj
@@ -344,7 +344,7 @@ Core/Node.obj: Core/Node.cpp.obj
 
 # target to build an object file
 Core/Node.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/Node.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/Node.cpp.obj
 .PHONY : Core/Node.cpp.obj
 
 Core/Node.i: Core/Node.cpp.i
@@ -353,7 +353,7 @@ Core/Node.i: Core/Node.cpp.i
 
 # target to preprocess a source file
 Core/Node.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/Node.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/Node.cpp.i
 .PHONY : Core/Node.cpp.i
 
 Core/Node.s: Core/Node.cpp.s
@@ -362,7 +362,7 @@ Core/Node.s: Core/Node.cpp.s
 
 # target to generate assembly for a file
 Core/Node.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/Node.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/Node.cpp.s
 .PHONY : Core/Node.cpp.s
 
 Core/NodeCustomValueShorthand.obj: Core/NodeCustomValueShorthand.cpp.obj
@@ -371,7 +371,7 @@ Core/NodeCustomValueShorthand.obj: Core/NodeCustomValueShorthand.cpp.obj
 
 # target to build an object file
 Core/NodeCustomValueShorthand.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/NodeCustomValueShorthand.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/NodeCustomValueShorthand.cpp.obj
 .PHONY : Core/NodeCustomValueShorthand.cpp.obj
 
 Core/NodeCustomValueShorthand.i: Core/NodeCustomValueShorthand.cpp.i
@@ -380,7 +380,7 @@ Core/NodeCustomValueShorthand.i: Core/NodeCustomValueShorthand.cpp.i
 
 # target to preprocess a source file
 Core/NodeCustomValueShorthand.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/NodeCustomValueShorthand.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/NodeCustomValueShorthand.cpp.i
 .PHONY : Core/NodeCustomValueShorthand.cpp.i
 
 Core/NodeCustomValueShorthand.s: Core/NodeCustomValueShorthand.cpp.s
@@ -389,7 +389,7 @@ Core/NodeCustomValueShorthand.s: Core/NodeCustomValueShorthand.cpp.s
 
 # target to generate assembly for a file
 Core/NodeCustomValueShorthand.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/NodeCustomValueShorthand.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/NodeCustomValueShorthand.cpp.s
 .PHONY : Core/NodeCustomValueShorthand.cpp.s
 
 Core/ScriptReader.obj: Core/ScriptReader.cpp.obj
@@ -398,7 +398,7 @@ Core/ScriptReader.obj: Core/ScriptReader.cpp.obj
 
 # target to build an object file
 Core/ScriptReader.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/ScriptReader.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/ScriptReader.cpp.obj
 .PHONY : Core/ScriptReader.cpp.obj
 
 Core/ScriptReader.i: Core/ScriptReader.cpp.i
@@ -407,7 +407,7 @@ Core/ScriptReader.i: Core/ScriptReader.cpp.i
 
 # target to preprocess a source file
 Core/ScriptReader.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/ScriptReader.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/ScriptReader.cpp.i
 .PHONY : Core/ScriptReader.cpp.i
 
 Core/ScriptReader.s: Core/ScriptReader.cpp.s
@@ -416,7 +416,7 @@ Core/ScriptReader.s: Core/ScriptReader.cpp.s
 
 # target to generate assembly for a file
 Core/ScriptReader.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/ScriptReader.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/ScriptReader.cpp.s
 .PHONY : Core/ScriptReader.cpp.s
 
 Core/SpecialCommandExecuter.obj: Core/SpecialCommandExecuter.cpp.obj
@@ -425,7 +425,7 @@ Core/SpecialCommandExecuter.obj: Core/SpecialCommandExecuter.cpp.obj
 
 # target to build an object file
 Core/SpecialCommandExecuter.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/SpecialCommandExecuter.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/SpecialCommandExecuter.cpp.obj
 .PHONY : Core/SpecialCommandExecuter.cpp.obj
 
 Core/SpecialCommandExecuter.i: Core/SpecialCommandExecuter.cpp.i
@@ -434,7 +434,7 @@ Core/SpecialCommandExecuter.i: Core/SpecialCommandExecuter.cpp.i
 
 # target to preprocess a source file
 Core/SpecialCommandExecuter.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/SpecialCommandExecuter.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/SpecialCommandExecuter.cpp.i
 .PHONY : Core/SpecialCommandExecuter.cpp.i
 
 Core/SpecialCommandExecuter.s: Core/SpecialCommandExecuter.cpp.s
@@ -443,7 +443,7 @@ Core/SpecialCommandExecuter.s: Core/SpecialCommandExecuter.cpp.s
 
 # target to generate assembly for a file
 Core/SpecialCommandExecuter.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/SpecialCommandExecuter.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/SpecialCommandExecuter.cpp.s
 .PHONY : Core/SpecialCommandExecuter.cpp.s
 
 Core/StringOperations.obj: Core/StringOperations.cpp.obj
@@ -452,7 +452,7 @@ Core/StringOperations.obj: Core/StringOperations.cpp.obj
 
 # target to build an object file
 Core/StringOperations.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/StringOperations.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/StringOperations.cpp.obj
 .PHONY : Core/StringOperations.cpp.obj
 
 Core/StringOperations.i: Core/StringOperations.cpp.i
@@ -461,7 +461,7 @@ Core/StringOperations.i: Core/StringOperations.cpp.i
 
 # target to preprocess a source file
 Core/StringOperations.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/StringOperations.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/StringOperations.cpp.i
 .PHONY : Core/StringOperations.cpp.i
 
 Core/StringOperations.s: Core/StringOperations.cpp.s
@@ -470,7 +470,7 @@ Core/StringOperations.s: Core/StringOperations.cpp.s
 
 # target to generate assembly for a file
 Core/StringOperations.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/StringOperations.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/StringOperations.cpp.s
 .PHONY : Core/StringOperations.cpp.s
 
 Core/TestCases/TestCaseBase.obj: Core/TestCases/TestCaseBase.cpp.obj
@@ -479,7 +479,7 @@ Core/TestCases/TestCaseBase.obj: Core/TestCases/TestCaseBase.cpp.obj
 
 # target to build an object file
 Core/TestCases/TestCaseBase.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestCaseBase.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestCaseBase.cpp.obj
 .PHONY : Core/TestCases/TestCaseBase.cpp.obj
 
 Core/TestCases/TestCaseBase.i: Core/TestCases/TestCaseBase.cpp.i
@@ -488,7 +488,7 @@ Core/TestCases/TestCaseBase.i: Core/TestCases/TestCaseBase.cpp.i
 
 # target to preprocess a source file
 Core/TestCases/TestCaseBase.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestCaseBase.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestCaseBase.cpp.i
 .PHONY : Core/TestCases/TestCaseBase.cpp.i
 
 Core/TestCases/TestCaseBase.s: Core/TestCases/TestCaseBase.cpp.s
@@ -497,7 +497,7 @@ Core/TestCases/TestCaseBase.s: Core/TestCases/TestCaseBase.cpp.s
 
 # target to generate assembly for a file
 Core/TestCases/TestCaseBase.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestCaseBase.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestCaseBase.cpp.s
 .PHONY : Core/TestCases/TestCaseBase.cpp.s
 
 Core/TestCases/TestCaseExecuter.obj: Core/TestCases/TestCaseExecuter.cpp.obj
@@ -506,7 +506,7 @@ Core/TestCases/TestCaseExecuter.obj: Core/TestCases/TestCaseExecuter.cpp.obj
 
 # target to build an object file
 Core/TestCases/TestCaseExecuter.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestCaseExecuter.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestCaseExecuter.cpp.obj
 .PHONY : Core/TestCases/TestCaseExecuter.cpp.obj
 
 Core/TestCases/TestCaseExecuter.i: Core/TestCases/TestCaseExecuter.cpp.i
@@ -515,7 +515,7 @@ Core/TestCases/TestCaseExecuter.i: Core/TestCases/TestCaseExecuter.cpp.i
 
 # target to preprocess a source file
 Core/TestCases/TestCaseExecuter.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestCaseExecuter.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestCaseExecuter.cpp.i
 .PHONY : Core/TestCases/TestCaseExecuter.cpp.i
 
 Core/TestCases/TestCaseExecuter.s: Core/TestCases/TestCaseExecuter.cpp.s
@@ -524,7 +524,7 @@ Core/TestCases/TestCaseExecuter.s: Core/TestCases/TestCaseExecuter.cpp.s
 
 # target to generate assembly for a file
 Core/TestCases/TestCaseExecuter.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestCaseExecuter.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestCaseExecuter.cpp.s
 .PHONY : Core/TestCases/TestCaseExecuter.cpp.s
 
 Core/TestCases/TestCompound1.obj: Core/TestCases/TestCompound1.cpp.obj
@@ -533,7 +533,7 @@ Core/TestCases/TestCompound1.obj: Core/TestCases/TestCompound1.cpp.obj
 
 # target to build an object file
 Core/TestCases/TestCompound1.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestCompound1.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestCompound1.cpp.obj
 .PHONY : Core/TestCases/TestCompound1.cpp.obj
 
 Core/TestCases/TestCompound1.i: Core/TestCases/TestCompound1.cpp.i
@@ -542,7 +542,7 @@ Core/TestCases/TestCompound1.i: Core/TestCases/TestCompound1.cpp.i
 
 # target to preprocess a source file
 Core/TestCases/TestCompound1.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestCompound1.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestCompound1.cpp.i
 .PHONY : Core/TestCases/TestCompound1.cpp.i
 
 Core/TestCases/TestCompound1.s: Core/TestCases/TestCompound1.cpp.s
@@ -551,7 +551,7 @@ Core/TestCases/TestCompound1.s: Core/TestCases/TestCompound1.cpp.s
 
 # target to generate assembly for a file
 Core/TestCases/TestCompound1.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestCompound1.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestCompound1.cpp.s
 .PHONY : Core/TestCases/TestCompound1.cpp.s
 
 Core/TestCases/TestCustomStrFilterShorthand.obj: Core/TestCases/TestCustomStrFilterShorthand.cpp.obj
@@ -560,7 +560,7 @@ Core/TestCases/TestCustomStrFilterShorthand.obj: Core/TestCases/TestCustomStrFil
 
 # target to build an object file
 Core/TestCases/TestCustomStrFilterShorthand.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestCustomStrFilterShorthand.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestCustomStrFilterShorthand.cpp.obj
 .PHONY : Core/TestCases/TestCustomStrFilterShorthand.cpp.obj
 
 Core/TestCases/TestCustomStrFilterShorthand.i: Core/TestCases/TestCustomStrFilterShorthand.cpp.i
@@ -569,7 +569,7 @@ Core/TestCases/TestCustomStrFilterShorthand.i: Core/TestCases/TestCustomStrFilte
 
 # target to preprocess a source file
 Core/TestCases/TestCustomStrFilterShorthand.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestCustomStrFilterShorthand.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestCustomStrFilterShorthand.cpp.i
 .PHONY : Core/TestCases/TestCustomStrFilterShorthand.cpp.i
 
 Core/TestCases/TestCustomStrFilterShorthand.s: Core/TestCases/TestCustomStrFilterShorthand.cpp.s
@@ -578,7 +578,7 @@ Core/TestCases/TestCustomStrFilterShorthand.s: Core/TestCases/TestCustomStrFilte
 
 # target to generate assembly for a file
 Core/TestCases/TestCustomStrFilterShorthand.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestCustomStrFilterShorthand.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestCustomStrFilterShorthand.cpp.s
 .PHONY : Core/TestCases/TestCustomStrFilterShorthand.cpp.s
 
 Core/TestCases/TestFilterSubtree.obj: Core/TestCases/TestFilterSubtree.cpp.obj
@@ -587,7 +587,7 @@ Core/TestCases/TestFilterSubtree.obj: Core/TestCases/TestFilterSubtree.cpp.obj
 
 # target to build an object file
 Core/TestCases/TestFilterSubtree.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestFilterSubtree.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestFilterSubtree.cpp.obj
 .PHONY : Core/TestCases/TestFilterSubtree.cpp.obj
 
 Core/TestCases/TestFilterSubtree.i: Core/TestCases/TestFilterSubtree.cpp.i
@@ -596,7 +596,7 @@ Core/TestCases/TestFilterSubtree.i: Core/TestCases/TestFilterSubtree.cpp.i
 
 # target to preprocess a source file
 Core/TestCases/TestFilterSubtree.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestFilterSubtree.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestFilterSubtree.cpp.i
 .PHONY : Core/TestCases/TestFilterSubtree.cpp.i
 
 Core/TestCases/TestFilterSubtree.s: Core/TestCases/TestFilterSubtree.cpp.s
@@ -605,7 +605,7 @@ Core/TestCases/TestFilterSubtree.s: Core/TestCases/TestFilterSubtree.cpp.s
 
 # target to generate assembly for a file
 Core/TestCases/TestFilterSubtree.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestFilterSubtree.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestFilterSubtree.cpp.s
 .PHONY : Core/TestCases/TestFilterSubtree.cpp.s
 
 Core/TestCases/TestListFilter.obj: Core/TestCases/TestListFilter.cpp.obj
@@ -614,7 +614,7 @@ Core/TestCases/TestListFilter.obj: Core/TestCases/TestListFilter.cpp.obj
 
 # target to build an object file
 Core/TestCases/TestListFilter.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestListFilter.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestListFilter.cpp.obj
 .PHONY : Core/TestCases/TestListFilter.cpp.obj
 
 Core/TestCases/TestListFilter.i: Core/TestCases/TestListFilter.cpp.i
@@ -623,7 +623,7 @@ Core/TestCases/TestListFilter.i: Core/TestCases/TestListFilter.cpp.i
 
 # target to preprocess a source file
 Core/TestCases/TestListFilter.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestListFilter.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestListFilter.cpp.i
 .PHONY : Core/TestCases/TestListFilter.cpp.i
 
 Core/TestCases/TestListFilter.s: Core/TestCases/TestListFilter.cpp.s
@@ -632,7 +632,7 @@ Core/TestCases/TestListFilter.s: Core/TestCases/TestListFilter.cpp.s
 
 # target to generate assembly for a file
 Core/TestCases/TestListFilter.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestListFilter.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestListFilter.cpp.s
 .PHONY : Core/TestCases/TestListFilter.cpp.s
 
 Core/TestCases/TestListGroupBy.obj: Core/TestCases/TestListGroupBy.cpp.obj
@@ -641,7 +641,7 @@ Core/TestCases/TestListGroupBy.obj: Core/TestCases/TestListGroupBy.cpp.obj
 
 # target to build an object file
 Core/TestCases/TestListGroupBy.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestListGroupBy.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestListGroupBy.cpp.obj
 .PHONY : Core/TestCases/TestListGroupBy.cpp.obj
 
 Core/TestCases/TestListGroupBy.i: Core/TestCases/TestListGroupBy.cpp.i
@@ -650,7 +650,7 @@ Core/TestCases/TestListGroupBy.i: Core/TestCases/TestListGroupBy.cpp.i
 
 # target to preprocess a source file
 Core/TestCases/TestListGroupBy.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestListGroupBy.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestListGroupBy.cpp.i
 .PHONY : Core/TestCases/TestListGroupBy.cpp.i
 
 Core/TestCases/TestListGroupBy.s: Core/TestCases/TestListGroupBy.cpp.s
@@ -659,7 +659,7 @@ Core/TestCases/TestListGroupBy.s: Core/TestCases/TestListGroupBy.cpp.s
 
 # target to generate assembly for a file
 Core/TestCases/TestListGroupBy.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestListGroupBy.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestListGroupBy.cpp.s
 .PHONY : Core/TestCases/TestListGroupBy.cpp.s
 
 Core/TestCases/TestListInnerCount.obj: Core/TestCases/TestListInnerCount.cpp.obj
@@ -668,7 +668,7 @@ Core/TestCases/TestListInnerCount.obj: Core/TestCases/TestListInnerCount.cpp.obj
 
 # target to build an object file
 Core/TestCases/TestListInnerCount.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestListInnerCount.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestListInnerCount.cpp.obj
 .PHONY : Core/TestCases/TestListInnerCount.cpp.obj
 
 Core/TestCases/TestListInnerCount.i: Core/TestCases/TestListInnerCount.cpp.i
@@ -677,7 +677,7 @@ Core/TestCases/TestListInnerCount.i: Core/TestCases/TestListInnerCount.cpp.i
 
 # target to preprocess a source file
 Core/TestCases/TestListInnerCount.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestListInnerCount.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestListInnerCount.cpp.i
 .PHONY : Core/TestCases/TestListInnerCount.cpp.i
 
 Core/TestCases/TestListInnerCount.s: Core/TestCases/TestListInnerCount.cpp.s
@@ -686,7 +686,7 @@ Core/TestCases/TestListInnerCount.s: Core/TestCases/TestListInnerCount.cpp.s
 
 # target to generate assembly for a file
 Core/TestCases/TestListInnerCount.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestListInnerCount.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestListInnerCount.cpp.s
 .PHONY : Core/TestCases/TestListInnerCount.cpp.s
 
 Core/TestCases/TestListInnerCountWithScript.obj: Core/TestCases/TestListInnerCountWithScript.cpp.obj
@@ -695,7 +695,7 @@ Core/TestCases/TestListInnerCountWithScript.obj: Core/TestCases/TestListInnerCou
 
 # target to build an object file
 Core/TestCases/TestListInnerCountWithScript.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestListInnerCountWithScript.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestListInnerCountWithScript.cpp.obj
 .PHONY : Core/TestCases/TestListInnerCountWithScript.cpp.obj
 
 Core/TestCases/TestListInnerCountWithScript.i: Core/TestCases/TestListInnerCountWithScript.cpp.i
@@ -704,7 +704,7 @@ Core/TestCases/TestListInnerCountWithScript.i: Core/TestCases/TestListInnerCount
 
 # target to preprocess a source file
 Core/TestCases/TestListInnerCountWithScript.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestListInnerCountWithScript.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestListInnerCountWithScript.cpp.i
 .PHONY : Core/TestCases/TestListInnerCountWithScript.cpp.i
 
 Core/TestCases/TestListInnerCountWithScript.s: Core/TestCases/TestListInnerCountWithScript.cpp.s
@@ -713,7 +713,7 @@ Core/TestCases/TestListInnerCountWithScript.s: Core/TestCases/TestListInnerCount
 
 # target to generate assembly for a file
 Core/TestCases/TestListInnerCountWithScript.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestListInnerCountWithScript.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestListInnerCountWithScript.cpp.s
 .PHONY : Core/TestCases/TestListInnerCountWithScript.cpp.s
 
 Core/TestCases/TestListSeek.obj: Core/TestCases/TestListSeek.cpp.obj
@@ -722,7 +722,7 @@ Core/TestCases/TestListSeek.obj: Core/TestCases/TestListSeek.cpp.obj
 
 # target to build an object file
 Core/TestCases/TestListSeek.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestListSeek.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestListSeek.cpp.obj
 .PHONY : Core/TestCases/TestListSeek.cpp.obj
 
 Core/TestCases/TestListSeek.i: Core/TestCases/TestListSeek.cpp.i
@@ -731,7 +731,7 @@ Core/TestCases/TestListSeek.i: Core/TestCases/TestListSeek.cpp.i
 
 # target to preprocess a source file
 Core/TestCases/TestListSeek.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestListSeek.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestListSeek.cpp.i
 .PHONY : Core/TestCases/TestListSeek.cpp.i
 
 Core/TestCases/TestListSeek.s: Core/TestCases/TestListSeek.cpp.s
@@ -740,7 +740,7 @@ Core/TestCases/TestListSeek.s: Core/TestCases/TestListSeek.cpp.s
 
 # target to generate assembly for a file
 Core/TestCases/TestListSeek.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestListSeek.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestListSeek.cpp.s
 .PHONY : Core/TestCases/TestListSeek.cpp.s
 
 Core/TestCases/TestLoadFromCodeLibrary.obj: Core/TestCases/TestLoadFromCodeLibrary.cpp.obj
@@ -749,7 +749,7 @@ Core/TestCases/TestLoadFromCodeLibrary.obj: Core/TestCases/TestLoadFromCodeLibra
 
 # target to build an object file
 Core/TestCases/TestLoadFromCodeLibrary.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestLoadFromCodeLibrary.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestLoadFromCodeLibrary.cpp.obj
 .PHONY : Core/TestCases/TestLoadFromCodeLibrary.cpp.obj
 
 Core/TestCases/TestLoadFromCodeLibrary.i: Core/TestCases/TestLoadFromCodeLibrary.cpp.i
@@ -758,7 +758,7 @@ Core/TestCases/TestLoadFromCodeLibrary.i: Core/TestCases/TestLoadFromCodeLibrary
 
 # target to preprocess a source file
 Core/TestCases/TestLoadFromCodeLibrary.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestLoadFromCodeLibrary.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestLoadFromCodeLibrary.cpp.i
 .PHONY : Core/TestCases/TestLoadFromCodeLibrary.cpp.i
 
 Core/TestCases/TestLoadFromCodeLibrary.s: Core/TestCases/TestLoadFromCodeLibrary.cpp.s
@@ -767,7 +767,7 @@ Core/TestCases/TestLoadFromCodeLibrary.s: Core/TestCases/TestLoadFromCodeLibrary
 
 # target to generate assembly for a file
 Core/TestCases/TestLoadFromCodeLibrary.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestLoadFromCodeLibrary.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestLoadFromCodeLibrary.cpp.s
 .PHONY : Core/TestCases/TestLoadFromCodeLibrary.cpp.s
 
 Core/TestCases/TestStringEnclosure.obj: Core/TestCases/TestStringEnclosure.cpp.obj
@@ -776,7 +776,7 @@ Core/TestCases/TestStringEnclosure.obj: Core/TestCases/TestStringEnclosure.cpp.o
 
 # target to build an object file
 Core/TestCases/TestStringEnclosure.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestStringEnclosure.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestStringEnclosure.cpp.obj
 .PHONY : Core/TestCases/TestStringEnclosure.cpp.obj
 
 Core/TestCases/TestStringEnclosure.i: Core/TestCases/TestStringEnclosure.cpp.i
@@ -785,7 +785,7 @@ Core/TestCases/TestStringEnclosure.i: Core/TestCases/TestStringEnclosure.cpp.i
 
 # target to preprocess a source file
 Core/TestCases/TestStringEnclosure.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestStringEnclosure.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestStringEnclosure.cpp.i
 .PHONY : Core/TestCases/TestStringEnclosure.cpp.i
 
 Core/TestCases/TestStringEnclosure.s: Core/TestCases/TestStringEnclosure.cpp.s
@@ -794,7 +794,7 @@ Core/TestCases/TestStringEnclosure.s: Core/TestCases/TestStringEnclosure.cpp.s
 
 # target to generate assembly for a file
 Core/TestCases/TestStringEnclosure.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestStringEnclosure.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestStringEnclosure.cpp.s
 .PHONY : Core/TestCases/TestStringEnclosure.cpp.s
 
 Core/TestCases/TestTestCase.obj: Core/TestCases/TestTestCase.cpp.obj
@@ -803,7 +803,7 @@ Core/TestCases/TestTestCase.obj: Core/TestCases/TestTestCase.cpp.obj
 
 # target to build an object file
 Core/TestCases/TestTestCase.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestTestCase.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestTestCase.cpp.obj
 .PHONY : Core/TestCases/TestTestCase.cpp.obj
 
 Core/TestCases/TestTestCase.i: Core/TestCases/TestTestCase.cpp.i
@@ -812,7 +812,7 @@ Core/TestCases/TestTestCase.i: Core/TestCases/TestTestCase.cpp.i
 
 # target to preprocess a source file
 Core/TestCases/TestTestCase.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestTestCase.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestTestCase.cpp.i
 .PHONY : Core/TestCases/TestTestCase.cpp.i
 
 Core/TestCases/TestTestCase.s: Core/TestCases/TestTestCase.cpp.s
@@ -821,7 +821,7 @@ Core/TestCases/TestTestCase.s: Core/TestCases/TestTestCase.cpp.s
 
 # target to generate assembly for a file
 Core/TestCases/TestTestCase.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/TestCases/TestTestCase.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/TestCases/TestTestCase.cpp.s
 .PHONY : Core/TestCases/TestTestCase.cpp.s
 
 Core/Tests.obj: Core/Tests.cpp.obj
@@ -830,7 +830,7 @@ Core/Tests.obj: Core/Tests.cpp.obj
 
 # target to build an object file
 Core/Tests.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/Tests.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/Tests.cpp.obj
 .PHONY : Core/Tests.cpp.obj
 
 Core/Tests.i: Core/Tests.cpp.i
@@ -839,7 +839,7 @@ Core/Tests.i: Core/Tests.cpp.i
 
 # target to preprocess a source file
 Core/Tests.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/Tests.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/Tests.cpp.i
 .PHONY : Core/Tests.cpp.i
 
 Core/Tests.s: Core/Tests.cpp.s
@@ -848,7 +848,7 @@ Core/Tests.s: Core/Tests.cpp.s
 
 # target to generate assembly for a file
 Core/Tests.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/Tests.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/Tests.cpp.s
 .PHONY : Core/Tests.cpp.s
 
 Core/Utils.obj: Core/Utils.cpp.obj
@@ -857,7 +857,7 @@ Core/Utils.obj: Core/Utils.cpp.obj
 
 # target to build an object file
 Core/Utils.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/Utils.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/Utils.cpp.obj
 .PHONY : Core/Utils.cpp.obj
 
 Core/Utils.i: Core/Utils.cpp.i
@@ -866,7 +866,7 @@ Core/Utils.i: Core/Utils.cpp.i
 
 # target to preprocess a source file
 Core/Utils.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/Utils.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/Utils.cpp.i
 .PHONY : Core/Utils.cpp.i
 
 Core/Utils.s: Core/Utils.cpp.s
@@ -875,7 +875,7 @@ Core/Utils.s: Core/Utils.cpp.s
 
 # target to generate assembly for a file
 Core/Utils.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/Core/Utils.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/Core/Utils.cpp.s
 .PHONY : Core/Utils.cpp.s
 
 FlexibleComputerLanguage/LogJsonParser.obj: FlexibleComputerLanguage/LogJsonParser.cpp.obj
@@ -884,7 +884,7 @@ FlexibleComputerLanguage/LogJsonParser.obj: FlexibleComputerLanguage/LogJsonPars
 
 # target to build an object file
 FlexibleComputerLanguage/LogJsonParser.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/LogJsonParser.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/LogJsonParser.cpp.obj
 .PHONY : FlexibleComputerLanguage/LogJsonParser.cpp.obj
 
 FlexibleComputerLanguage/LogJsonParser.i: FlexibleComputerLanguage/LogJsonParser.cpp.i
@@ -893,7 +893,7 @@ FlexibleComputerLanguage/LogJsonParser.i: FlexibleComputerLanguage/LogJsonParser
 
 # target to preprocess a source file
 FlexibleComputerLanguage/LogJsonParser.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/LogJsonParser.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/LogJsonParser.cpp.i
 .PHONY : FlexibleComputerLanguage/LogJsonParser.cpp.i
 
 FlexibleComputerLanguage/LogJsonParser.s: FlexibleComputerLanguage/LogJsonParser.cpp.s
@@ -902,7 +902,7 @@ FlexibleComputerLanguage/LogJsonParser.s: FlexibleComputerLanguage/LogJsonParser
 
 # target to generate assembly for a file
 FlexibleComputerLanguage/LogJsonParser.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/LogJsonParser.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/LogJsonParser.cpp.s
 .PHONY : FlexibleComputerLanguage/LogJsonParser.cpp.s
 
 FlexibleComputerLanguage/MysqlConnector.obj: FlexibleComputerLanguage/MysqlConnector.cpp.obj
@@ -911,7 +911,7 @@ FlexibleComputerLanguage/MysqlConnector.obj: FlexibleComputerLanguage/MysqlConne
 
 # target to build an object file
 FlexibleComputerLanguage/MysqlConnector.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/MysqlConnector.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/MysqlConnector.cpp.obj
 .PHONY : FlexibleComputerLanguage/MysqlConnector.cpp.obj
 
 FlexibleComputerLanguage/MysqlConnector.i: FlexibleComputerLanguage/MysqlConnector.cpp.i
@@ -920,7 +920,7 @@ FlexibleComputerLanguage/MysqlConnector.i: FlexibleComputerLanguage/MysqlConnect
 
 # target to preprocess a source file
 FlexibleComputerLanguage/MysqlConnector.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/MysqlConnector.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/MysqlConnector.cpp.i
 .PHONY : FlexibleComputerLanguage/MysqlConnector.cpp.i
 
 FlexibleComputerLanguage/MysqlConnector.s: FlexibleComputerLanguage/MysqlConnector.cpp.s
@@ -929,7 +929,7 @@ FlexibleComputerLanguage/MysqlConnector.s: FlexibleComputerLanguage/MysqlConnect
 
 # target to generate assembly for a file
 FlexibleComputerLanguage/MysqlConnector.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/MysqlConnector.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/MysqlConnector.cpp.s
 .PHONY : FlexibleComputerLanguage/MysqlConnector.cpp.s
 
 FlexibleComputerLanguage/QueryExecuter.obj: FlexibleComputerLanguage/QueryExecuter.cpp.obj
@@ -938,7 +938,7 @@ FlexibleComputerLanguage/QueryExecuter.obj: FlexibleComputerLanguage/QueryExecut
 
 # target to build an object file
 FlexibleComputerLanguage/QueryExecuter.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/QueryExecuter.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/QueryExecuter.cpp.obj
 .PHONY : FlexibleComputerLanguage/QueryExecuter.cpp.obj
 
 FlexibleComputerLanguage/QueryExecuter.i: FlexibleComputerLanguage/QueryExecuter.cpp.i
@@ -947,7 +947,7 @@ FlexibleComputerLanguage/QueryExecuter.i: FlexibleComputerLanguage/QueryExecuter
 
 # target to preprocess a source file
 FlexibleComputerLanguage/QueryExecuter.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/QueryExecuter.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/QueryExecuter.cpp.i
 .PHONY : FlexibleComputerLanguage/QueryExecuter.cpp.i
 
 FlexibleComputerLanguage/QueryExecuter.s: FlexibleComputerLanguage/QueryExecuter.cpp.s
@@ -956,7 +956,7 @@ FlexibleComputerLanguage/QueryExecuter.s: FlexibleComputerLanguage/QueryExecuter
 
 # target to generate assembly for a file
 FlexibleComputerLanguage/QueryExecuter.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/QueryExecuter.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/QueryExecuter.cpp.s
 .PHONY : FlexibleComputerLanguage/QueryExecuter.cpp.s
 
 FlexibleComputerLanguage/ResultGenerator.obj: FlexibleComputerLanguage/ResultGenerator.cpp.obj
@@ -965,7 +965,7 @@ FlexibleComputerLanguage/ResultGenerator.obj: FlexibleComputerLanguage/ResultGen
 
 # target to build an object file
 FlexibleComputerLanguage/ResultGenerator.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/ResultGenerator.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/ResultGenerator.cpp.obj
 .PHONY : FlexibleComputerLanguage/ResultGenerator.cpp.obj
 
 FlexibleComputerLanguage/ResultGenerator.i: FlexibleComputerLanguage/ResultGenerator.cpp.i
@@ -974,7 +974,7 @@ FlexibleComputerLanguage/ResultGenerator.i: FlexibleComputerLanguage/ResultGener
 
 # target to preprocess a source file
 FlexibleComputerLanguage/ResultGenerator.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/ResultGenerator.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/ResultGenerator.cpp.i
 .PHONY : FlexibleComputerLanguage/ResultGenerator.cpp.i
 
 FlexibleComputerLanguage/ResultGenerator.s: FlexibleComputerLanguage/ResultGenerator.cpp.s
@@ -983,7 +983,7 @@ FlexibleComputerLanguage/ResultGenerator.s: FlexibleComputerLanguage/ResultGener
 
 # target to generate assembly for a file
 FlexibleComputerLanguage/ResultGenerator.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/ResultGenerator.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/ResultGenerator.cpp.s
 .PHONY : FlexibleComputerLanguage/ResultGenerator.cpp.s
 
 FlexibleComputerLanguage/easylogging++.obj: FlexibleComputerLanguage/easylogging++.cc.obj
@@ -992,7 +992,7 @@ FlexibleComputerLanguage/easylogging++.obj: FlexibleComputerLanguage/easylogging
 
 # target to build an object file
 FlexibleComputerLanguage/easylogging++.cc.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/easylogging++.cc.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/easylogging++.cc.obj
 .PHONY : FlexibleComputerLanguage/easylogging++.cc.obj
 
 FlexibleComputerLanguage/easylogging++.i: FlexibleComputerLanguage/easylogging++.cc.i
@@ -1001,7 +1001,7 @@ FlexibleComputerLanguage/easylogging++.i: FlexibleComputerLanguage/easylogging++
 
 # target to preprocess a source file
 FlexibleComputerLanguage/easylogging++.cc.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/easylogging++.cc.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/easylogging++.cc.i
 .PHONY : FlexibleComputerLanguage/easylogging++.cc.i
 
 FlexibleComputerLanguage/easylogging++.s: FlexibleComputerLanguage/easylogging++.cc.s
@@ -1010,7 +1010,7 @@ FlexibleComputerLanguage/easylogging++.s: FlexibleComputerLanguage/easylogging++
 
 # target to generate assembly for a file
 FlexibleComputerLanguage/easylogging++.cc.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/easylogging++.cc.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/easylogging++.cc.s
 .PHONY : FlexibleComputerLanguage/easylogging++.cc.s
 
 FlexibleComputerLanguage/main.obj: FlexibleComputerLanguage/main.cpp.obj
@@ -1019,7 +1019,7 @@ FlexibleComputerLanguage/main.obj: FlexibleComputerLanguage/main.cpp.obj
 
 # target to build an object file
 FlexibleComputerLanguage/main.cpp.obj:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/main.cpp.obj
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/main.cpp.obj
 .PHONY : FlexibleComputerLanguage/main.cpp.obj
 
 FlexibleComputerLanguage/main.i: FlexibleComputerLanguage/main.cpp.i
@@ -1028,7 +1028,7 @@ FlexibleComputerLanguage/main.i: FlexibleComputerLanguage/main.cpp.i
 
 # target to preprocess a source file
 FlexibleComputerLanguage/main.cpp.i:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/main.cpp.i
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/main.cpp.i
 .PHONY : FlexibleComputerLanguage/main.cpp.i
 
 FlexibleComputerLanguage/main.s: FlexibleComputerLanguage/main.cpp.s
@@ -1037,7 +1037,7 @@ FlexibleComputerLanguage/main.s: FlexibleComputerLanguage/main.cpp.s
 
 # target to generate assembly for a file
 FlexibleComputerLanguage/main.cpp.s:
-	$(MAKE) -f CMakeFiles\FlexibleComputerLanguage1.dir\build.make CMakeFiles/FlexibleComputerLanguage1.dir/FlexibleComputerLanguage/main.cpp.s
+	$(MAKE) -f CMakeFiles\MaskingTool.dir\build.make CMakeFiles/MaskingTool.dir/FlexibleComputerLanguage/main.cpp.s
 .PHONY : FlexibleComputerLanguage/main.cpp.s
 
 # Help Target
@@ -1046,7 +1046,7 @@ help:
 	@echo ... all (the default if no target is provided)
 	@echo ... clean
 	@echo ... depend
-	@echo ... FlexibleComputerLanguage1
+	@echo ... MaskingTool
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Core/Bool.obj

@@ -10,7 +10,7 @@ include_directories(FlexibleComputerLanguage)
 include_directories(MySql/mysqlheaders/mysqlheaders)
 link_directories(MySql)
 
-add_executable(FlexibleComputerLanguage1
+add_executable(MaskingTool
         Core/TestCases/TestCaseBase.cpp
         Core/TestCases/TestCaseBase.h
         Core/TestCases/TestCaseExecuter.cpp
@@ -98,6 +98,6 @@ add_executable(FlexibleComputerLanguage1
         FlexibleComputerLanguage/MysqlConnector.cpp
         FlexibleComputerLanguage/MysqlConnector.h)
 
-target_link_libraries(FlexibleComputerLanguage1 libmysql.a)
+target_link_libraries(MaskingTool libmysql.a)
 
 

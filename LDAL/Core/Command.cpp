@@ -1390,926 +1390,6 @@ PENTITY Command::ExecuteNodeCommand(MULONG ulCommand, PENTITY pEntity, Execution
                 pNodeRes = (PNODE)pNode->GetCustomObj();
                 break;
             }
-            case COMMAND_TYPE_MASK_VALUE:
-            {
-                std::cout<<"--------------------------------------------Mask Test Suite-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-                    replacement ="dummyTestName";
-
-                    static std::set<std::string> setbeforemask;
-                    std::set<std::string>::iterator it;
-                    int temp =counttest;
-                    setbeforemask.insert (argument);
-                    counttest=setbeforemask.size();
-                    MSTRING tempStr=std::to_string(counttest);
-                    MSTRING tempReplace;
-                    std::cout << "setbeforemask contains : ";
-                    for (it=setbeforemask.begin(); it!=setbeforemask.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
-            case COMMAND_TYPE_MASK_FIRST_NAME:
-            {
-                std::cout<<"--------------------------------------------Mask First Name-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-
-                    static std::set<std::string> setbeforemaskfname;
-                    std::set<std::string>::iterator it;
-                    int temp =countfname;
-                    setbeforemaskfname.insert (argument);
-                    countfname=setbeforemaskfname.size();
-                    MSTRING tempStr=std::to_string(countfname);
-                    MSTRING tempReplace;
-                    std::cout << "setbeforemaskfname contains : ";
-                    for (it=setbeforemaskfname.begin(); it!=setbeforemaskfname.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    srand(time(NULL)*countfname); //generates random seed val
-                    if(connection)
-                    {
-                        MysqlConnector mysqlobj;
-                        int resultmale = mysqlobj.existsFirstNameMale(connection,argument);
-                        int resultfemale = mysqlobj.existsFirstNameFemale(connection,argument);
-
-                        if(resultmale==1)
-                        {
-                            int randid = rand()%((7732 - 1) + 1) + 1;
-                            replacement = mysqlobj.selectFirstNameMale(connection,randid);
-                        }
-                        else if(resultfemale == 1)
-                        {
-                            int randid = rand()%((7144 - 1) + 1) + 1;
-                            replacement = mysqlobj.selectFirstNameFemale(connection,randid);
-                        }
-                        else
-                        {
-                            int randid = rand()%((744 - 1) + 1) + 1;
-                            replacement = mysqlobj.selectFirstNameUnisex(connection,randid);
-                        }
-                    }
-                    else
-                    {
-                        perror ("The Database could not be connected, Please check the db connection!");
-                        throw _exception();
-                    }
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
-            case COMMAND_TYPE_MASK_LAST_NAME:
-            {
-                std::cout<<"--------------------------------------------Mask Last name-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-
-                    static std::set<std::string> setbeforemasklname;
-                    std::set<std::string>::iterator it;
-                    int temp =countlname;
-                    setbeforemasklname.insert (argument);
-                    countlname=setbeforemasklname.size();
-                    MSTRING tempStr=std::to_string(countlname);
-                    MSTRING tempReplace;
-
-                    std::cout << "setbeforemasklname contains : ";
-                    for (it=setbeforemasklname.begin(); it!=setbeforemasklname.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    srand(time(NULL)*countlname); //generates random seed val
-                    if(connection)
-                    {
-                        MysqlConnector mysqlobj;
-                        int randid = rand()%((789 - 1) + 1) + 1;
-                        replacement = mysqlobj.selectLastName(connection,randid);
-                    }
-                    else
-                    {
-                        perror ("The Database could not be connected, Please check the db connection!");
-                        throw _exception();
-                    }
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
-            case COMMAND_TYPE_MASK_FULL_NAME:
-            {
-                std::cout<<"--------------------------------------------Mask Full name-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-
-                    static std::set<std::string> setbeforemaskfullname;
-                    std::set<std::string>::iterator it;
-                    int temp =countfullname;
-                    setbeforemaskfullname.insert (argument);
-                    countfullname=setbeforemaskfullname.size();
-                    MSTRING tempStr=std::to_string(countfullname);
-                    MSTRING tempReplace;
-
-                    std::cout << "setbeforemaskfullname contains : ";
-                    for (it=setbeforemaskfullname.begin(); it!=setbeforemaskfullname.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    srand(time(NULL)*countfullname); //generates random seed val
-                    if(connection)
-                    {
-                        MysqlConnector mysqlobj;
-                        MSTRING fname;
-                        int randlnameid = rand()%((789 - 1) + 1) + 1;
-                        int resultmale = mysqlobj.existsFirstNameMale(connection,argument);
-                        int resultfemale = mysqlobj.existsFirstNameFemale(connection,argument);
-
-                        if(resultmale==1)
-                        {
-                            int randid = rand()%((7732 - 1) + 1) + 1;
-                            fname = mysqlobj.selectFirstNameMale(connection,randid);
-                        }
-                        else if(resultfemale == 1)
-                        {
-                            int randid = rand()%((7144 - 1) + 1) + 1;
-                            fname = mysqlobj.selectFirstNameFemale(connection,randid);
-                        }
-                        else
-                        {
-                            int randid = rand()%((744 - 1) + 1) + 1;
-                            fname = mysqlobj.selectFirstNameUnisex(connection,randid);
-                        }
-                        MSTRING lname = mysqlobj.selectLastName(connection,randlnameid);
-                        replacement = fname + " " + lname;
-                    }
-                    else
-                    {
-                        perror ("The Database could not be connected, Please check the db connection!");
-                        throw _exception();
-                    }
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
-            case COMMAND_TYPE_MASK_DATE:
-            {
-                std::cout<<"--------------------------------------------Mask Date-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    srand(time(NULL)); //generates random seed val
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-
-                    static std::set<std::string> setbeforemaskdate;
-                    std::set<std::string>::iterator it;
-                    int temp =countday;
-                    setbeforemaskdate.insert (argument);
-                    countday=setbeforemaskdate.size();
-
-                    std::cout << "setbeforemaskdate contains : ";
-                    for (it=setbeforemaskdate.begin(); it!=setbeforemaskdate.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    countday++;
-                    srand(time(NULL)*countday); //generates random seed val
-
-                    int randomDate = rand()%((30 - 1) + 1) + 1;
-                    MSTRING tempStr=std::to_string(randomDate);
-                    if(tempStr.length()==1)
-                    {
-                        tempStr="0"+tempStr;
-                    }
-                    if(argument.at(0)=='-')
-                    {
-                        replacement ="-"+tempStr;
-                    }
-                    else
-                    {
-                        replacement =tempStr;
-                    }
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
-            case COMMAND_TYPE_MASK_MONTH:
-            {
-                std::cout<<"--------------------------------------------Mask Month-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    srand(time(NULL)); //generates random seed val
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-
-                    static std::set<std::string> setbeforemaskmonth;
-                    std::set<std::string>::iterator it;
-                    int temp =countmonth;
-                    setbeforemaskmonth.insert (argument);
-                    countmonth=setbeforemaskmonth.size();
-
-                    std::cout << "setbeforemaskmonth contains : ";
-                    for (it=setbeforemaskmonth.begin(); it!=setbeforemaskmonth.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    countmonth++;
-                    srand(time(NULL)*countmonth); //generates random seed val
-
-                    int randomMonth = rand()%((12 - 1) + 1) + 1;
-                    MSTRING tempStr=std::to_string(randomMonth);
-                    if(tempStr.length()==1)
-                    {
-                        tempStr="0"+tempStr;
-                    }
-                    if(argument.at(0)=='-' && argument.at(argument.length()-1)=='-')
-                    {
-                        replacement ="-"+tempStr+"-";
-                    }
-                    else
-                    {
-                        replacement =tempStr;
-                    }
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
-            case COMMAND_TYPE_MASK_YEAR:
-            {
-                std::cout<<"--------------------------------------------Mask Year-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    srand(time(NULL)); //generates random seed val
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-
-                    static std::set<std::string> setbeforemaskyear;
-                    std::set<std::string>::iterator it;
-                    int temp =countyear;
-                    setbeforemaskyear.insert (argument);
-                    countyear=setbeforemaskyear.size();
-
-                    std::cout << "setbeforemaskyear contains : ";
-                    for (it=setbeforemaskyear.begin(); it!=setbeforemaskyear.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    countyear++;
-                    srand(time(NULL)*countyear); //generates random seed val
-
-                    int arg = std::stoi(argument);
-                    int diff=5;
-                    int userBeg =arg-diff;
-                    int userEnd =arg+diff;
-                    int randomYear = rand()%((userEnd - userBeg) + 1) + userBeg;
-                    if(argument.at(argument.length()-1)=='-')
-                    {
-                        replacement =std::to_string(randomYear)+"-";
-                    }
-                    else
-                    {
-                        replacement =std::to_string(randomYear);
-                    }
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
-            case COMMAND_TYPE_MASK_HOUR:
-            {
-                std::cout<<"--------------------------------------------Mask Hour-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    srand(time(NULL)); //generates random seed val
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-
-                    static std::set<std::string> setbeforemaskhour;
-                    std::set<std::string>::iterator it;
-                    int temp =counthour;
-                    setbeforemaskhour.insert (argument);
-                    counthour=setbeforemaskhour.size();
-
-                    std::cout << "setbeforemaskhour contains : ";
-                    for (it=setbeforemaskhour.begin(); it!=setbeforemaskhour.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    counthour++;
-                    srand(time(NULL)*counthour); //generates random seed val
-
-                    //Assuming hours in 24-hour format
-                    int randomHour = rand()%((23) + 1);
-                    MSTRING tempStr=std::to_string(randomHour);
-                    if(tempStr.length()==1)
-                    {
-                        tempStr="0"+tempStr;
-                    }
-                    if(argument.at(argument.length()-1)==':')
-                    {
-                        replacement =tempStr+":";
-                    }
-                    else
-                    {
-                        replacement =tempStr;
-                    }
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
-            case COMMAND_TYPE_MASK_MINUTE:
-            {
-                std::cout<<"--------------------------------------------Mask Minute-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    srand(time(NULL)); //generates random seed val
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-
-                    static std::set<std::string> setbeforemaskminute;
-                    std::set<std::string>::iterator it;
-                    int temp =countminute;
-                    setbeforemaskminute.insert (argument);
-                    countminute=setbeforemaskminute.size();
-
-                    std::cout << "setbeforemaskminute contains : ";
-                    for (it=setbeforemaskminute.begin(); it!=setbeforemaskminute.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    countminute++;
-                    srand(time(NULL)*countminute); //generates random seed val
-
-                    int randomMinute = rand()%((59) + 1);
-                    MSTRING tempStr=std::to_string(randomMinute);
-                    if(tempStr.length()==1)
-                    {
-                        tempStr="0"+tempStr;
-                    }
-                    if(argument.at(0)==':' && argument.at(argument.length()-1)==':')
-                    {
-                        replacement =":"+tempStr+":";
-                    }
-                    else
-                    {
-                        replacement =tempStr;
-                    }
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
-            case COMMAND_TYPE_MASK_SECONDS:
-            {
-                std::cout<<"--------------------------------------------Mask Seconds-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    srand(time(NULL)); //generates random seed val
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-
-                    static std::set<std::string> setbeforemaskseconds;
-                    std::set<std::string>::iterator it;
-                    int temp =countseconds;
-                    setbeforemaskseconds.insert (argument);
-                    countseconds=setbeforemaskseconds.size();
-
-                    std::cout << "setbeforemaskseconds contains : ";
-                    for (it=setbeforemaskseconds.begin(); it!=setbeforemaskseconds.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    countseconds++;
-                    srand(time(NULL)*countseconds); //generates random seed val
-
-                    int randomSecond = rand()%((59) + 1);
-                    MSTRING tempStr=std::to_string(randomSecond);
-                    if(tempStr.length()==1)
-                    {
-                        tempStr="0"+tempStr;
-                    }
-                    if(argument.at(0)==':')
-                    {
-                        replacement =":"+tempStr;
-                    }
-                    else
-                    {
-                        replacement =tempStr;
-                    }
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
-            case COMMAND_TYPE_MASK_TELEPHONE_NUMBER:
-            {
-                std::cout<<"--------------------------------------------Mask Telephone number-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    srand(time(NULL)); //generates random seed val
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-
-                    static std::set<std::string> setbeforemasktelnum;
-                    std::set<std::string>::iterator it;
-                    int temp =counttelnum;
-                    setbeforemasktelnum.insert (argument);
-                    counttelnum=setbeforemasktelnum.size();
-
-                    std::cout << "setbeforemasktelnum contains : ";
-                    for (it=setbeforemasktelnum.begin(); it!=setbeforemasktelnum.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    counttelnum++;
-                    srand(time(NULL)*counttelnum); //generates random seed val
-
-                    int telLength=0;
-                    MSTRING telNum;
-                    int randid = rand()%((13 - 1) + 1) + 1;
-
-                    if(connection)
-                    {
-                        MysqlConnector mysqlobj;
-                        replacement = mysqlobj.selectCityCode(connection,randid);
-                    }
-                    else
-                    {
-                        perror ("The Database could not be connected, Please check the db connection!");
-                        throw _exception();
-                    }
-
-                    if(replacement.length()==1)
-                    {
-                        telLength=7;
-                    }
-                    else if(replacement.length()==2)
-                    {
-                        telLength=6;
-                    }
-                    for(int i=0;i<telLength;i++)
-                    {
-                        telNum+=(std::to_string(rand()%((9) + 1)));
-                    }
-                    replacement+=telNum;
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
-            case COMMAND_TYPE_MASK_ADDRESS:
-            {
-                std::cout<<"--------------------------------------------Mask Address-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-
-                    static std::set<std::string> setbeforemaskaddress;
-                    std::set<std::string>::iterator it;
-                    int temp =countaddress;
-                    setbeforemaskaddress.insert (argument);
-                    countaddress=setbeforemaskaddress.size();
-                    MSTRING tempStr=std::to_string(countaddress);
-                    MSTRING tempReplace;
-
-                    std::cout << "setbeforemaskaddress contains : ";
-                    for (it=setbeforemaskaddress.begin(); it!=setbeforemaskaddress.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    srand(time(NULL)*countaddress); //generates random seed val
-                    if(connection)
-                    {
-                        MysqlConnector mysqlobj;
-                        int randid = rand()%((499 - 1) + 1) + 1;
-                        replacement = mysqlobj.selectAddress(connection,randid);
-                    }
-                    else
-                    {
-                        perror ("The Database could not be connected, Please check the db connection!");
-                        throw _exception();
-                    }
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
-            case COMMAND_TYPE_MASK_POSTAL_CODE:
-            {
-                std::cout<<"--------------------------------------------Mask Postal Code-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-
-                    static std::set<std::string> setbeforemaskpostalcode;
-                    std::set<std::string>::iterator it;
-                    int temp =countpostalcode;
-                    setbeforemaskpostalcode.insert (argument);
-                    countpostalcode=setbeforemaskpostalcode.size();
-                    MSTRING tempStr=std::to_string(countpostalcode);
-                    MSTRING tempReplace;
-
-                    std::cout << "setbeforemaskpostalcode contains : ";
-                    for (it=setbeforemaskpostalcode.begin(); it!=setbeforemaskpostalcode.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    srand(time(NULL)*countpostalcode); //generates random seed val
-                    if(connection)
-                    {
-                        MysqlConnector mysqlobj;
-                        int randid = rand()%((200 - 1) + 1) + 1;
-                        replacement = mysqlobj.selectPostalCode(connection,randid);
-                    }
-                    else
-                    {
-                        perror ("The Database could not be connected, Please check the db connection!");
-                        throw _exception();
-                    }
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
-            case COMMAND_TYPE_MASK_INTEGER:
-            {
-                std::cout<<"--------------------------------------------Mask Integer-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    srand(time(NULL)); //generates random seed val
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-
-                    static std::set<std::string> setbeforemaskinteger;
-                    std::set<std::string>::iterator it;
-                    int temp =countinteger;
-                    setbeforemaskinteger.insert (argument);
-                    countinteger=setbeforemaskinteger.size();
-
-                    std::cout << "setbeforemaskinteger contains : ";
-                    for (it=setbeforemaskinteger.begin(); it!=setbeforemaskinteger.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    countinteger++;
-                    srand(time(NULL)*countinteger); //generates random seed val
-
-                    int userBeg =10000;
-                    int userEnd =20000;
-                    int randid = rand()%((userEnd - userBeg) + 1) + userBeg;
-                    replacement = std::to_string(randid);
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
-            case COMMAND_TYPE_MASK_PRICE:
-            {
-                std::cout<<"--------------------------------------------Mask Price-----------------------------------------------\n";
-                //Assume in the format 10,383.435
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    srand(time(NULL)); //generates random seed val
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-
-                    static std::set<std::string> setbeforemaskprice;
-                    std::set<std::string>::iterator it;
-                    int temp =countprice;
-                    setbeforemaskprice.insert (argument);
-                    countprice=setbeforemaskprice.size();
-
-                    std::cout << "setbeforemaskprice contains : ";
-                    for (it=setbeforemaskprice.begin(); it!=setbeforemaskprice.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    countprice++;
-                    srand(time(NULL)*countprice); //generates random seed val
-
-                    int upperBound=50000;
-                    int lowererBound=10000;
-                    std::size_t decpos=(argument.find(".")+1);
-                    int precision=argument.length() - decpos;
-
-                    int randid = rand()%((upperBound - lowererBound) + 1) + lowererBound;
-                    MSTRING intPart = std::to_string(randid);
-                    MSTRING decPart;
-                    for(int i=0;i<precision;i++)
-                    {
-                        decPart+=(std::to_string(rand()%((9) + 1)));
-                    }
-                    reverse(intPart.begin(), intPart.end());
-                    int lengthrev = intPart.length();
-                    MSTRING final;
-                    MSTRING finalprice;
-                    int noofrounds=lengthrev/3;
-                    int count=1;
-                    int count2=1;
-
-                    if(lengthrev>3)
-                    {
-                        while(count2<=noofrounds)
-                        {
-                            MSTRING sub=intPart.substr(count-1,3);
-                            MSTRING subwithsep = sub+",";
-                            finalprice+=subwithsep;
-                            count+=3;
-                            count2++;
-                        }
-                        MSTRING strremain = intPart.substr(count-1,lengthrev - count + 1);
-                        if(strremain.length()<1)
-                        {
-                            finalprice= finalprice.substr(0,finalprice.length()-1);
-                        } else
-                        {
-                            finalprice+=strremain;
-                        }
-                        reverse(finalprice.begin(), finalprice.end());
-                        final = finalprice+"."+decPart;
-                    }
-                    else
-                    {
-                        final = intPart+"."+decPart;
-                    }
-                    replacement =final;
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
-            case COMMAND_TYPE_MASK_NIC:
-            {
-                std::cout<<"--------------------------------------------Mask NIC-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    srand(time(NULL)); //generates random seed val
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-
-                    static std::set<std::string> setbeforemasknic;
-                    std::set<std::string>::iterator it;
-                    int temp =countnic;
-                    setbeforemasknic.insert (argument);
-                    countnic=setbeforemasknic.size();
-
-                    std::cout << "setbeforemasknic contains : ";
-                    for (it=setbeforemasknic.begin(); it!=setbeforemasknic.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    countnic++;
-                    srand(time(NULL)*countnic); //generates random seed val
-
-                    int diff =5;
-                    MSTRING rand1 = std::to_string(rand()%((30 - 1) + 1) + 1);
-                    MSTRING rand2 = std::to_string(rand()%((12 - 1) + 1) + 1);
-                    MSTRING rand5 = std::to_string(rand()%((99) + 1));
-                    MSTRING rand4;
-
-                    int year = std::stoi(argument.substr(4, 2));
-                    int highyear = (year + 2000 + diff) ;
-                    int lowyear = (year + 2000 - diff);
-                    int rand3int=rand()%((highyear - lowyear) + 1) + lowyear;
-                    MSTRING rand3 =std::to_string(rand3int).substr(2, 2);
-                    int individual = std::stoi(rand3);
-                    if(individual<40)
-                    {
-                        rand4 = std::to_string(rand()%((999) + 1));
-                    }
-                    else if(individual<55)
-                    {
-                        MSTRING rand41 = std::to_string(rand()%((499) + 1));
-                        MSTRING rand42 = std::to_string(rand()%((999 - 900) + 1) + 900);
-                        int randchoice=rand()%(2)+1;
-                        if(randchoice==1)
-                        {
-                            rand4=rand41;
-                        }
-                        else if(randchoice==2)
-                        {
-                            rand4=rand42;
-                        }
-                    }
-                    else if(individual<100)
-                    {
-                        MSTRING rand41 = std::to_string(rand()%((750) + 1));
-                        MSTRING rand42 = std::to_string(rand()%((999 - 900) + 1) + 900);
-                        int randchoice=rand()%(2)+1;
-                        if(randchoice==1)
-                        {
-                            rand4=rand41;
-                        }
-                        else if(randchoice==2)
-                        {
-                            rand4=rand42;
-                        }
-                    }
-                    if(rand1.length()==1)
-                    {
-                        rand1="0"+rand1;
-                    }
-                    if(rand2.length()==1)
-                    {
-                        rand2="0"+rand2;
-                    }
-                    if(rand5.length()==1)
-                    {
-                        rand5="0"+rand5;
-                    }
-                    if(rand4.length()==1)
-                    {
-                        rand4="00"+rand4;
-                    }
-                    else if(rand4.length()==2)
-                    {
-                        rand4="0"+rand4;
-                    }
-                    replacement=rand1+rand2+rand3+rand4+rand5;
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
-            case COMMAND_TYPE_MASK_EMAIL:
-            {
-                std::cout<<"--------------------------------------------Mask Email-----------------------------------------------\n";
-                MemoryManager::Inst.CreateObject(&pNullRes);
-                if(ENTITY_TYPE_STRING == pArg->ul_Type)
-                {
-                    String* pStrArg = (String*)pArg;
-                    argument=pStrArg->GetValue();
-                    nodeString=pNode->GetValue();
-
-                    static std::set<std::string> setbeforemaskemail;
-                    std::set<std::string>::iterator it;
-                    int temp =countemail;
-                    setbeforemaskemail.insert (argument);
-                    countemail=setbeforemaskemail.size();
-                    MSTRING tempStr=std::to_string(countemail);
-                    MSTRING tempReplace;
-                    std::cout << "setbeforemaskemail contains : ";
-                    for (it=setbeforemaskemail.begin(); it!=setbeforemaskemail.end(); ++it)
-                    {
-                        std::cout << *it<<" , ";
-                    }
-                    std::cout << '\n';
-                    srand(time(NULL)*countemail); //generates random seed val
-
-                    std::size_t posAt=argument.find("@");
-                    MSTRING sub = argument.substr(0,posAt);
-                    MSTRING remainder = argument.substr(posAt,argument.length()-sub.length());
-                    if(connection)
-                    {
-                        MysqlConnector mysqlobj;
-                        int resultmale = mysqlobj.existsFirstNameMale(connection,sub);
-                        int resultfemale = mysqlobj.existsFirstNameFemale(connection,sub);
-                        MSTRING username = "";
-
-                        if(resultmale==1)
-                        {
-                            int randid = rand()%((7732 - 1) + 1) + 1;
-                            username = mysqlobj.selectFirstNameMale(connection,randid);
-                        }
-                        else if(resultfemale == 1)
-                        {
-                            int randid = rand()%((7144 - 1) + 1) + 1;
-                            username = mysqlobj.selectFirstNameFemale(connection,randid);
-                        }
-                        else
-                        {
-                            int randid = rand()%((744 - 1) + 1) + 1;
-                            username = mysqlobj.selectFirstNameUnisex(connection,randid);
-                        }
-                        replacement =username+remainder;
-                    }
-                    else
-                    {
-                        perror ("The Database could not be connected, Please check the db connection!");
-                        throw _exception();
-                    }
-                    std::size_t pos=nodeString.find(argument);
-                    nodeString.replace(pos,argument.length(),replacement);
-                    std::cout<<argument<<"\n";
-                    std::cout<<nodeString<<"\n";
-                    pNode->SetValue((PMCHAR) nodeString.c_str());
-                }
-                break;
-            }
 
         }
     }
@@ -2750,6 +1830,1376 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
                 internalNode = (PNODE)pNodeList->GetCurrElem();
             }
             pEntityList->Seek(1, false);
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_VALUE == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK TEST SUITE-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+
+            nodeString=currNode->GetValue();
+
+            replacement ="dummyTestName";
+
+            static std::set<std::string> setbeforemask;
+            std::set<std::string>::iterator it;
+            int temp =counttest;
+            setbeforemask.insert (argument);
+            counttest=setbeforemask.size();
+            MSTRING tempStr=std::to_string(counttest);
+            MSTRING tempReplace;
+            std::cout << "setbeforemask contains : ";
+            for (it=setbeforemask.begin(); it!=setbeforemask.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+
+
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_FIRST_NAME == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK FIRST NAME-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+
+            nodeString=currNode->GetValue();
+
+            static std::set<std::string> setbeforemaskfname;
+            std::set<std::string>::iterator it;
+            int temp =countfname;
+            setbeforemaskfname.insert (argument);
+            countfname=setbeforemaskfname.size();
+            MSTRING tempStr=std::to_string(countfname);
+            MSTRING tempReplace;
+            std::cout << "setbeforemaskfname contains : ";
+            for (it=setbeforemaskfname.begin(); it!=setbeforemaskfname.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            srand(time(NULL)*countfname); //generates random seed val
+            if(connection)
+            {
+                MysqlConnector mysqlobj;
+                int resultmale = mysqlobj.existsFirstNameMale(connection,argument);
+                int resultfemale = mysqlobj.existsFirstNameFemale(connection,argument);
+
+                if(resultmale==1)
+                {
+                    int randid = rand()%((7732 - 1) + 1) + 1;
+                    replacement = mysqlobj.selectFirstNameMale(connection,randid);
+                }
+                else if(resultfemale == 1)
+                {
+                    int randid = rand()%((7144 - 1) + 1) + 1;
+                    replacement = mysqlobj.selectFirstNameFemale(connection,randid);
+                }
+                else
+                {
+                    int randid = rand()%((744 - 1) + 1) + 1;
+                    replacement = mysqlobj.selectFirstNameUnisex(connection,randid);
+                }
+            }
+            else
+            {
+                perror ("The Database could not be connected, Please check the db connection!");
+                throw _exception();
+            }
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_LAST_NAME == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK LAST NAME-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+
+            nodeString=currNode->GetValue();
+
+            static std::set<std::string> setbeforemasklname;
+            std::set<std::string>::iterator it;
+            int temp =countlname;
+            setbeforemasklname.insert (argument);
+            countlname=setbeforemasklname.size();
+            MSTRING tempStr=std::to_string(countlname);
+            MSTRING tempReplace;
+
+            std::cout << "setbeforemasklname contains : ";
+            for (it=setbeforemasklname.begin(); it!=setbeforemasklname.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            srand(time(NULL)*countlname); //generates random seed val
+            if(connection)
+            {
+                MysqlConnector mysqlobj;
+                int randid = rand()%((789 - 1) + 1) + 1;
+                replacement = mysqlobj.selectLastName(connection,randid);
+            }
+            else
+            {
+                perror ("The Database could not be connected, Please check the db connection!");
+                throw _exception();
+            }
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+
+
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_FULL_NAME == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK FULL NAME-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+            nodeString=currNode->GetValue();
+
+            static std::set<std::string> setbeforemaskfullname;
+            std::set<std::string>::iterator it;
+            int temp =countfullname;
+            setbeforemaskfullname.insert (argument);
+            countfullname=setbeforemaskfullname.size();
+            MSTRING tempStr=std::to_string(countfullname);
+            MSTRING tempReplace;
+
+            std::cout << "setbeforemaskfullname contains : ";
+            for (it=setbeforemaskfullname.begin(); it!=setbeforemaskfullname.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            srand(time(NULL)*countfullname); //generates random seed val
+            if(connection)
+            {
+                MysqlConnector mysqlobj;
+                MSTRING fname;
+                int randlnameid = rand()%((789 - 1) + 1) + 1;
+                int resultmale = mysqlobj.existsFirstNameMale(connection,argument);
+                int resultfemale = mysqlobj.existsFirstNameFemale(connection,argument);
+
+                if(resultmale==1)
+                {
+                    int randid = rand()%((7732 - 1) + 1) + 1;
+                    fname = mysqlobj.selectFirstNameMale(connection,randid);
+                }
+                else if(resultfemale == 1)
+                {
+                    int randid = rand()%((7144 - 1) + 1) + 1;
+                    fname = mysqlobj.selectFirstNameFemale(connection,randid);
+                }
+                else
+                {
+                    int randid = rand()%((744 - 1) + 1) + 1;
+                    fname = mysqlobj.selectFirstNameUnisex(connection,randid);
+                }
+                MSTRING lname = mysqlobj.selectLastName(connection,randlnameid);
+                replacement = fname + " " + lname;
+            }
+            else
+            {
+                perror ("The Database could not be connected, Please check the db connection!");
+                throw _exception();
+            }
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+
+
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_DATE == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK DATE-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+            nodeString=currNode->GetValue();
+
+            static std::set<std::string> setbeforemaskdate;
+            std::set<std::string>::iterator it;
+            int temp =countday;
+            setbeforemaskdate.insert (argument);
+            countday=setbeforemaskdate.size();
+
+            std::cout << "setbeforemaskdate contains : ";
+            for (it=setbeforemaskdate.begin(); it!=setbeforemaskdate.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            countday++;
+            srand(time(NULL)*countday); //generates random seed val
+
+            int randomDate = rand()%((30 - 1) + 1) + 1;
+            MSTRING tempStr=std::to_string(randomDate);
+            if(tempStr.length()==1)
+            {
+                tempStr="0"+tempStr;
+            }
+            if(argument.at(0)=='-')
+            {
+                replacement ="-"+tempStr;
+            }
+            else
+            {
+                replacement =tempStr;
+            }
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+
+
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_MONTH == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK MONTH-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+            nodeString=currNode->GetValue();
+
+
+            static std::set<std::string> setbeforemaskmonth;
+            std::set<std::string>::iterator it;
+            int temp =countmonth;
+            setbeforemaskmonth.insert (argument);
+            countmonth=setbeforemaskmonth.size();
+
+            std::cout << "setbeforemaskmonth contains : ";
+            for (it=setbeforemaskmonth.begin(); it!=setbeforemaskmonth.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            countmonth++;
+            srand(time(NULL)*countmonth); //generates random seed val
+
+            int randomMonth = rand()%((12 - 1) + 1) + 1;
+            MSTRING tempStr=std::to_string(randomMonth);
+            if(tempStr.length()==1)
+            {
+                tempStr="0"+tempStr;
+            }
+            if(argument.at(0)=='-' && argument.at(argument.length()-1)=='-')
+            {
+                replacement ="-"+tempStr+"-";
+            }
+            else
+            {
+                replacement =tempStr;
+            }
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_YEAR == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK YEAR-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+            nodeString=currNode->GetValue();
+
+            static std::set<std::string> setbeforemaskyear;
+            std::set<std::string>::iterator it;
+            int temp =countyear;
+            setbeforemaskyear.insert (argument);
+            countyear=setbeforemaskyear.size();
+
+            std::cout << "setbeforemaskyear contains : ";
+            for (it=setbeforemaskyear.begin(); it!=setbeforemaskyear.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            countyear++;
+            srand(time(NULL)*countyear); //generates random seed val
+
+            int arg = std::stoi(argument);
+            int diff=5;
+            int userBeg =arg-diff;
+            int userEnd =arg+diff;
+            int randomYear = rand()%((userEnd - userBeg) + 1) + userBeg;
+            if(argument.at(argument.length()-1)=='-')
+            {
+                replacement =std::to_string(randomYear)+"-";
+            }
+            else
+            {
+                replacement =std::to_string(randomYear);
+            }
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+
+
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_HOUR == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK HOUR-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+            nodeString=currNode->GetValue();
+
+
+            static std::set<std::string> setbeforemaskhour;
+            std::set<std::string>::iterator it;
+            int temp =counthour;
+            setbeforemaskhour.insert (argument);
+            counthour=setbeforemaskhour.size();
+
+            std::cout << "setbeforemaskhour contains : ";
+            for (it=setbeforemaskhour.begin(); it!=setbeforemaskhour.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            counthour++;
+            srand(time(NULL)*counthour); //generates random seed val
+
+            //Assuming hours in 24-hour format
+            int randomHour = rand()%((23) + 1);
+            MSTRING tempStr=std::to_string(randomHour);
+            if(tempStr.length()==1)
+            {
+                tempStr="0"+tempStr;
+            }
+            if(argument.at(argument.length()-1)==':')
+            {
+                replacement =tempStr+":";
+            }
+            else
+            {
+                replacement =tempStr;
+            }
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_MINUTE == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK MINUTE-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+            nodeString=currNode->GetValue();
+
+            static std::set<std::string> setbeforemaskminute;
+            std::set<std::string>::iterator it;
+            int temp =countminute;
+            setbeforemaskminute.insert (argument);
+            countminute=setbeforemaskminute.size();
+
+            std::cout << "setbeforemaskminute contains : ";
+            for (it=setbeforemaskminute.begin(); it!=setbeforemaskminute.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            countminute++;
+            srand(time(NULL)*countminute); //generates random seed val
+
+            int randomMinute = rand()%((59) + 1);
+            MSTRING tempStr=std::to_string(randomMinute);
+            if(tempStr.length()==1)
+            {
+                tempStr="0"+tempStr;
+            }
+            if(argument.at(0)==':' && argument.at(argument.length()-1)==':')
+            {
+                replacement =":"+tempStr+":";
+            }
+            else
+            {
+                replacement =tempStr;
+            }
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+
+
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_SECONDS == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK SECONDS-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+            nodeString=currNode->GetValue();
+
+            static std::set<std::string> setbeforemaskseconds;
+            std::set<std::string>::iterator it;
+            int temp =countseconds;
+            setbeforemaskseconds.insert (argument);
+            countseconds=setbeforemaskseconds.size();
+
+            std::cout << "setbeforemaskseconds contains : ";
+            for (it=setbeforemaskseconds.begin(); it!=setbeforemaskseconds.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            countseconds++;
+            srand(time(NULL)*countseconds); //generates random seed val
+
+            int randomSecond = rand()%((59) + 1);
+            MSTRING tempStr=std::to_string(randomSecond);
+            if(tempStr.length()==1)
+            {
+                tempStr="0"+tempStr;
+            }
+            if(argument.at(0)==':')
+            {
+                replacement =":"+tempStr;
+            }
+            else
+            {
+                replacement =tempStr;
+            }
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+
+
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_TELEPHONE_NUMBER == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK TEL NUM-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+            nodeString=currNode->GetValue();
+
+            static std::set<std::string> setbeforemasktelnum;
+            std::set<std::string>::iterator it;
+            int temp =counttelnum;
+            setbeforemasktelnum.insert (argument);
+            counttelnum=setbeforemasktelnum.size();
+
+            std::cout << "setbeforemasktelnum contains : ";
+            for (it=setbeforemasktelnum.begin(); it!=setbeforemasktelnum.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            counttelnum++;
+            srand(time(NULL)*counttelnum); //generates random seed val
+
+            int telLength=0;
+            MSTRING telNum;
+            int randid = rand()%((13 - 1) + 1) + 1;
+
+            if(connection)
+            {
+                MysqlConnector mysqlobj;
+                replacement = mysqlobj.selectCityCode(connection,randid);
+            }
+            else
+            {
+                perror ("The Database could not be connected, Please check the db connection!");
+                throw _exception();
+            }
+
+            if(replacement.length()==1)
+            {
+                telLength=7;
+            }
+            else if(replacement.length()==2)
+            {
+                telLength=6;
+            }
+            for(int i=0;i<telLength;i++)
+            {
+                telNum+=(std::to_string(rand()%((9) + 1)));
+            }
+            replacement+=telNum;
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+
+
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_ADDRESS == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK ADDRESS-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+            nodeString=currNode->GetValue();
+
+            static std::set<std::string> setbeforemaskaddress;
+            std::set<std::string>::iterator it;
+            int temp =countaddress;
+            setbeforemaskaddress.insert (argument);
+            countaddress=setbeforemaskaddress.size();
+            MSTRING tempStr=std::to_string(countaddress);
+            MSTRING tempReplace;
+
+            std::cout << "setbeforemaskaddress contains : ";
+            for (it=setbeforemaskaddress.begin(); it!=setbeforemaskaddress.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            srand(time(NULL)*countaddress); //generates random seed val
+            if(connection)
+            {
+                MysqlConnector mysqlobj;
+                int randid = rand()%((499 - 1) + 1) + 1;
+                replacement = mysqlobj.selectAddress(connection,randid);
+            }
+            else
+            {
+                perror ("The Database could not be connected, Please check the db connection!");
+                throw _exception();
+            }
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+
+
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_POSTAL_CODE == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK POSTAL CODE-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+            nodeString=currNode->GetValue();
+
+            static std::set<std::string> setbeforemaskpostalcode;
+            std::set<std::string>::iterator it;
+            int temp =countpostalcode;
+            setbeforemaskpostalcode.insert (argument);
+            countpostalcode=setbeforemaskpostalcode.size();
+            MSTRING tempStr=std::to_string(countpostalcode);
+            MSTRING tempReplace;
+
+            std::cout << "setbeforemaskpostalcode contains : ";
+            for (it=setbeforemaskpostalcode.begin(); it!=setbeforemaskpostalcode.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            srand(time(NULL)*countpostalcode); //generates random seed val
+            if(connection)
+            {
+                MysqlConnector mysqlobj;
+                int randid = rand()%((200 - 1) + 1) + 1;
+                replacement = mysqlobj.selectPostalCode(connection,randid);
+            }
+            else
+            {
+                perror ("The Database could not be connected, Please check the db connection!");
+                throw _exception();
+            }
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+
+
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_INTEGER == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK INTEGER-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+            nodeString=currNode->GetValue();
+
+            static std::set<std::string> setbeforemaskinteger;
+            std::set<std::string>::iterator it;
+            int temp =countinteger;
+            setbeforemaskinteger.insert (argument);
+            countinteger=setbeforemaskinteger.size();
+
+            std::cout << "setbeforemaskinteger contains : ";
+            for (it=setbeforemaskinteger.begin(); it!=setbeforemaskinteger.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            countinteger++;
+            srand(time(NULL)*countinteger); //generates random seed val
+
+            int userBeg =10000;
+            int userEnd =20000;
+            int randid = rand()%((userEnd - userBeg) + 1) + userBeg;
+            replacement = std::to_string(randid);
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+
+
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_PRICE == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK PRICE-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+            nodeString=currNode->GetValue();
+
+            static std::set<std::string> setbeforemaskprice;
+            std::set<std::string>::iterator it;
+            int temp =countprice;
+            setbeforemaskprice.insert (argument);
+            countprice=setbeforemaskprice.size();
+
+            std::cout << "setbeforemaskprice contains : ";
+            for (it=setbeforemaskprice.begin(); it!=setbeforemaskprice.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            countprice++;
+            srand(time(NULL)*countprice); //generates random seed val
+
+            int upperBound=50000;
+            int lowererBound=10000;
+            std::size_t decpos=(argument.find(".")+1);
+            int precision=argument.length() - decpos;
+
+            int randid = rand()%((upperBound - lowererBound) + 1) + lowererBound;
+            MSTRING intPart = std::to_string(randid);
+            MSTRING decPart;
+            for(int i=0;i<precision;i++)
+            {
+                decPart+=(std::to_string(rand()%((9) + 1)));
+            }
+            reverse(intPart.begin(), intPart.end());
+            int lengthrev = intPart.length();
+            MSTRING final;
+            MSTRING finalprice;
+            int noofrounds=lengthrev/3;
+            int count=1;
+            int count2=1;
+
+            if(lengthrev>3)
+            {
+                while(count2<=noofrounds)
+                {
+                    MSTRING sub=intPart.substr(count-1,3);
+                    MSTRING subwithsep = sub+",";
+                    finalprice+=subwithsep;
+                    count+=3;
+                    count2++;
+                }
+                MSTRING strremain = intPart.substr(count-1,lengthrev - count + 1);
+                if(strremain.length()<1)
+                {
+                    finalprice= finalprice.substr(0,finalprice.length()-1);
+                } else
+                {
+                    finalprice+=strremain;
+                }
+                reverse(finalprice.begin(), finalprice.end());
+                final = finalprice+"."+decPart;
+            }
+            else
+            {
+                final = intPart+"."+decPart;
+            }
+            replacement =final;
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+
+
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_NIC == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK NIC-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+            nodeString=currNode->GetValue();
+
+            static std::set<std::string> setbeforemasknic;
+            std::set<std::string>::iterator it;
+            int temp =countnic;
+            setbeforemasknic.insert (argument);
+            countnic=setbeforemasknic.size();
+
+            std::cout << "setbeforemasknic contains : ";
+            for (it=setbeforemasknic.begin(); it!=setbeforemasknic.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            countnic++;
+            srand(time(NULL)*countnic); //generates random seed val
+
+            int diff =5;
+            MSTRING rand1 = std::to_string(rand()%((30 - 1) + 1) + 1);
+            MSTRING rand2 = std::to_string(rand()%((12 - 1) + 1) + 1);
+            MSTRING rand5 = std::to_string(rand()%((99) + 1));
+            MSTRING rand4;
+
+            int year = std::stoi(argument.substr(4, 2));
+            int highyear = (year + 2000 + diff) ;
+            int lowyear = (year + 2000 - diff);
+            int rand3int=rand()%((highyear - lowyear) + 1) + lowyear;
+            MSTRING rand3 =std::to_string(rand3int).substr(2, 2);
+            int individual = std::stoi(rand3);
+            if(individual<40)
+            {
+                rand4 = std::to_string(rand()%((999) + 1));
+            }
+            else if(individual<55)
+            {
+                MSTRING rand41 = std::to_string(rand()%((499) + 1));
+                MSTRING rand42 = std::to_string(rand()%((999 - 900) + 1) + 900);
+                int randchoice=rand()%(2)+1;
+                if(randchoice==1)
+                {
+                    rand4=rand41;
+                }
+                else if(randchoice==2)
+                {
+                    rand4=rand42;
+                }
+            }
+            else if(individual<100)
+            {
+                MSTRING rand41 = std::to_string(rand()%((750) + 1));
+                MSTRING rand42 = std::to_string(rand()%((999 - 900) + 1) + 900);
+                int randchoice=rand()%(2)+1;
+                if(randchoice==1)
+                {
+                    rand4=rand41;
+                }
+                else if(randchoice==2)
+                {
+                    rand4=rand42;
+                }
+            }
+            if(rand1.length()==1)
+            {
+                rand1="0"+rand1;
+            }
+            if(rand2.length()==1)
+            {
+                rand2="0"+rand2;
+            }
+            if(rand5.length()==1)
+            {
+                rand5="0"+rand5;
+            }
+            if(rand4.length()==1)
+            {
+                rand4="00"+rand4;
+            }
+            else if(rand4.length()==2)
+            {
+                rand4="0"+rand4;
+            }
+            replacement=rand1+rand2+rand3+rand4+rand5;
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+
+
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
+            currNode = (PNODE)pEntityList->GetCurrElem();
+        }
+    }
+    else if(COMMAND_TYPE_MASK_EMAIL == ulCommand)
+    {
+        std::cout<<"------------------------------------MASK EMAIL-----------------------------------------\n";
+        pEntityList->SeekToBegin();
+        PNODE currNode = (PNODE)pEntityList->GetCurrElem();
+        String* pStrArg = (String*)pArg;
+        MSTRING argument=pStrArg->GetValue();
+        MSTRING replacement;
+        while(currNode != 0)
+        {
+            MSTRING nodeString;
+            std::cout<<currNode->GetValue()<<"\n";
+            std::cout<<argument<<"\n";
+            nodeString=currNode->GetValue();
+
+            static std::set<std::string> setbeforemaskemail;
+            std::set<std::string>::iterator it;
+            int temp =countemail;
+            setbeforemaskemail.insert (argument);
+            countemail=setbeforemaskemail.size();
+            MSTRING tempStr=std::to_string(countemail);
+            MSTRING tempReplace;
+            std::cout << "setbeforemaskemail contains : ";
+            for (it=setbeforemaskemail.begin(); it!=setbeforemaskemail.end(); ++it)
+            {
+                std::cout << *it<<" , ";
+            }
+            std::cout << '\n';
+            srand(time(NULL)*countemail); //generates random seed val
+
+            std::size_t posAt=argument.find("@");
+            MSTRING sub = argument.substr(0,posAt);
+            MSTRING remainder = argument.substr(posAt,argument.length()-sub.length());
+            if(connection)
+            {
+                MysqlConnector mysqlobj;
+                int resultmale = mysqlobj.existsFirstNameMale(connection,sub);
+                int resultfemale = mysqlobj.existsFirstNameFemale(connection,sub);
+                MSTRING username = "";
+
+                if(resultmale==1)
+                {
+                    int randid = rand()%((7732 - 1) + 1) + 1;
+                    username = mysqlobj.selectFirstNameMale(connection,randid);
+                }
+                else if(resultfemale == 1)
+                {
+                    int randid = rand()%((7144 - 1) + 1) + 1;
+                    username = mysqlobj.selectFirstNameFemale(connection,randid);
+                }
+                else
+                {
+                    int randid = rand()%((744 - 1) + 1) + 1;
+                    username = mysqlobj.selectFirstNameUnisex(connection,randid);
+                }
+                replacement =username+remainder;
+            }
+            else
+            {
+                perror ("The Database could not be connected, Please check the db connection!");
+                throw _exception();
+            }
+            std::size_t pos=nodeString.find(argument);
+            nodeString.replace(pos,argument.length(),replacement);
+            std::cout<<argument<<"\n";
+            std::cout<<nodeString<<"\n";
+
+
+            currNode->SetValue((PMCHAR) nodeString.c_str());
+
+            pEntityList->Seek(1, false);
+            PENTITY pEntity = pEntityList->GetCurrElem();
+            if(0 != pEntity)
+            {
+                // If the entity is not a node then it will be deleted immediately after use.
+                // Therefore we need to get a copy.
+                if(ENTITY_TYPE_NODE != pEntity->ul_Type)
+                {
+                    pEntityRes = pEntity->GetCopy();
+                }
+                else
+                {
+                    pEntityRes = pEntity;
+                }
+            }
+            else
+            {
+                MemoryManager::Inst.CreateObject(&pNullRes);
+            }
             currNode = (PNODE)pEntityList->GetCurrElem();
         }
     }

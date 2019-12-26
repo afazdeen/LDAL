@@ -1,18 +1,18 @@
-My first name is Stener
-My last name is Hola
-My full name is Stener Hola
-My telephone number is 77812541
-My postal address is Handelsbanken Bergen Sentrum, Allehelgens gate 4, Berge
-My postal code is 2319
-My index number is 19039
-My salary is 39,041.812
-My national id number is 02099898441
-My first name is Olvar
-My last name is Riis
-My full name is Olvar Riis
-My telephone number is 62805046
-My postal address is Clear Ink, Marken 32, Berge
-My postal code is 1397
-My index number is 10773
-My salary is 20,774.805
-My national id number is 05018618510
+My first name is Halduor
+My last name is Nilse
+My full name is Halduor Nilse
+My telephone number is 35858922
+My postal address is Life, Torgallmenningen 8, Berge
+My postal code is 2092
+My index number is 15805
+My salary is 15,805.858
+My national id number is 16059108275
+My first name is oleifr
+My last name is Hammer
+My full name is oleifr Hammer
+My telephone number is 76358720
+My postal address is Coop Ottadalen BA, Gnr 39 Bnr 1, Lom
+My postal code is 3550
+My index number is 18688
+My salary is 18,688.635
+My national id number is 19039310243

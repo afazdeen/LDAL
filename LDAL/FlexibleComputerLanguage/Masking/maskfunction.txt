@@ -6,35 +6,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(TEST_SUITE))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(TEST_SUITE)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(TEST_SUITE)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=testSuiteName
-			$COUNT.Add(#1)
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($testSuiteName)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskValue($testSuiteName)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($testSuiteName))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($testSuiteName)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskValue($testSuiteName)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf		
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($testSuiteName)):=LIST2
+			$LIST2.MaskValue($testSuiteName)
 			$LIST.GetNextElement:=ELEM
 		Do
 		
@@ -42,35 +20,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(FIRST_NAME))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(FIRST_NAME)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(FIRST_NAME)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=fName
-			$COUNT.Add(#1)
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($fName)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskFirstName($fName)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($fName))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($fName)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskFirstName($fName)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf		
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($fName)):=LIST2
+			$LIST2.MaskFirstName($fName)
 			$LIST.GetNextElement:=ELEM
 		Do
 		
@@ -78,35 +34,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(LAST_NAME))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(LAST_NAME)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(LAST_NAME)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=lName
-			$COUNT.Add(#1)
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($lName)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskLastName($lName)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($lName))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($lName)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskLastName($lName)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf		
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($lName)):=LIST2
+			$LIST2.MaskLastName($lName)
 			$LIST.GetNextElement:=ELEM
 		Do
 		
@@ -114,35 +48,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(FULL_NAME))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(FULL_NAME)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(FULL_NAME)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=fullName
-			$COUNT.Add(#1)
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($fullName)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskFullName($fullName)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($fullName))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($fullName)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskFullName($fullName)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf		
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($fullName)):=LIST2
+			$LIST2.MaskFullName($fullName)
 			$LIST.GetNextElement:=ELEM
 		Do
 		
@@ -150,42 +62,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(DATE))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(DATE)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(DATE)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=date
-			$ROOTNODE.GetStringVar:=NEWSTRING
-			$NEWSTRING.AddPostFix(-)
-			$NEWSTRING.AddPostFix($date)
-			$COUNT.Add(#1)
-
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskDate($NEWSTRING)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			
-			EndIf
-
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($date))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskDate($NEWSTRING)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($date)):=LIST2
+			$LIST2.MaskDate($date)
 			$LIST.GetNextElement:=ELEM
 		Do
 
@@ -193,43 +76,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(MONTH))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(MONTH)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(MONTH)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=month
-			$ROOTNODE.GetStringVar:=NEWSTRING
-			$NEWSTRING.AddPostFix(-)
-			$NEWSTRING.AddPostFix($month)
-			$NEWSTRING.AddPostFix(-)
-			$COUNT.Add(#1)
-
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskMonth($NEWSTRING)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			
-			EndIf
-
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($month))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskMonth($NEWSTRING)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($month)):=LIST2
+			$LIST2.MaskMonth($month)
 			$LIST.GetNextElement:=ELEM
 		Do
 
@@ -237,42 +90,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(YEAR))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(YEAR)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(YEAR)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=year
-			$ROOTNODE.GetStringVar:=NEWSTRING
-			$NEWSTRING.AddPostFix($year)
-			$NEWSTRING.AddPostFix(-)
-			$COUNT.Add(#1)
-
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskYear($NEWSTRING)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			
-			EndIf
-
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($year))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskYear($NEWSTRING)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($year)):=LIST2
+			$LIST2.MaskYear($year)
 			$LIST.GetNextElement:=ELEM
 		Do
 
@@ -280,42 +104,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(HOUR))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(HOUR)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(HOUR)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=hour
-			$ROOTNODE.GetStringVar:=NEWSTRING
-			$NEWSTRING.AddPostFix($hour)
-			$NEWSTRING.AddPostFix(:)
-			$COUNT.Add(#1)
-
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskHour($NEWSTRING)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			
-			EndIf
-
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($hour))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskHour($NEWSTRING)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($hour)):=LIST2
+			$LIST2.MaskHour($hour)
 			$LIST.GetNextElement:=ELEM
 		Do
 
@@ -323,43 +118,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(MINUTE))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(MINUTE)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(MINUTE)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=minute
-			$ROOTNODE.GetStringVar:=NEWSTRING
-			$NEWSTRING.AddPostFix(:)
-			$NEWSTRING.AddPostFix($minute)
-			$NEWSTRING.AddPostFix(:)
-			$COUNT.Add(#1)
-
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskMinute($NEWSTRING)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			
-			EndIf
-
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($minute))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskMinute($NEWSTRING)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($minute)):=LIST2
+			$LIST2.MaskMinute($minute)
 			$LIST.GetNextElement:=ELEM
 		Do
 
@@ -367,42 +132,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(SECONDS))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(SECONDS)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(SECONDS)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=seconds
-			$ROOTNODE.GetStringVar:=NEWSTRING
-			$NEWSTRING.AddPostFix(:)
-			$NEWSTRING.AddPostFix($seconds)
-			$COUNT.Add(#1)
-
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskSeconds($NEWSTRING)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			
-			EndIf
-
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($seconds))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($NEWSTRING)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskSeconds($NEWSTRING)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($seconds)):=LIST2
+			$LIST2.MaskSeconds($seconds)
 			$LIST.GetNextElement:=ELEM
 		Do
 
@@ -410,35 +146,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(TELEPHONE_NUMBER))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(TELEPHONE_NUMBER)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(TELEPHONE_NUMBER)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=telnum
-			$COUNT.Add(#1)
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($telnum)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskTelNum($telnum)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($telnum))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($telnum)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskTelNum($telnum)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf		
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($telnum)):=LIST2
+			$LIST2.MaskTelNum($telnum)
 			$LIST.GetNextElement:=ELEM
 		Do
 		
@@ -446,35 +160,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(ADDRESS))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(ADDRESS)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(ADDRESS)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=address
-			$COUNT.Add(#1)
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($address)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskAddress($address)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($address))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($address)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskAddress($address)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf		
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($address)):=LIST2
+			$LIST2.MaskAddress($address)
 			$LIST.GetNextElement:=ELEM
 		Do
 		
@@ -482,35 +174,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(POSTAL_CODE))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(POSTAL_CODE)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(POSTAL_CODE)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=postalcode
-			$COUNT.Add(#1)
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($postalcode)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskPostalCode($postalcode)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($postalcode))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($postalcode)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskPostalCode($postalcode)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf		
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($postalcode)):=LIST2
+			$LIST2.MaskPostalCode($postalcode)
 			$LIST.GetNextElement:=ELEM
 		Do
 		
@@ -518,35 +188,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(INTEGER))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(INTEGER)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(INTEGER)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=integer
-			$COUNT.Add(#1)
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($integer)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskInteger($integer)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($integer))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($integer)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskInteger($integer)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf		
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($integer)):=LIST2
+			$LIST2.MaskInteger($integer)
 			$LIST.GetNextElement:=ELEM
 		Do
 		
@@ -554,35 +202,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(PRICE))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(PRICE)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(PRICE)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=price
-			$COUNT.Add(#1)
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($price)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskPrice($price)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($price))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($price)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskPrice($price)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf		
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($price)):=LIST2
+			$LIST2.MaskPrice($price)
 			$LIST.GetNextElement:=ELEM
 		Do
 		
@@ -590,35 +216,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(NIC))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(NIC)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(NIC)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=nic
-			$COUNT.Add(#1)
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($nic)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskNIC($nic)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($nic))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($nic)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskNIC($nic)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf		
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($nic)):=LIST2
+			$LIST2.MaskNIC($nic)
 			$LIST.GetNextElement:=ELEM
 		Do
 		
@@ -626,35 +230,13 @@ Function:=MaskInnerFunction
 	
 	If($ATTRIBUTE.GetValue.IsStringEqualTo(EMAIL))
 		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(EMAIL)):=LIST
-		$ROOTNODE.FilterSubtree($Item.GetValue.IsStringEqualTo(EMAIL)):=LIST1TEMP
-		$LIST1TEMP.SeekToBegin()
-		$LIST1TEMP.GetCurrentElement:=TEMPELEM
 		$LIST.SeekToBegin()
-		$LIST.GetCurrentElement:=ELEM
-		$ROOTNODE.GetIntegerVar:=COUNT
+		$LIST.GetCurrentElement:=ELEM		
 		
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=eMail
-			$COUNT.Add(#1)
-			If($COUNT.ToString.IsStringEqualTo(1))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($eMail)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskEmail($eMail)			
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf
-			
-			IfNot($TEMPELEM.FirstChild.FirstChild.GetValue.IsStringEqualTo($eMail))
-				$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($eMail)):=LIST2
-				$LIST2.SeekToBegin()
-				$LIST2.GetCurrentElement:=ELEM2
-				While($ELEM2.CheckNotNull)
-					$ELEM2.MaskEmail($eMail)					
-					$LIST2.GetNextElement:=ELEM2
-				Do
-			EndIf		
+			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($eMail)):=LIST2
+			$LIST2.MaskEmail($eMail)
 			$LIST.GetNextElement:=ELEM
 		Do		
 	EndIf

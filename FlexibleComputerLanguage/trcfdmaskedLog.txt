@@ -1,6 +1,0 @@
-{"level":"debug","message":"0e53cee0-6a0e-11e8-b2db-55a3ec1167c6:New FeildOfficer account has been created:Svale","timestamp":"2018-08-01T10:49:58.350Z"}
-{"level":"debug","message":"842ac930-ebb3-11e8-9e5e-8beed51eb843:New FeildOfficer account has been created:Mari","timestamp":"2018-12-18T07:14:54.238Z"}
-{"level":"debug","message":"0e53cee0-6a0e-11e8-b2db-55a3ec1167c6:New FeildOfficer account has been created:Michel","timestamp":"2019-01-09T05:50:37.370Z"}
-{"level":"debug","message":"0e53cee0-6a0e-11e8-b2db-55a3ec1167c6:New FeildOfficer account has been created:Michel","timestamp":"2019-01-09T05:54:04.501Z"}
-{"level":"debug","message":"0e53cee0-6a0e-11e8-b2db-55a3ec1167c6:New FeildOfficer account has been created:Thuri","timestamp":"2019-01-09T07:08:15.491Z"}
-{"level":"debug","message":"114133b0-1d6c-11e9-8df7-5375a8de996d:New FeildOfficer account has been created:Mike","timestamp":"2019-01-21T11:25:54.856Z"}

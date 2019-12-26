@@ -1,0 +1,18 @@
+My first name is Asvald
+My last name is Odland
+My full name is Asvald Odland
+My telephone number is 45130612
+My postal address is Danske Bank Selvbetjeningscenter, Christian Michelsens gate 6 B, Berge
+My postal code is 2646
+My index number is 11120
+My salary is 11,120.513
+My national id number is 11069597691
+My first name is Boruf
+My last name is Hoff
+My full name is Boruf Hoff
+My telephone number is 62291996
+My postal address is SpareBank 1 SMN, Brosetvegen 164, Trondheim
+My postal code is 2080
+My index number is 11661
+My salary is 11,661.291
+My national id number is 12059318499

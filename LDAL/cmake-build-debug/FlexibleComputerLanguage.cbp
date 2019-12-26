@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="FlexibleComputerLanguage"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="FlexibleComputerLanguage1">
+				<Option output="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/FlexibleComputerLanguage1.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core"/>
+					<Add directory="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases"/>
+					<Add directory="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/FlexibleComputerLanguage"/>
+					<Add directory="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/MySql/mysqlheaders/mysqlheaders"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 FlexibleComputerLanguage1"/>
+					<CompileFile command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="FlexibleComputerLanguage1/fast">
+				<Option output="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/FlexibleComputerLanguage1.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core"/>
+					<Add directory="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases"/>
+					<Add directory="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/FlexibleComputerLanguage"/>
+					<Add directory="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/MySql/mysqlheaders/mysqlheaders"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Program Files (x86)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 FlexibleComputerLanguage1/fast"/>
+					<CompileFile command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/PROGRA~2/MINGW-~1/I686-8~1.0-P/mingw32/bin/mingw32-make.exe -f &quot;D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/AdditionalFunctions.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/Bool.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/Bool.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/Command.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/Command.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/CommonIncludes.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/DateTime.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/DateTimeOperations.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/DateTimeOperations.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/DefFileReader.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/DefFileReader.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/Defs.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/Entity.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/EntityList.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/EntityList.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/ExecutionContext.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/ExecutionTemplate.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/ExecutionTemplate.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/ExecutionTemplateList.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/ExecutionTemplateList.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/ISpecialCommand.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/Int.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/MemMan.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/MemMan.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/MetaData.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/Node.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/Node.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/NodeCustomValueShorthand.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/NodeCustomValueShorthand.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/Null.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/ProcessLog.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/ScriptReader.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/ScriptReader.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/SpecialCommandExecuter.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/SpecialCommandExecuter.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/StringOperations.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/StringOperations.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/Strings.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestCaseBase.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestCaseBase.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestCaseExecuter.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestCaseExecuter.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestCaseIncludes.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestCompound1.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestCompound1.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestCustomStrFilterShorthand.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestCustomStrFilterShorthand.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestFilterSubtree.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestFilterSubtree.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestListFilter.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestListFilter.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestListGroupBy.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestListGroupBy.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestListInnerCount.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestListInnerCount.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestListInnerCountWithScript.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestListInnerCountWithScript.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestListSeek.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestListSeek.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestLoadFromCodeLibrary.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestLoadFromCodeLibrary.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestStringEnclosure.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestStringEnclosure.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestTestCase.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TestCases/TestTestCase.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/Tests.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/Tests.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/TypeDefs.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/Utils.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/Utils.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/Core/Value.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/FlexibleComputerLanguage/DbConnection.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/FlexibleComputerLanguage/LogJsonParser.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/FlexibleComputerLanguage/LogJsonParser.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/FlexibleComputerLanguage/Logger.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/FlexibleComputerLanguage/MysqlConnector.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/FlexibleComputerLanguage/MysqlConnector.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/FlexibleComputerLanguage/QueryExecuter.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/FlexibleComputerLanguage/QueryExecuter.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/FlexibleComputerLanguage/ResultGenerator.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/FlexibleComputerLanguage/ResultGenerator.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/FlexibleComputerLanguage/easylogging++.cc">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/FlexibleComputerLanguage/easylogging++.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/FlexibleComputerLanguage/json.hpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/FlexibleComputerLanguage/main.cpp">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/MySql/mysqlheaders/mysqlheaders/mysql.h">
+			<Option target="FlexibleComputerLanguage1"/>
+		</Unit>
+		<Unit filename="D:/99xProjects/Project2 - Flat file Masking/LDAL/LDAL/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

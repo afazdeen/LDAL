@@ -1,0 +1,14 @@
+# Removes test files
+tests/
+.idea
+.vscode
+
+# Remove XCode related files
+FlexibleComputerLanguage.xcodeproj/
+
+# Remove log files
+logs
+*.log
+
+# dotenv environment variables file
+.env

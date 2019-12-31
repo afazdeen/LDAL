@@ -2824,6 +2824,10 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
         String* pStrArg = (String*)pArg;
         MSTRING argument=pStrArg->GetValue();
         MSTRING replacement;
+
+        int userBeg = std::stoi(currNode->GetLVal());
+        int userEnd = std::stoi(currNode->GetRVal());
+
         while(currNode != 0)
         {
             MSTRING nodeString;
@@ -2846,8 +2850,8 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
             countinteger++;
             srand(time(NULL)*countinteger); //generates random seed val
 
-            int userBeg =10000;
-            int userEnd =20000;
+           /* int userBeg =10000;
+            int userEnd =20000;*/
             int randid = rand()%((userEnd - userBeg) + 1) + userBeg;
             replacement = std::to_string(randid);
             std::size_t pos=nodeString.find(argument);
@@ -2888,12 +2892,16 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
         String* pStrArg = (String*)pArg;
         MSTRING argument=pStrArg->GetValue();
         MSTRING replacement;
+        
+        int lowererBound = std::stoi(currNode->GetLVal());
+        int upperBound = std::stoi(currNode->GetRVal());
         while(currNode != 0)
         {
             MSTRING nodeString;
             std::cout<<currNode->GetValue()<<"\n";
             std::cout<<argument<<"\n";
             nodeString=currNode->GetValue();
+
 
             static std::set<std::string> setbeforemaskprice;
             std::set<std::string>::iterator it;
@@ -2910,8 +2918,8 @@ PENTITY Command::ExecuteListCommand(MULONG ulCommand, PENTITY pEntity, Execution
             countprice++;
             srand(time(NULL)*countprice); //generates random seed val
 
-            int upperBound=50000;
-            int lowererBound=10000;
+           /* int upperBound=50000;
+            int lowererBound=10000;*/
             std::size_t decpos=(argument.find(".")+1);
             int precision=argument.length() - decpos;
 

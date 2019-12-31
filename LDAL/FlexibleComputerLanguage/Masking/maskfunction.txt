@@ -194,6 +194,8 @@ Function:=MaskInnerFunction
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=integer
 			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($integer)):=LIST2
+			$LIST2.GetCurrentElement.SetRValue($ATTRIBUTE.GetRValue)
+			$LIST2.GetCurrentElement.SetLValue($ATTRIBUTE.GetLValue)
 			$LIST2.MaskInteger($integer)
 			$LIST.GetNextElement:=ELEM
 		Do
@@ -208,6 +210,8 @@ Function:=MaskInnerFunction
 		While($ELEM.CheckNotNull)
 			$ELEM.FirstChild.FirstChild.GetValue:=price
 			$ROOTNODE.FilterSubtree($Item.GetValue.IsHavingSubstring($price)):=LIST2
+			$LIST2.GetCurrentElement.SetRValue($ATTRIBUTE.GetRValue)
+			$LIST2.GetCurrentElement.SetLValue($ATTRIBUTE.GetLValue)
 			$LIST2.MaskPrice($price)
 			$LIST.GetNextElement:=ELEM
 		Do

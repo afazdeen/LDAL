@@ -690,23 +690,6 @@
 #define     COMMAND_TYPE_GET_INTEGER                                    63
 #define     COMMAND_TYPE_GET_BOOLEAN                                    64
 #define     COMMAND_TYPE_GET_CUSTOM_OBJ                                 65
-#define     COMMAND_TYPE_MASK_VALUE                                     66
-#define     COMMAND_TYPE_MASK_FIRST_NAME                                67
-#define     COMMAND_TYPE_MASK_LAST_NAME                                 68
-#define     COMMAND_TYPE_MASK_FULL_NAME                                 69
-#define     COMMAND_TYPE_MASK_DATE                                       70
-#define     COMMAND_TYPE_MASK_MONTH                                     71
-#define     COMMAND_TYPE_MASK_YEAR                                      72
-#define     COMMAND_TYPE_MASK_HOUR                                     73
-#define     COMMAND_TYPE_MASK_MINUTE                                   74
-#define     COMMAND_TYPE_MASK_SECONDS                                   75
-#define     COMMAND_TYPE_MASK_TELEPHONE_NUMBER                          76
-#define     COMMAND_TYPE_MASK_ADDRESS                                   77
-#define     COMMAND_TYPE_MASK_POSTAL_CODE                               78
-#define     COMMAND_TYPE_MASK_INTEGER                                   79
-#define     COMMAND_TYPE_MASK_PRICE                                     80
-#define     COMMAND_TYPE_MASK_NIC                                       81
-#define     COMMAND_TYPE_MASK_EMAIL                                     82
 
 
 // String commands
@@ -784,6 +767,23 @@
 #define     COMMAND_TYPE_GET_LATEST_DATE                                5014
 #define     COMMAND_TYPE_GET_UNIQUE_NODE_LIST_WITH_NODE_REF             5015
 #define     COMMAND_TYPE_ADD_NODE_TO_LIST                               5016
+#define     COMMAND_TYPE_MASK_VALUE                                     5017
+#define     COMMAND_TYPE_MASK_FIRST_NAME                                5018
+#define     COMMAND_TYPE_MASK_LAST_NAME                                 5019
+#define     COMMAND_TYPE_MASK_FULL_NAME                                 5020
+#define     COMMAND_TYPE_MASK_DATE                                      5021
+#define     COMMAND_TYPE_MASK_MONTH                                     5022
+#define     COMMAND_TYPE_MASK_YEAR                                      5023
+#define     COMMAND_TYPE_MASK_HOUR                                      5024
+#define     COMMAND_TYPE_MASK_MINUTE                                    5025
+#define     COMMAND_TYPE_MASK_SECONDS                                   5026
+#define     COMMAND_TYPE_MASK_TELEPHONE_NUMBER                          5027
+#define     COMMAND_TYPE_MASK_ADDRESS                                   5028
+#define     COMMAND_TYPE_MASK_POSTAL_CODE                               5029
+#define     COMMAND_TYPE_MASK_INTEGER                                   5030
+#define     COMMAND_TYPE_MASK_PRICE                                     5031
+#define     COMMAND_TYPE_MASK_NIC                                       5032
+#define     COMMAND_TYPE_MASK_EMAIL                                     5033
 
 
 // Special Commands

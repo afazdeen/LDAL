@@ -6,7 +6,9 @@
 	 ii)Enter the variable names of the fields that require masking as follows - {$FIRST_NAME,$LAST_NAME,$TELEPHONE_NUMBER,$ADDRESS}:=LIST
 	iii)You can input one or all 16 available variable names into the above statement.
 	 iv)The fields available are  FIRST_NAME, LAST_NAME, FULL_NAME, DATE, MONTH, YEAR, HOUR, MINUTE, SECONDS, TELEPHONE_NUMBER, ADDRESS, POSTAL_CODE, INTEGER, PRICE, NIC, EMAIL.
-	  v)The variable names of the variables that you require to be masked in the script file should be same as the variable names provided in iv) above.	   
+	  v)The variable names of the variables that you require to be masked in the script file should be same as the variable names provided in iv) above.
+         vi)Add range of replacement values for integer and price maskinbg as follows if required ($INTEGER.SetLValue(10000),$INTEGER.SetRValue(20000),$PRICE.SetLValue(10000),$PRICE.SetRValue(20000)).	   
+
 
 5) Execute the MaskingTool.exe found in LDAL/LDAL/cmake-build-debug
 6) The masked log file will be created in LDAL/Files/maskedLog.txt
